@@ -63,3 +63,18 @@
    
    text-align: center;
 }
+@media screen and (max-width: 750px) {
+.view_dienthoai {
+   width: 105%;
+   margin-left: -0.6em;
+   
+   float: left;
+
+   overflow: hidden;
+   position: relative;
+   text-align: center;
+ 
+   cursor: default;
+
+}
+}
