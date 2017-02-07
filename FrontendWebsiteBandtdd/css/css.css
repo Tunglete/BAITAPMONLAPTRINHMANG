@@ -73,6 +73,9 @@ nav{
 #giohang{
 	color: black;
 }
+#giohang:hover{
+	text-decoration: none;
+}
 
 .nav ul li{
 	float:left;
@@ -107,7 +110,7 @@ padding:1em;
 
 .nav ul li ul{
 	clear: both;
-	background-color: #222222;
+	background-color: #008ACA;
 	position:absolute;
 	display:none;
 	padding:0;
@@ -115,7 +118,7 @@ padding:1em;
 	z-index: 1;
 }
 .dienthoaimenu li a{
-	color: white;
+	color: white; 
 }
  
 .nav li:hover ul{
@@ -261,7 +264,7 @@ color: white;
 /*css sản phẩm tiêu biểu*/
 .img-sanphamtieubieu{
 	width: 90%;
-	height: 10em;
+	height: 12em;
 	padding-top: 0.2em;
 }
 .sanphamtieubieu-trong{
@@ -269,7 +272,6 @@ color: white;
 	margin-top: 0.05em;
 	margin-top: 1em;
 	padding-top: 0.5em;
-	
 }
 
 .sanphamtieubieu a:hover{
@@ -304,6 +306,52 @@ color: white;
 .phukien a:hover{
 	text-decoration: none;
 }
+
+/*Phần css cho trang điện thoại di động*/
+.xemthem{
+	margin-top: 2em;
+}
+.xemthem div{
+	text-align: center;
+}
+.xemthem a{
+	background:#008ACA;
+	color: #000;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-shadow: none; 
+}
+.xemthem a:hover{
+	background:#008ACA;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.title-dtdd1{
+	font-weight: bold;
+	margin-top: 1em;
+	background: #F6F6F6;
+	height: 1.5em;
+	border: 1px solid #d9d9d9;
+	border-radius: 0.3em;
+}
+.title-dtdd1 a:hover, .title-dtdd2 a:hover{
+	text-decoration: none;
+}
+.title-dtdd2{
+
+	padding-top: 0.55em;
+	margin-top: 1em;
+	background: #F6F6F6;
+	border: 1px solid #d9d9d9;
+	border-radius: 0.3em;
+
+}
+#timtheo{
+	font-weight: bold;
+}
+
+/*end css cho trang điện thoại di động*/
 @media screen and (max-width: 992px) {
   #tintuc{
   	display: none;
