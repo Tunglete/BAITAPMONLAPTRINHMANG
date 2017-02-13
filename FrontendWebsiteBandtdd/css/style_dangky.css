@@ -1,0 +1,76 @@
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+}
+.form_title{
+font-size: 20px;
+text-align: center;
+color: #FFFFFF;
+padding: 10px;
+font-weight: bold;
+background: #008ACA;
+}
+.head_para{
+ font-size:19px;
+ color:#99a2a7;
+ text-align:center;
+ font-weight:normal;
+ }
+ #txtFirstName{
+ 	width: 240px! important;
+ }
+ #txtLastName{
+ 	width: 240px;
+ }
+ .form-group{
+ 	padding: 15px 0;
+ }
+ .birthday{
+ 	width: 104px! important;
+ }
+ #dobday{
+ 	 width: 111px;
+ }
+#dobmonth{
+ 	width: 111px;
+ }
+ #dobyear{
+ 	width: 111px;
+ }
+ .sex{
+ 	width: 104px!important;
+ }
+#sex{
+    width: 240px! important;
+}
+#email{
+	margin-left: -37px;
+    width: 502px! important;
+}
+#phone{
+	margin-left: -77px;
+    width: 502px! important;
+}
+.city{
+	width: 110px! important;
+}
+.selectCity{
+	width: 240px! important;
+}
+.btn-primary{
+	    margin-top: 65px;
+	    margin-bottom: 80px! important;
+}
+#address{
+	margin-left: -75px;
+    width: 502px! important;
+}
+.table{
+	border: 2px;
+}
+.glyphicon{
+	color: #008ACA;
+}
