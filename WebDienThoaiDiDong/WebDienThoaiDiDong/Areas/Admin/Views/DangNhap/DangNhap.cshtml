@@ -14,9 +14,13 @@
     <div class="logo"></div>
     <div class="login-block">
         <h1>Đăng Nhập</h1>
-        <input type="text" value="" placeholder="Tên đăng nhập" id="username" />
-        <input type="password" value="" placeholder="Mật khẩu" id="password" />
-        <button>Đăng nhập</button>
+    @using (Html.BeginForm()){
+        <input type="text" value="" placeholder="Tên đăng nhập" id="username" name="name"/>
+        <input type="password" value="" placeholder="Mật khẩu" id="password" name="pass"/>
+        <button type="submit">Đăng nhập</button>
+        @ViewBag.TrangThai    
+    }
+        
     </div>
 </body>
 </html>
