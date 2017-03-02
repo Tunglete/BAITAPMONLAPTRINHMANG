@@ -16,6 +16,21 @@
     <script type="text/javascript" src="js/jssor.slider.mini.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Liên hệ</title>
+    <style>
+        .google-maps {
+            position: relative;
+            padding-bottom: 75%; // This is the aspect ratio
+            height: 0;
+            overflow: hidden;
+        }
+        .google-maps iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 90% !important;
+            height: 50% !important;
+        }
+    </style>
 </head>
 <body>
 	<header>
@@ -40,11 +55,11 @@
 			<div class="col-md-2 col-sm-5 col-xs-8">
 				<div class="timkiem">
 					<form class="frm-timkiem" action="" id="cse-search-box" >
-                     <input type="text" class="form-control input-md" value="" placeholder="Bạn cần tìm ..." />
-                 </form>
-             </div>
-         </div>
-         <div style="margin-top:0.4em;" class="col-md-1 col-sm-3 col-xs-4">
+                       <input type="text" class="form-control input-md" value="" placeholder="Bạn cần tìm ..." />
+                   </form>
+               </div>
+           </div>
+           <div style="margin-top:0.4em;" class="col-md-1 col-sm-3 col-xs-4">
             <a id="giohang" href="" ><img class="icongiohang" src="HinhAnh/icongiohang.png"></br><p  class="textmenu">GIỎ HÀNG(0)</p></a>
         </div>
         <div class="navbar-header">
@@ -58,46 +73,46 @@
         <div class="nav navbar-collapse collapse col-md-7 col-sm-12 " id="menu">
 
             <ul>	
-               <li>
+             <li>
                 <a href=""><img class="img-icondep" src="HinhAnh/dienthoai.png"><p class="textmenu">ĐIỆN THOẠI</p></a>
                 <ul class="dienthoaimenu">
-                 <div class="row">
-                  <div class="col-sm-6">
-                     <li><a href="#">Apple(Iphone)</a></li>
-                     <li><a href="#">Nokia</a></li>
-                     <li><a href="#">Samsung</a></li>
-                     <li><a href="#">Lg</a></li>
-                     <li><a href="#">HTC</a></li>
-                 </div>
-                 <div class="col-sm-6">
-                     <li><a href="#">Asus</a></li>
-                     <li><a href="#">Sky</a></li>
-                     <li><a href="#">Mobistar</a></li>
-                     <li><a href="#">Hiphone</a></li>
-                     <li><a href="#">Sony</a></li>
-                 </div>
-             </div>
-         </ul>
-     </li>
+                   <div class="row">
+                      <div class="col-sm-6">
+                       <li><a href="#">Apple(Iphone)</a></li>
+                       <li><a href="#">Nokia</a></li>
+                       <li><a href="#">Samsung</a></li>
+                       <li><a href="#">Lg</a></li>
+                       <li><a href="#">HTC</a></li>
+                   </div>
+                   <div class="col-sm-6">
+                       <li><a href="#">Asus</a></li>
+                       <li><a href="#">Sky</a></li>
+                       <li><a href="#">Mobistar</a></li>
+                       <li><a href="#">Hiphone</a></li>
+                       <li><a href="#">Sony</a></li>
+                   </div>
+               </div>
+           </ul>
+       </li>
 
-     <li>
-      <a href=""><img class="img-icondep" src="HinhAnh/maytinhbang.png"><p  class="textmenu">MÁY TÍNH BẢNG</p></a>
-  </li>
+       <li>
+          <a href=""><img class="img-icondep" src="HinhAnh/maytinhbang.png"><p  class="textmenu">MÁY TÍNH BẢNG</p></a>
+      </li>
 
-  <li>
-      <a href=""><img class="iconlienhe" src="HinhAnh/phukien.png"><p  class="textmenu">PHỤ KIỆN</p></a>
-  </li>
+      <li>
+          <a href=""><img class="iconlienhe" src="HinhAnh/phukien.png"><p  class="textmenu">PHỤ KIỆN</p></a>
+      </li>
 
-  <li>
-      <a href=""><img class="img-icondep" src="HinhAnh/khuyenmai.png"><p  class="textmenu">KHUYẾN MẠI</p></a>
-  </li>
-  <li>
-      <a href="tincongnghe.html"><img class="icontincongnghe" src="HinhAnh/tincongnghe.png"><p  class="textmenu">TIN CÔNG NGHỆ</p></a>
-  </li>
-  <li>
-      <a href="lienhe.html"><img class="iconlienhe" src="HinhAnh/lienhe.png"><p  class="textmenu">LIÊN HỆ</p></a>
-  </li>
-</ul>
+      <li>
+          <a href=""><img class="img-icondep" src="HinhAnh/khuyenmai.png"><p  class="textmenu">KHUYẾN MẠI</p></a>
+      </li>
+      <li>
+          <a href="tincongnghe.html"><img class="icontincongnghe" src="HinhAnh/tincongnghe.png"><p  class="textmenu">TIN CÔNG NGHỆ</p></a>
+      </li>
+      <li>
+          <a href="lienhe.html"><img class="iconlienhe" src="HinhAnh/lienhe.png"><p  class="textmenu">LIÊN HỆ</p></a>
+      </li>
+  </ul>
 </div>
 </div>
 </nav>
@@ -129,7 +144,7 @@
                     <p> <i class="fa fa-phone" aria-hidden="true"></i> Kinh Doanh: 0968.655.655 - 0961.86.66.86</p><br>
                     <p><i class="fa fa-phone" aria-hidden="true"></i> Kỹ THuật: 0969.655.655</p><br>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 google-maps">
                     <br>
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.914520440814!2d105.7797833143869!3d21.03610598599435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b54c97ce85%3A0xf29443e13fc6848a!2zMTIgWHXDom4gVGjhu6d5LCBE4buLY2ggVuG7jW5nIEjhuq11LCBD4bqndSBHaeG6pXksIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1488125371992" width="560" height="577" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
@@ -140,33 +155,33 @@
         </div>
         <footer>
           <div class="container">
-           <div class="thongtin-trong row">
-            <div class="col-md-3 col-sm-3">
-             <p>ĐỊA CHỈ CỬA HÀNG</p>
-             <p>Tổng đài dịch vụ:</p><span>1900.65.58</span>
-             <p>Số 46, ngõ 66, Hồ Tùng Mậu</p>
-         </div>
-         <div class="col-md-3 col-sm-3">
-             <a href=""><p>QUY ĐỊNH & CHÍNH SÁCH</p></a>
-             <a href=""><p>Giới thiệu công ty</p></a>
-             <a href=""><p>Chính sách bảo hành</p></a>
-             <a href=""><p>Chính sách đổi trả</p></a>
-             <a href=""><p>Đặt hàng online</p></a>
-             <a href=""><p>Giao hàng và thanh toán</p></a>
-         </div>
-         <div class="col-md-3 col-sm-3">
-             <p>CÓ THẮC MẮC</p>
-             <p>Tổng đài dịch vụ</p><span>1900.65.58</span>
-             <p>Phòng kinh doanh:</p>
-             <p>TP Hà Nội:</p><span>0166.987.3695</span>
-         </div>
-         <div class="col-md-3 col-sm-3">
-             <p>NHẬN THÔNG TIN</p>
-             <button class="btn">Facebook</button>
-             <button class="btn">Gmail</button>
-         </div>
-     </div>
- </div>
-</footer>
+             <div class="thongtin-trong row">
+                <div class="col-md-3 col-sm-3">
+                   <p>ĐỊA CHỈ CỬA HÀNG</p>
+                   <p>Tổng đài dịch vụ:</p><span>1900.65.58</span>
+                   <p>Số 46, ngõ 66, Hồ Tùng Mậu</p>
+               </div>
+               <div class="col-md-3 col-sm-3">
+                   <a href=""><p>QUY ĐỊNH & CHÍNH SÁCH</p></a>
+                   <a href=""><p>Giới thiệu công ty</p></a>
+                   <a href=""><p>Chính sách bảo hành</p></a>
+                   <a href=""><p>Chính sách đổi trả</p></a>
+                   <a href=""><p>Đặt hàng online</p></a>
+                   <a href=""><p>Giao hàng và thanh toán</p></a>
+               </div>
+               <div class="col-md-3 col-sm-3">
+                   <p>CÓ THẮC MẮC</p>
+                   <p>Tổng đài dịch vụ</p><span>1900.65.58</span>
+                   <p>Phòng kinh doanh:</p>
+                   <p>TP Hà Nội:</p><span>0166.987.3695</span>
+               </div>
+               <div class="col-md-3 col-sm-3">
+                   <p>NHẬN THÔNG TIN</p>
+                   <button class="btn">Facebook</button>
+                   <button class="btn">Gmail</button>
+               </div>
+           </div>
+       </div>
+   </footer>
 </body>
 </html>
