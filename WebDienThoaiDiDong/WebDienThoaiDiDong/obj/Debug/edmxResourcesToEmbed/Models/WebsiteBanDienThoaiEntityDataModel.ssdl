@@ -10,6 +10,7 @@
     <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
     <Property Name="NgayTao" Type="datetime" />
     <Property Name="QuyenTruyCap" Type="int" />
+    <Property Name="IsDelete" Type="bit" />
   </EntityType>
   <EntityType Name="ANH_SAN_PHAM">
     <Key>
@@ -18,6 +19,7 @@
     <Property Name="MaAnhSanPham" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaSanPham" Type="int" Nullable="false" />
     <Property Name="AnhMinhHoa" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" />
   </EntityType>
   <EntityType Name="CHI_TIET_DANH_MUC">
     <Key>
@@ -27,6 +29,7 @@
     <Property Name="MaDanhMuc" Type="int" Nullable="false" />
     <Property Name="TenHang" Type="nvarchar" MaxLength="255" />
     <Property Name="NgayTao" Type="datetime" />
+    <Property Name="IsDeleted" Type="bit" />
   </EntityType>
   <EntityType Name="CHI_TIET_DON_HANG">
     <Key>
@@ -37,6 +40,7 @@
     <Property Name="MaSanPham" Type="int" Nullable="false" />
     <Property Name="Gia" Type="int" />
     <Property Name="SoLuong" Type="int" />
+    <Property Name="IsDeleted" Type="bit" />
   </EntityType>
   <EntityType Name="DANH_MUC">
     <Key>
@@ -45,6 +49,7 @@
     <Property Name="MaDanhMuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenDanhMuc" Type="nvarchar" MaxLength="255" />
     <Property Name="NgayTao" Type="datetime" />
+    <Property Name="IsDelteted" Type="bit" />
   </EntityType>
   <EntityType Name="DON_HANG">
     <Key>
@@ -56,6 +61,7 @@
     <Property Name="NgayTao" Type="datetime" />
     <Property Name="TongGiaTriDonHang" Type="int" />
     <Property Name="DiaChiNhanDonHang" Type="nvarchar(max)" />
+    <Property Name="IsDeleted" Type="bit" />
   </EntityType>
   <EntityType Name="KHACH_HANG">
     <Key>
@@ -68,6 +74,7 @@
     <Property Name="Mail" Type="nvarchar" MaxLength="255" />
     <Property Name="DienThoai" Type="nvarchar" MaxLength="50" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsDeleted" Type="bit" />
   </EntityType>
   <EntityType Name="SAN_PHAM">
     <Key>
@@ -94,6 +101,7 @@
     <Property Name="KhuyenMai" Type="ntext" />
     <Property Name="TieuDeTinTuc" Type="ntext" />
     <Property Name="NoiDungTinTuc" Type="ntext" />
+    <Property Name="IsDeleted" Type="bit" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -115,6 +123,7 @@
     <Property Name="NgayTao" Type="datetime" />
     <Property Name="TacGia" Type="ntext" />
     <Property Name="HinhAnh" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsDeleted" Type="bit" />
   </EntityType>
   <Association Name="FK_ANH_SAN_PHAM_SAN_PHAM">
     <End Role="SAN_PHAM" Type="Self.SAN_PHAM" Multiplicity="1" />

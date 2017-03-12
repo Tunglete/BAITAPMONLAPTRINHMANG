@@ -1,0 +1,64 @@
+﻿@using WebDienThoaiDiDong.Areas.Admin.Models.Danhsachgiaodich;
+@model List<ChiTietDonHangViewModel>
+@{
+    ViewBag.Title = "ChiTietGiaoDich";
+    Layout = null;
+}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">Tên khách hàng: <span style="color:dodgerblue">@ViewBag.namecus</span></h4>
+</div>
+<div class="modal-body" id="modalbody">
+    <div class="widget-content nopadding">
+        <table class="table table-bordered table-striped table-hover"  style="width:80%">
+            <thead>
+                <tr class="success">
+                    <th style="background:#28B779; color:white;font-size:13px;">Tên sản phẩm</th>
+                    <th style="background:#28B779; color:white;font-size:13px;">Giá sản phẩm</th>
+                    <th style="background:#28B779; color:white;font-size:13px;">Màn hình</th>
+                    <th style="background:#28B779; color:white;font-size:13px;">CPU</th>
+                    <th style="background:#28B779; color:white;font-size:13px;">Ram</th>
+                    <th style="background:#28B779; color:white;font-size:13px;">Hệ điều hành</th>
+                    <th style="background:#28B779; color:white;font-size:13px;">Camera chính</th>
+                    <th style="background:#28B779; color:white;font-size:13px;">Camera phụ</th>
+                    <th style="background:#28B779; color:white;font-size:13px;">Bộ nhớ trong</th>
+                    <th style="background:#28B779; color:white;font-size:13px;">Thẻ nhớ ngoài</th>
+                    <th style="background:#28B779; color:white;font-size:13px;">Blutooth</th>
+                    <th style="background:#28B779; color:white;font-size:13px;">Dung lượng pin</th>
+                    <th style="background:#28B779; color:white;font-size:13px;">Số lượng</th>
+                    <th style="background:#28B779; color:white;font-size:13px;">Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <th style="font-size:11px;">@item.TenSanPham</th>
+                        <th style="color:red;;font-size:11px;">@String.Format("{0:0,0 vnđ}", @item.GiaSanPham)</th>
+                        <th style="font-size:11px;">@item.ManHinh</th>
+                        <th style="font-size:11px;">@item.Cpu</th>
+                        <th style="font-size:11px;">@item.Ram</th>
+                        <th style="font-size:11px;">@item.HeDieuHanh</th>
+                        <th style="font-size:11px;">@item.CameraChinh</th>
+                        <th style="font-size:11px;">@item.CameraPhu</th>
+                        <th style="font-size:11px;">@item.BoNhoTrong</th>
+                        <th style="font-size:11px;">@item.TheNhoNgoai</th>
+                        <th style="font-size:11px;">@item.Blutooth</th>
+                        <th style="font-size:11px;">@item.DungLuongPin</th>
+                        <th style="font-size:11px;">@item.SoLuong</th>
+                        <th style="color:red;font-size:11px;">@String.Format("{0:0,0 vnđ}", @item.tonggia)</th>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+</div>
+
+
+

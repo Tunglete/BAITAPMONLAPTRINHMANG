@@ -19,6 +19,7 @@ namespace WebDienThoaiDiDong.Models
         public int MaSanPham { get; set; }
         public Nullable<int> Gia { get; set; }
         public Nullable<int> SoLuong { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual DON_HANG DON_HANG { get; set; }
         public virtual SAN_PHAM SAN_PHAM { get; set; }

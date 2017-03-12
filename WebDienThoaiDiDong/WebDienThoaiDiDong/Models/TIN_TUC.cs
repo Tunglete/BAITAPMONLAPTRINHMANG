@@ -20,5 +20,6 @@ namespace WebDienThoaiDiDong.Models
         public Nullable<System.DateTime> NgayTao { get; set; }
         public string TacGia { get; set; }
         public string HinhAnh { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     }
 }

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="ADMINs">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.ADMIN">
         <MappingFragment StoreEntitySet="ADMIN">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
           <ScalarProperty Name="MaQuanTri" ColumnName="MaQuanTri" />
           <ScalarProperty Name="TenQuanTri" ColumnName="TenQuanTri" />
           <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
@@ -16,6 +17,7 @@
     <EntitySetMapping Name="ANH_SAN_PHAM">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.ANH_SAN_PHAM">
         <MappingFragment StoreEntitySet="ANH_SAN_PHAM">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="MaAnhSanPham" ColumnName="MaAnhSanPham" />
           <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
           <ScalarProperty Name="AnhMinhHoa" ColumnName="AnhMinhHoa" />
@@ -25,6 +27,7 @@
     <EntitySetMapping Name="CHI_TIET_DANH_MUC">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.CHI_TIET_DANH_MUC">
         <MappingFragment StoreEntitySet="CHI_TIET_DANH_MUC">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="MaCTDM" ColumnName="MaCTDM" />
           <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
           <ScalarProperty Name="TenHang" ColumnName="TenHang" />
@@ -35,6 +38,7 @@
     <EntitySetMapping Name="CHI_TIET_DON_HANG">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.CHI_TIET_DON_HANG">
         <MappingFragment StoreEntitySet="CHI_TIET_DON_HANG">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="MaCTDH" ColumnName="MaCTDH" />
           <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
           <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
@@ -46,6 +50,7 @@
     <EntitySetMapping Name="DANH_MUC">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.DANH_MUC">
         <MappingFragment StoreEntitySet="DANH_MUC">
+          <ScalarProperty Name="IsDelteted" ColumnName="IsDelteted" />
           <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
           <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
           <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
@@ -55,6 +60,7 @@
     <EntitySetMapping Name="DON_HANG">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.DON_HANG">
         <MappingFragment StoreEntitySet="DON_HANG">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
           <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
           <ScalarProperty Name="TrangThaiDonHang" ColumnName="TrangThaiDonHang" />
@@ -67,6 +73,7 @@
     <EntitySetMapping Name="KHACH_HANG">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.KHACH_HANG">
         <MappingFragment StoreEntitySet="KHACH_HANG">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
           <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
           <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
@@ -80,6 +87,7 @@
     <EntitySetMapping Name="SAN_PHAM">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.SAN_PHAM">
         <MappingFragment StoreEntitySet="SAN_PHAM">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
           <ScalarProperty Name="MaCTDM" ColumnName="MaCTDM" />
           <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />
@@ -118,6 +126,7 @@
     <EntitySetMapping Name="TIN_TUC">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.TIN_TUC">
         <MappingFragment StoreEntitySet="TIN_TUC">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="MaTinTuc" ColumnName="MaTinTuc" />
           <ScalarProperty Name="TenTinTuc" ColumnName="TenTinTuc" />
           <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />

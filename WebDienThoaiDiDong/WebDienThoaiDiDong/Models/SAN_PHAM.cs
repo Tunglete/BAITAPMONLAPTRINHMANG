@@ -42,6 +42,7 @@ namespace WebDienThoaiDiDong.Models
         public string KhuyenMai { get; set; }
         public string TieuDeTinTuc { get; set; }
         public string NoiDungTinTuc { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ANH_SAN_PHAM> ANH_SAN_PHAM { get; set; }

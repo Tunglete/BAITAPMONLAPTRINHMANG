@@ -112,3 +112,7 @@ T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\Newtonsoft.Js
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\obj\Debug\WebDienThoaiDiDong.csprojResolveAssemblyReference.cache
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\obj\Debug\WebDienThoaiDiDong.dll
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\obj\Debug\WebDienThoaiDiDong.pdb
+T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\PagedList.dll
+T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\PagedList.Mvc.dll
+T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\PagedList.xml
+T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\PagedList.Mvc.xml

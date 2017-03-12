@@ -17,6 +17,7 @@ namespace WebDienThoaiDiDong.Models
         public int MaAnhSanPham { get; set; }
         public int MaSanPham { get; set; }
         public string AnhMinhHoa { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual SAN_PHAM SAN_PHAM { get; set; }
     }

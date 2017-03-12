@@ -26,6 +26,7 @@ namespace WebDienThoaiDiDong.Models
         public Nullable<System.DateTime> NgayTao { get; set; }
         public Nullable<int> TongGiaTriDonHang { get; set; }
         public string DiaChiNhanDonHang { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHI_TIET_DON_HANG> CHI_TIET_DON_HANG { get; set; }

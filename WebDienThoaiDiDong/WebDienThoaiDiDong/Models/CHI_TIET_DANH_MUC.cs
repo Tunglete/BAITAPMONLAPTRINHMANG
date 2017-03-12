@@ -24,6 +24,7 @@ namespace WebDienThoaiDiDong.Models
         public int MaDanhMuc { get; set; }
         public string TenHang { get; set; }
         public Nullable<System.DateTime> NgayTao { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual DANH_MUC DANH_MUC { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
