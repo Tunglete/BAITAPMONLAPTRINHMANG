@@ -69,11 +69,14 @@
     </Key>
     <Property Name="MaKhachHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenKhachHang" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" />
+    <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
     <Property Name="NgaySinh" Type="datetime" />
     <Property Name="GioiTinh" Type="bit" />
     <Property Name="Mail" Type="nvarchar" MaxLength="255" />
     <Property Name="DienThoai" Type="nvarchar" MaxLength="50" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+    <Property Name="NgayTao" Type="datetime" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
   <EntityType Name="SAN_PHAM">
@@ -99,8 +102,16 @@
     <Property Name="GiamGia" Type="int" />
     <Property Name="CheDoBaoHanh" Type="nvarchar" MaxLength="255" />
     <Property Name="KhuyenMai" Type="ntext" />
-    <Property Name="TieuDeTinTuc" Type="ntext" />
-    <Property Name="NoiDungTinTuc" Type="ntext" />
+    <Property Name="AnhDaiDien" Type="nvarchar" MaxLength="128" />
+    <Property Name="Video" Type="ntext" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="SLIDE_TRANG_CHU">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HinhAnh" Type="nvarchar" MaxLength="50" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
   <EntityType Name="sysdiagrams">
@@ -123,6 +134,18 @@
     <Property Name="NgayTao" Type="datetime" />
     <Property Name="TacGia" Type="ntext" />
     <Property Name="HinhAnh" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="TIN_TUC_SAN_PHAM">
+    <Key>
+      <PropertyRef Name="TTSP_Id" />
+    </Key>
+    <Property Name="TTSP_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaSanPham" Type="int" />
+    <Property Name="TieuDeTinTuc" Type="ntext" />
+    <Property Name="AnhTinTuc" Type="nvarchar" MaxLength="128" />
+    <Property Name="NoiDungTinTuc" Type="ntext" />
+    <Property Name="NgayTao" Type="datetime" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
   <Association Name="FK_ANH_SAN_PHAM_SAN_PHAM">
@@ -197,6 +220,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TIN_TUC_SAN_PHAM_SAN_PHAM">
+    <End Role="SAN_PHAM" Type="Self.SAN_PHAM" Multiplicity="0..1" />
+    <End Role="TIN_TUC_SAN_PHAM" Type="Self.TIN_TUC_SAN_PHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SAN_PHAM">
+        <PropertyRef Name="MaSanPham" />
+      </Principal>
+      <Dependent Role="TIN_TUC_SAN_PHAM">
+        <PropertyRef Name="MaSanPham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="QuanLyBanDienThoaiModelStoreContainer">
     <EntitySet Name="ADMIN" EntityType="Self.ADMIN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ANH_SAN_PHAM" EntityType="Self.ANH_SAN_PHAM" Schema="dbo" store:Type="Tables" />
@@ -206,8 +241,10 @@
     <EntitySet Name="DON_HANG" EntityType="Self.DON_HANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KHACH_HANG" EntityType="Self.KHACH_HANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SAN_PHAM" EntityType="Self.SAN_PHAM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SLIDE_TRANG_CHU" EntityType="Self.SLIDE_TRANG_CHU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TIN_TUC" EntityType="Self.TIN_TUC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIN_TUC_SAN_PHAM" EntityType="Self.TIN_TUC_SAN_PHAM" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ANH_SAN_PHAM_SAN_PHAM" Association="Self.FK_ANH_SAN_PHAM_SAN_PHAM">
       <End Role="SAN_PHAM" EntitySet="SAN_PHAM" />
       <End Role="ANH_SAN_PHAM" EntitySet="ANH_SAN_PHAM" />
@@ -231,6 +268,10 @@
     <AssociationSet Name="FK_SAN_PHAM_CHI_TIET_DANH_MUC" Association="Self.FK_SAN_PHAM_CHI_TIET_DANH_MUC">
       <End Role="CHI_TIET_DANH_MUC" EntitySet="CHI_TIET_DANH_MUC" />
       <End Role="SAN_PHAM" EntitySet="SAN_PHAM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIN_TUC_SAN_PHAM_SAN_PHAM" Association="Self.FK_TIN_TUC_SAN_PHAM_SAN_PHAM">
+      <End Role="SAN_PHAM" EntitySet="SAN_PHAM" />
+      <End Role="TIN_TUC_SAN_PHAM" EntitySet="TIN_TUC_SAN_PHAM" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

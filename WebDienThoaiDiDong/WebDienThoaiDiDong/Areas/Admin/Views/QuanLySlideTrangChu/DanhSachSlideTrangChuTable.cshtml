@@ -1,0 +1,73 @@
+﻿@using WebDienThoaiDiDong.Areas.Admin.Models.Quanlyslidetrangchu;
+@model PagingQuanLySlideTrangChu
+@{
+    Layout = null;
+}
+<script>
+    var actionUrl = {
+        urlAdd: '@Url.Action("Add", "QuanLySlideTrangChu")',
+        urlSave: '@Url.Action("Save", "QuanLySlideTrangChu")',
+        urlDanhsachslideranhsanpham: '@Url.Action("DanhSachSlideTrangChuTable", "QuanLySlideTrangChu")',
+        urlDelete : '@Url.Action("Delete", "QuanLySlideTrangChu")'
+    }
+</script>
+<script src="~/Areas/Admin/Scripts/QuanLySlideTrangChu/ActionCrud.js"></script>
+<link href="~/Areas/Admin/Content/css/mypaging.css" rel="stylesheet" />
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr class="success">
+                <th style="background:#28B779; color:white;font-size:13px;">Mã ảnh</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Ảnh siler</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.List)
+            {
+                <tr>
+                    <th style="font-size:11px;width:120px;padding-top:40px;">@item.Id</th>
+                    <th><img src="~/Images/ImagesSlideHome/@item.HinhAnh" style="width:300px;height:100px;" /></th>
+                    <th style="font-size:11px;width:70px;padding-top:35px;">
+                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px;margin-bottom:3px;border-radius:4px;" type="button" class="btn btn-danger" onclick="Delete(@item.Id,@Model.page)">Xóa</button>
+                    </th>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+</div>
+@if (Model.totalpage > 1)
+{
+    <div class="pagination">
+        <nav>
+            <ul>
+                @if (Model.page <= 1)
+                {
+                    <li><a style="background:#337AB7; color:#fff;cursor:not-allowed;">Previous</a></li>
+                }
+                else
+                {
+                    <li><a style="background:#337AB7;color:#fff; cursor:pointer;" id="previous" onclick="previous(@Model.page)">Previous</a></li>
+                }
+
+                <li><span style="background:#337AB7; color:#fff;">Trang <span style="font-weight:bold;">@Model.page</span>/<span style="font-weight:bold;">@Model.totalpage</span></span></li>
+                @if (Model.page >= Model.totalpage)
+                {
+                    <li><a style="background:#337AB7; color:#fff; width:40px;cursor:not-allowed;">Next</a></li>
+                }
+                else
+                {
+                    <li><a style="background:#337AB7;color:#fff; cursor:pointer;" id="next" onclick="next(@Model.page)">Next</a></li>
+                }
+
+            </ul>
+        </nav>
+    </div>
+}
+
+<!--phần Edit-->
+<div class="widget-box" id="div_edit">
+</div>

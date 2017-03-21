@@ -1,0 +1,118 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model List<KHACH_HANG>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script>
+    var formUrl = {
+        urlDanhsachtaikhoantable: '@Url.Action("DanhSachTaiKhoanNguoiDungTable", "QuanLyTaiKhoanNguoiDung")'
+
+    }
+</script>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Areas/Admin/Scripts/QuanLyTaiKhoanNguoiDung/Quanlytaikhoannguoidung.js"></script>
+<div id="content">
+    <!--breadcrumbs-->
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Đi đến Trang chủ" class="tip-bottom"><i class="icon-home"></i> Trang chủ</a> <a href="index.html" title="Quản lý tài khoản người dùng" class="tip-bottom">Quản lý tài khoản người dùng</a></div>
+        <h1>Quản lý tài khoản khách hàng</h1>
+    </div>
+    <!--End-breadcrumbs-->
+    <!--Action boxes-->
+    <div class="container-fluid">
+        <!--End-Chart-box-->
+        <hr />
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"> <i class="icon-th"></i> </span>
+                <h5>Danh sách tài khoản</h5>
+                <button type="button" class="btn btn-success" style="float:right;margin:4px 5px;" onclick="Them()">Thêm mới</button>
+            </div>
+
+
+            <div class="controls controls-row span2 m-wrap">
+                <label class="control-label" style="font-weight:bold;padding-top:8px;">Tìm theo tên khách hàng: </label>
+            </div>
+            <div class="controls controls-row span5 m-wrap" style="margin:5px 3px; display:inline;" id="a">
+                <select placeholder="Nhập tên người quản trị" style="float:left;" id="myoption">
+                    <option></option>
+                    @foreach (var item in Model)
+                    {
+                        <option>@item.TenKhachHang</option>
+                    }
+                </select>
+
+
+            </div>
+            <button id="macdinh" class="btn btn-primary" style="margin-top:3px;">Đặt về mặc định</button>
+
+
+            <div id="table">
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<script>
+    function Them() {
+
+        $.ajax({
+            type: 'get',
+            data: {
+                id: 0,
+                page: 1
+            },
+            url: '@Url.Action("Edit", "QuanLyTaiKhoanNguoiDung")',
+            success: function (data) {
+                $("#div_edit").html(data);
+            }
+        });
+    }
+
+    $('#a #myoption').click(function () {
+        var codesearch = $('#myoption option:selected').text().trim();
+        $.ajax({
+            url: '@Url.Action("Search", "QuanLyTaiKhoanNguoiDung")',
+            mtype: "POST",
+            datatype: "json",
+            data: {
+                codesearch: codesearch,
+                page: 1
+
+            },
+            success: function (data) {
+                $("#table").html("");
+                $("#table").html(data);
+            }
+        });
+    });
+    $(function () {
+
+        $("#macdinh").click(function () {
+            checksearch = 0;
+
+            $.ajax({
+                url: '@Url.Action("Search", "QuanLyTaiKhoanNguoiDung")',
+                mtype: "POST",
+                datatype: "json",
+                data: {
+                    codesearch: "",
+                    page: 1
+                },
+                success: function (data) {
+                    $("#table").html("");
+                    $("#table").html(data);
+                }
+            });
+        });
+
+    });
+</script>
+
+

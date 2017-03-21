@@ -15,29 +15,28 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public ActionResult DangNhap()
-        {
-            return View();
-        }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult DangNhap(FormCollection f)
         {
             string username = f["name"];
             string password = f["pass"];
-            ADMIN admin = db.ADMINs.SingleOrDefault(n => n.TenDangNhap == username && n.MatKhau == password);
-            if (admin!=null)
+            if (ModelState.IsValid)
             {
-                ViewBag.TrangThai = "Đăng nhập thành công";
-                Session["TaiKhoan"] = admin;
-                return View();
+                ADMIN admin = db.ADMINs.SingleOrDefault(n => n.TenDangNhap == username && n.MatKhau == password);
+                if (admin != null)
+                {
+                    Session["TaiKhoan"] = admin;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.TrangThai = "Tên tài khoản hoặc mật khẩu không đúng";
+                    return View("Index");
+                }
             }
-            else
-            {
-                ViewBag.TrangThai = "Tên tài khoản hoặc mật khẩu không đúng";
-                return View();
-            }
-            
+            return View("Index");
+
         }
     }
 }

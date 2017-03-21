@@ -1,0 +1,53 @@
+﻿@using WebDienThoaiDiDong.Models;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script>
+    var formUrl = {
+        urlDanhsachdanhmuctable: '@Url.Action("DanhSachDanhMucTable", "QuanLyDanhMuc")',
+    }
+
+</script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Areas/Admin/Scripts/QuanLyDanhMuc/Quanlydanhmuc.js"></script>
+<div id="content">
+    <!--breadcrumbs-->
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Đi đến Trang chủ" class="tip-bottom"><i class="icon-home"></i> Trang chủ</a> <a href="index.html" title="Danh mục" class="tip-bottom">Danh mục</a></div>
+        <h1>Quản lý danh mục sản phẩm</h1>
+    </div>
+    <!--End-breadcrumbs-->
+    <!--Action boxes-->
+    <div class="container-fluid">
+        <!--End-Chart-box-->
+        <hr />
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"> <i class="icon-th"></i> </span>
+                <h5>Danh sách danh mục</h5>
+                <button type="button" class="btn btn-success" style="float:right;margin:4px 5px;" onclick="Them()">Thêm mới</button>
+            </div>
+            <div id="table">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function Them() {
+        $.ajax({
+            type: 'get',
+            data: {
+                id: 0,
+                page: 1
+            },
+            url: '@Url.Action("Edit","QuanLyDanhMuc")',
+            success: function (data) {
+                $("#div_edit").html(data);
+            }
+        });
+    }
+</script>
+

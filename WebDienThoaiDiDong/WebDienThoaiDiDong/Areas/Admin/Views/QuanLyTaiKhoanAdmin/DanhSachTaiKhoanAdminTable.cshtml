@@ -1,0 +1,82 @@
+﻿@using WebDienThoaiDiDong.Areas.Admin.Models.QuanLyTaiKhoanAdmin;
+@model PagingQuanLyTaiKhoanAdmin
+@{
+    Layout = null;
+}
+
+<script>
+    var actionUrl = {
+        urlEdit: '@Url.Action("Edit", "QuanLyTaiKhoanAdmin")',
+        urlDelete : '@Url.Action("Delete","QuanLyTaiKhoanAdmin")',
+        urladmintable : '@Url.Action("DanhSachTaiKhoanAdminTable","QuanLyTaiKhoanAdmin")'
+    }
+</script>
+<script src="~/Areas/Admin/Scripts/QuanLyTaiKhoanNguoiDung/ActionCrud.js"></script>
+<script src="~/Areas/Admin/Scripts/QuanLyTaiKhoanAdmin/ActionCrud.js"></script>
+<link href="~/Areas/Admin/Content/css/mypaging.css" rel="stylesheet" />
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr class="success">
+                <th style="background:#28B779; color:white;font-size:13px;">Mã tài khoản</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Tên tài khoản</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Tên đăng nhập</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Ngày tạo</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Quyền truy cập</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.List)
+            {
+                <tr>
+                    <th style="font-size:11px;width:50px;">@item.MaQuanTri</th>
+                    <th style="font-size:11px;">@item.TenQuanTri</th>                    
+                    <th style="font-size:11px;">@item.TenDangNhap</th>
+                    <th style="font-size:11px;">@item.NgayTao</th>
+                    <th style="font-size:11px;">@item.QuyenTruyCap</th> 
+                    <th style="font-size:11px;width:100px;padding-top:10px;">
+                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px; margin-bottom:3px;border-radius:4px;" type="button" class="btn-xs btn btn-info " onclick="Edit(@item.MaQuanTri,@Model.page)">Sửa</button>
+                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px;margin-bottom:3px;border-radius:4px;" type="button" class="btn btn-danger" onclick="Delete(@item.MaQuanTri,@Model.page)">Xóa</button>
+                    </th>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+</div>
+@if (Model.totalpage > 1)
+{
+    <div class="pagination">
+        <nav>
+            <ul>
+                @if (Model.page <= 1)
+                {
+                    <li><a style="background:#337AB7; color:#fff;cursor:not-allowed;">Previous</a></li>
+                }
+                else
+                {
+                    <li><a id="previous" onclick="previous(@Model.page)">Previous</a></li>
+                }
+
+                <li><span style="background:#337AB7; color:#fff;">Trang <span style="font-weight:bold;">@Model.page</span>/<span style="font-weight:bold;">@Model.totalpage</span></span></li>
+                @if (Model.page >= Model.totalpage)
+                {
+                    <li><a style="background:#337AB7; color:#fff; width:40px;cursor:not-allowed;">Next</a></li>
+                }
+                else
+                {
+                    <li><a id="next" onclick="next(@Model.page)">Next</a></li>
+                }
+
+            </ul>
+        </nav>
+    </div>
+}
+
+<!--phần Edit-->
+<div class="widget-box" id="div_edit">
+</div>
+

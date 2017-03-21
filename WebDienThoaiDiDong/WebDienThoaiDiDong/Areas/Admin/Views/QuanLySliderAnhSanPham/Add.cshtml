@@ -1,0 +1,72 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model ANH_SAN_PHAM
+@{
+    Layout = null;
+}
+
+<div class="widget-title">
+    <span class="icon"> <i class="icon-align-justify"></i> </span>
+    <h5>Thêm Ảnh Slider cho sản phẩm</h5>
+</div>
+<div class="upload widget-content nopadding">
+    <form id="upload" class="form-horizontal"  method="post" action="/QuanLySliderAnhSanPham/UploadFile" enctype="multipart/form-data">
+
+                    <div class="control-group">
+                        @Html.Label("Tên sản phẩm: ", new { @class = "control-label" })
+                        
+                        <div class="controls" id="divCTDM">
+                            <select name="catalog" class="span8" id="selectsanpham">
+
+                                @foreach (var item in (List<SAN_PHAM>)ViewBag.lstSanpham)
+                                {
+
+                                    <option value="@item.MaSanPham">
+                                        @item.TenSanPham
+                                    </option>
+
+                                }
+                            </select>
+                        </div>
+
+                    </div>
+                    </br></br></br>
+                    <div class="form-group" id="uploadulli">
+                        <div id="drop" style="margin-left:450px;">
+                            <a style="padding:20px; text-decoration:none; color:#fff; background:#057ff5;cursor:pointer;">Chọn File cần Upload</a>
+                            <input type="file"  multiple id="" style="display:none;"/>
+                        </div>
+
+                        <ul>
+                            <!-- The file uploads will be shown here -->
+                        </ul>
+                    </div>
+                    </br></br>
+                    <div>
+                        <button type="button" class="btn btn-success" onclick="luu(@ViewBag.page)" style="margin:5px 5px;">Lưu</button>
+                        <button type="button" class="btn btn-danger" onclick="dong()" style="margin:5px ;">Đóng</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+<script> $("#selectsanpham").select2();</script>
+<script src="~/Scripts/jquery-3.1.0.min.js"></script>
+<!-- JavaScript Includes -->
+<script src="~/Scripts/jquery.knob.js"></script>
+<!-- JavaScript Includes -->
+<!-- jQuery File Upload Dependencies -->
+<script src="~/Scripts/jquery.ui.widget.js"></script>
+<script src="~/Scripts/jquery.iframe-transport.js"></script>
+<script src="~/Scripts/jquery.fileupload.js"></script>
+<!-- jQuery File Upload Dependencies -->
+<!-- Main JavaScript file -->
+<script src="~/Scripts/script.js"></script>
+<!-- Main JavaScript file -->
+<style>
+    #uploadulli ul li{
+        margin-top:1.8em;
+        margin-left:450px;
+        list-style-type: decimal;
+    }
+</style>

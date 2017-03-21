@@ -1,0 +1,58 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model CHI_TIET_DANH_MUC
+@{
+    Layout = null;
+}
+<script>
+        var urlSave ='@Url.Action("Save","QuanLyChiTietDanhMuc")';
+        var urlDsctdmtable = '@Url.Action("DanhSachChiTietDanhMucTable", "QuanLyChiTietDanhMuc")';
+
+</script>
+<div class="widget-title">
+    <span class="icon"> <i class="icon-align-justify"></i> </span>
+    <h5>Sửa đổi thông tin chi tiết danh mục</h5>
+</div>
+<div class="widget-content nopadding">
+    <form id="form_edit" class="form-horizontal">
+        <div class="control-group">
+            @Html.HiddenFor(n => n.MaCTDM)
+            @Html.HiddenFor(n => n.NgayTao)
+            @Html.HiddenFor(n => n.IsDeleted)
+            @Html.Label("Tên hãng: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.TenHang, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Danh mục: ", new { @class = "control-label" })
+            <div class="controls" id="divCTDM">
+                <select name="catalog" class="span8" id="selectCTDM">
+
+                    @foreach (var item in (List<DANH_MUC>)ViewBag.lstDanhmuc)
+                    {
+                            
+                                if (item.MaDanhMuc == Model.MaDanhMuc)
+                                {
+                                        <option selected value="@item.MaDanhMuc">
+                                            @item.TenDanhMuc
+                                        </option>
+                                }
+                                else
+                                {
+                                    <option value="@item.MaDanhMuc">
+                                        @item.TenDanhMuc
+                                    </option>
+                                }
+
+                    }
+                </select>
+            </div>
+        </div>
+        <div>
+            <button style="margin:7px;" type="button" class="btn btn-success" onclick="luu(@ViewBag.page)">Lưu</button>
+            <button style="margin:0px 7px;" type="button" class="btn btn-danger" onclick="dong()">Đóng</button>
+        </div>
+
+    </form>
+
+</div>

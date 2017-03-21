@@ -4,76 +4,78 @@
     <EntitySetMapping Name="ADMINs">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.ADMIN">
         <MappingFragment StoreEntitySet="ADMIN">
-          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
           <ScalarProperty Name="MaQuanTri" ColumnName="MaQuanTri" />
           <ScalarProperty Name="TenQuanTri" ColumnName="TenQuanTri" />
           <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
           <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
           <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
           <ScalarProperty Name="QuyenTruyCap" ColumnName="QuyenTruyCap" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ANH_SAN_PHAM">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.ANH_SAN_PHAM">
         <MappingFragment StoreEntitySet="ANH_SAN_PHAM">
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="MaAnhSanPham" ColumnName="MaAnhSanPham" />
           <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
           <ScalarProperty Name="AnhMinhHoa" ColumnName="AnhMinhHoa" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CHI_TIET_DANH_MUC">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.CHI_TIET_DANH_MUC">
         <MappingFragment StoreEntitySet="CHI_TIET_DANH_MUC">
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="MaCTDM" ColumnName="MaCTDM" />
           <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
           <ScalarProperty Name="TenHang" ColumnName="TenHang" />
           <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CHI_TIET_DON_HANG">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.CHI_TIET_DON_HANG">
         <MappingFragment StoreEntitySet="CHI_TIET_DON_HANG">
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="MaCTDH" ColumnName="MaCTDH" />
           <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
           <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
           <ScalarProperty Name="Gia" ColumnName="Gia" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DANH_MUC">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.DANH_MUC">
         <MappingFragment StoreEntitySet="DANH_MUC">
-          <ScalarProperty Name="IsDelteted" ColumnName="IsDelteted" />
           <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
           <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
           <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="IsDelteted" ColumnName="IsDelteted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DON_HANG">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.DON_HANG">
         <MappingFragment StoreEntitySet="DON_HANG">
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
           <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
           <ScalarProperty Name="TrangThaiDonHang" ColumnName="TrangThaiDonHang" />
           <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
           <ScalarProperty Name="TongGiaTriDonHang" ColumnName="TongGiaTriDonHang" />
           <ScalarProperty Name="DiaChiNhanDonHang" ColumnName="DiaChiNhanDonHang" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="KHACH_HANG">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.KHACH_HANG">
         <MappingFragment StoreEntitySet="KHACH_HANG">
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
           <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
           <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
           <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
@@ -81,13 +83,14 @@
           <ScalarProperty Name="Mail" ColumnName="Mail" />
           <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SAN_PHAM">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.SAN_PHAM">
         <MappingFragment StoreEntitySet="SAN_PHAM">
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Video" ColumnName="Video" />
           <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
           <ScalarProperty Name="MaCTDM" ColumnName="MaCTDM" />
           <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />
@@ -107,8 +110,8 @@
           <ScalarProperty Name="GiamGia" ColumnName="GiamGia" />
           <ScalarProperty Name="CheDoBaoHanh" ColumnName="CheDoBaoHanh" />
           <ScalarProperty Name="KhuyenMai" ColumnName="KhuyenMai" />
-          <ScalarProperty Name="TieuDeTinTuc" ColumnName="TieuDeTinTuc" />
-          <ScalarProperty Name="NoiDungTinTuc" ColumnName="NoiDungTinTuc" />
+          <ScalarProperty Name="AnhDaiDien" ColumnName="AnhDaiDien" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -126,13 +129,35 @@
     <EntitySetMapping Name="TIN_TUC">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.TIN_TUC">
         <MappingFragment StoreEntitySet="TIN_TUC">
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="MaTinTuc" ColumnName="MaTinTuc" />
           <ScalarProperty Name="TenTinTuc" ColumnName="TenTinTuc" />
           <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
           <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
           <ScalarProperty Name="TacGia" ColumnName="TacGia" />
           <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIN_TUC_SAN_PHAM">
+      <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.TIN_TUC_SAN_PHAM">
+        <MappingFragment StoreEntitySet="TIN_TUC_SAN_PHAM">
+          <ScalarProperty Name="TTSP_Id" ColumnName="TTSP_Id" />
+          <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+          <ScalarProperty Name="TieuDeTinTuc" ColumnName="TieuDeTinTuc" />
+          <ScalarProperty Name="AnhTinTuc" ColumnName="AnhTinTuc" />
+          <ScalarProperty Name="NoiDungTinTuc" ColumnName="NoiDungTinTuc" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SLIDE_TRANG_CHU">
+      <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.SLIDE_TRANG_CHU">
+        <MappingFragment StoreEntitySet="SLIDE_TRANG_CHU">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -1,0 +1,33 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model DANH_MUC
+ @{ 
+     Layout = null;
+ }
+<script>
+        var urlSave ='@Url.Action("Save","QuanLyGiaoDich")';
+        var urlDsgdtable = '@Url.Action("DanhSachGiaoDichTable", "QuanLyGiaoDich")';
+
+</script>
+<div class="widget-title">
+    <span class="icon"> <i class="icon-align-justify"></i> </span>
+    <h5>Sửa đổi thông tin danh mục</h5>
+</div>
+<div class="widget-content nopadding">
+    <form id="form_edit" class="form-horizontal">
+        <div class="control-group">
+            @Html.HiddenFor(n => n.MaDanhMuc)
+            @Html.HiddenFor(n => n.NgayTao)
+            @Html.HiddenFor(n => n.IsDelteted)
+            @Html.Label("Tên danh mục: ", new { @class = "control-label" })
+            <div class="controls">
+               @Html.TextBoxFor(n => n.TenDanhMuc, new { @class = "span8"})
+            </div>
+        </div> 
+        <div>
+            <button style="margin:7px;" type="button" class="btn btn-success" onclick="luu(@ViewBag.page)">Lưu</button>
+            <button style="margin:0px 7px;" type="button" class="btn btn-danger" onclick="dong()">Đóng</button>
+        </div>
+
+    </form>
+
+</div>

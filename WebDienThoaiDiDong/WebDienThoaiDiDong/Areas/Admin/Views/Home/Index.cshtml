@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content">
+    <!--breadcrumbs-->
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Đi đến Trang chủ" class="tip-bottom"><i class="icon-home"></i> Trang chủ</a></div>
+    </div>
+    <!--End-breadcrumbs-->
+    <!--Action boxes-->
+    <div class="container-fluid">
+        <!--End-Action boxes-->
+        <!--Chart-box-->
+        <div class="row-fluid">
+            <div class="widget-box">
+                <div class="widget-title bg_lg">
+                    <span class="icon"><i class="icon-signal"></i></span>
+                    <h5>Thống kê</h5>
+                </div>
+                <div class="widget-content">
+                    <div class="row-fluid">
+                        @Html.Action("TopBanChayPartial","Home")
+                        @Html.Action("ThongKeDuLieuPartial", "Home")
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End-Chart-box-->
+        <hr />
+        <div class="widget-box">
+            @Html.Action("DanhsachgiaodichPartial", "Home")
+        </div>
+    </div>
+</div>
+

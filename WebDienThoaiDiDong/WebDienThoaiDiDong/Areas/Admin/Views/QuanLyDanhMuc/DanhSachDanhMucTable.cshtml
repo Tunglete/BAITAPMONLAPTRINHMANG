@@ -1,0 +1,75 @@
+﻿@using WebDienThoaiDiDong.Areas.Admin.Models.Quanlydanhmuc;
+@model PagingQuanLyDanhMuc
+@{
+    Layout = null;
+}
+<script>
+    var actionUrl = {
+        urlEdit: '@Url.Action("Edit", "QuanLyDanhMuc")',
+        urlDanhsachdanhmuctable: '@Url.Action("DanhSachDanhMucTable", "QuanLyDanhMuc")',
+        urlSave: '@Url.Action("Save", "QuanLyDanhMuc")',
+        urlDelete: '@Url.Action("Delete", "QuanLyDanhMuc")'
+    }
+</script>
+<script src="~/Areas/Admin/Scripts/QuanLyDanhMuc/ActionCrud.js"></script>
+<link href="~/Areas/Admin/Content/css/mypaging.css" rel="stylesheet" />
+<div class="widget-content nopadding" id="tb">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr class="success">
+                <th style="background:#28B779; color:white;font-size:13px;">Mã danh mục</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Tên danh mục</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Ngày tạo</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.List)
+            {
+                <tr>
+                    <th style="font-size:11px;width:100px;">@item.MaDanhMuc</th>
+                    <th style="font-size:11px;">@item.TenDanhMuc</th>
+                    <th style="font-size:11px;">@item.NgayTao</th>
+                    <th style="width:150px;">
+                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px; margin-bottom:3px;border-radius:4px;" type="button" class="btn-xs btn btn-info " onclick="Edit(@item.MaDanhMuc,@Model.page)">Sửa</button>
+                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px;margin-bottom:3px;border-radius:4px;" type="button" class="btn btn-danger" onclick="Delete(@item.MaDanhMuc,@Model.page)">Xóa</button>
+                    </th>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+</div>
+@if (Model.totalpage > 1)
+{
+    <div class="pagination">
+        <nav>
+            <ul>
+                @if (Model.page <= 1)
+                {
+                    <li><a style="background:#337AB7; color:#fff;cursor:not-allowed;">Previous</a></li>
+                }
+                else
+                {
+                    <li><a id="previous" onclick="previous(@Model.page)">Previous</a></li>
+                }
+
+                <li><span style="background:#337AB7; color:#fff;">Trang <span style="font-weight:bold;">@Model.page</span>/<span style="font-weight:bold;">@Model.totalpage</span></span></li>
+                @if (Model.page >= Model.totalpage)
+                {
+                    <li><a style="background:#337AB7; color:#fff; width:40px;cursor:not-allowed;">Next</a></li>
+                }
+                else
+                {
+                    <li><a id="next" onclick="next(@Model.page)">Next</a></li>
+                }
+
+            </ul>
+        </nav>
+    </div>
+}
+<!--phần Edit-->
+<div class="widget-box" id="div_edit">
+</div>

@@ -4,7 +4,14 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    var actionUrl = {
+        urlChitietgiaodichtable: '@Url.Action("ChiTietGiaoDichTable", "ChiTietGiaoDich")',
+        urlSearch: '@Url.Action("SearchName", "ChiTietGiaoDich")'
 
+    }
+</script>
+<script src="~/Areas/Admin/Scripts/ChiTietGiaoDich/Chitietgiaodich.js"></script>
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
@@ -30,133 +37,10 @@
             </div>
             
             <div  style="margin-top: 50px;">
-                <div class="widget-box" style="overflow-x:scroll;">
-
+                <div class="widget-box">
                     <div class="widget-content nopadding" id="ctgd-table">
+
                     </div>
                 </div>
             </div>
 </div>
-<script>
-    var checksearch = 0;
-    $(document).ready(function () {
-        $.ajax({
-
-            url: '@Url.Action("ChiTietGiaoDichTable", "ChiTietGiaoDich")',
-            mtype: "POST",
-            datatype: "json",
-            data: {
-                page: 1
-            },
-            success: function (data) {
-                $("#ctgd-table").html(data);
-            }
-        });
-    });
-    function previous(page) {
-        if (checksearch == 0) {
-            $.ajax({
-                url: "@Url.Action("ChiTietGiaoDichTable", "ChiTietGiaoDich")",
-                type: 'get',
-                data: {
-                    page: page - 1
-                },
-                success: function (response) {
-                    $("#ctgd-table").html(response)
-                }
-
-            });
-        } else {
-            $.ajax({
-                url: "@Url.Action("Search", "ChiTietGiaoDich")",
-                type: 'get',
-                data: {
-                    page: page - 1
-                },
-                success: function (response) {
-                    $("#ctgd-table").html(response)
-                }
-
-            })
-        }
-
-
-    }
-    function next(page) {
-        if (checksearch == 0) {
-            $.ajax({
-                url: "@Url.Action("ChiTietGiaoDichTable", "ChiTietGiaoDich")",
-                type: 'get',
-                data: {
-                    page: page + 1
-                },
-                success: function (response) {
-                    $("#ctgd-table").html(response)
-                }
-
-            });
-        }
-        else {
-            $.ajax({
-                url: "@Url.Action("Search", "ChiTietGiaoDich")",
-                type: 'get',
-                data: {
-                    page: page + 1
-                },
-                success: function (response) {
-                    $("#ctgd-table").html(response)
-                }
-
-            });
-        }
-
-
-    }
-
-    function coutpage(i) {
-        if (checksearch == 0) {
-            $.ajax({
-                url: "@Url.Action("ChiTietGiaoDichTable", "ChiTietGiaoDich")",
-                type: 'get',
-                data: {
-                    page: i
-                },
-                success: function (response) {
-                    $("#ctgd-table").html(response);
-                }
-            });
-        } else {
-            $.ajax({
-                url: "@Url.Action("Search", "ChiTietGiaoDich")",
-                type: 'get',
-                data: {
-                    page: i
-                },
-                success: function (response) {
-                    $("#ctgd-table").html(response);
-                }
-            });
-        }
-
-    }
-   
-// function tìm kiếm
-    function SearchName() {
-        var codesearch = $("input#search").val().trim();
-            checksearch = 1;
-
-            $.ajax({
-                url: '@Url.Action("SearchName", "ChiTietGiaoDich")',
-                mtype: "POST",
-                datatype: "json",
-                data: {
-                    codesearch: codesearch,
-                    page: 1
-                },
-                success: function (data) {
-                    $("#ctgd-table").html("");
-                    $("#ctgd-table").html(data);
-                }
-            });
-    }
-</script>

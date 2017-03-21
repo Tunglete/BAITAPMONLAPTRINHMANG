@@ -1,0 +1,128 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model List<SAN_PHAM>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script>
+    var formUrl = {
+        urlDanhsachsanphamtable: '@Url.Action("DanhSachSanPhamTable", "QuanLySanPham")',
+        urlSearch: '@Url.Action("Search", "QuanLyGiaoDich")',
+        urlDelete: '@Url.Action("Delete","QuanLyGiaoDich")',
+        urlAdd : '@Url.Action("Edit", "QuanLySanPham")'
+
+    }
+  
+</script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Areas/Admin/Scripts/QuanLySanPham/QuanLySanPham.js"></script>
+<div id="content">
+    <!--breadcrumbs-->
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Đi đến Trang chủ" class="tip-bottom"><i class="icon-home"></i> Trang chủ</a> <a href="index.html" title="Chi tiết giao dịch" class="tip-bottom">Giao dịch</a></div>
+        <h1>Quản lý sản phẩm</h1>
+    </div>
+    <!--End-breadcrumbs-->
+    <!--Action boxes-->
+    <div class="container-fluid">
+        <!--End-Chart-box-->
+        <hr />
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"> <i class="icon-th"></i> </span>
+                <h5>Danh sách sản phẩm</h5>
+                <button type="button" class="btn btn-success" style="float:right;margin:4px 5px;" onclick="Them()">Thêm mới</button>
+            </div>
+
+            
+            <div class="controls controls-row span2 m-wrap" >
+                <label class="control-label" style="font-weight:bold;padding-top:8px;">Tìm theo tên sản phẩm: </label>
+            </div>
+            <div class="controls controls-row span5 m-wrap" style="margin:5px 3px; display:inline;" id="a">
+                <select placeholder="Nhập tên sản phẩm" style="float:left;" id="myoption">
+                    <option></option>
+                    @foreach (var item in Model)
+                    {
+                        <option>@item.TenSanPham</option>
+                    }
+                   
+                </select>
+              
+                
+            </div>
+            <button id="macdinh" class="btn btn-primary" style="margin-top:3px;">Đặt về mặc định</button>
+               
+            
+            <div id="table">
+
+            </div>
+            </div>
+               
+
+
+            </div>
+    </div>
+
+<script>
+    function Them() {
+        $('.jqte-test').jqte();
+
+        // settings of status
+        var jqteStatus = true;
+        $(".status").click(function () {
+            jqteStatus = jqteStatus ? false : true;
+            $('.jqte-test').jqte({ "status": jqteStatus })
+        });
+
+        $.ajax({
+            type: 'get',
+            data: {
+                id: 0,
+                page: 1
+            },
+            url: formUrl.urlAdd,
+            success: function (data) {
+                $("#div_edit").html(data);
+            }
+        });
+    }
+
+    $('#a #myoption').click(function () {
+        var codesearch = $('#myoption option:selected').text().trim();
+        $.ajax({
+            url: '@Url.Action("Search","QuanLySanPham")',
+            mtype: "POST",
+            datatype: "json",
+            data: {
+                codesearch: codesearch,
+                page: 1
+
+            },
+            success: function (data) {
+                $("#table").html("");
+                $("#table").html(data);
+            }
+        });
+    });
+    $(function () {
+
+        $("#macdinh").click(function () {
+            checksearch = 0;
+           
+            $.ajax({
+                url: '@Url.Action("Search", "QuanLySanPham")',
+                mtype: "POST",
+                datatype: "json",
+                data: {
+                    codesearch: "",
+                    page: 1
+                },
+                success: function (data) {
+                    $("#table").html("");
+                    $("#table").html(data);
+                }
+            });
+        });
+
+    });
+</script>

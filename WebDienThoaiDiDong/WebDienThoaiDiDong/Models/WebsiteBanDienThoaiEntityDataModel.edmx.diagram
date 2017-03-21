@@ -4,23 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8fbc15c665084b80b81dd0a0f9ae02dd" Name="Diagram1">
-        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.ADMIN" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+      <Diagram DiagramId="4cde0fbc32414a90a6d5b2a0015f354f" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.ADMIN" Width="1.5" PointX="7.75" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.ANH_SAN_PHAM" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.CHI_TIET_DANH_MUC" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.CHI_TIET_DON_HANG" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.DANH_MUC" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.DON_HANG" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.KHACH_HANG" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.SAN_PHAM" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.sysdiagram" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.TIN_TUC" Width="1.5" PointX="9.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.DON_HANG" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.KHACH_HANG" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.SAN_PHAM" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.sysdiagram" Width="1.5" PointX="9.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.TIN_TUC" Width="1.5" PointX="9.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.TIN_TUC_SAN_PHAM" Width="1.5" PointX="10.25" PointY="7.5" IsExpanded="true" />
         <AssociationConnector Association="QuanLyBanDienThoaiModel.FK_ANH_SAN_PHAM_SAN_PHAM" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBanDienThoaiModel.FK_CHI_TIET_DANH_MUC_DANH_MUC" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBanDienThoaiModel.FK_SAN_PHAM_CHI_TIET_DANH_MUC" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBanDienThoaiModel.FK_CHI_TIET_DON_HANG_DON_HANG" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBanDienThoaiModel.FK_CHI_TIET_DON_HANG_SAN_PHAM" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBanDienThoaiModel.FK_DON_HANG_KHACH_HANG" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyBanDienThoaiModel.FK_TIN_TUC_SAN_PHAM_SAN_PHAM" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.SLIDE_TRANG_CHU" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

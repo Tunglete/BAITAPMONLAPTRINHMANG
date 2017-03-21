@@ -1,0 +1,247 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model SAN_PHAM
+@{
+    Layout = null;
+}
+
+<script>
+        var urlSave ='@Url.Action("Save","QuanLySanPham")';
+    var urltable = '@Url.Action("DanhSachSanPhamTable", "QuanLySanPham")';
+    $('.jqte-test').jqte();
+
+    // settings of status
+    var jqteStatus = true;
+    $(".status").click(function () {
+        jqteStatus = jqteStatus ? false : true;
+        $('.jqte-test').jqte({ "status": jqteStatus })
+    });
+ 
+</script>
+<div class="widget-title">
+    <span class="icon"> <i class="icon-align-justify"></i> </span>
+    <h5>Sửa đổi thông tin sản phẩm</h5>
+</div>
+<div class="widget-content nopadding">
+    <form id="upload" class="form-horizontal" method="post" action="/QuanLySanPham/UploadFile" enctype="multipart/form-data">
+        <div class="control-group">
+            @Html.HiddenFor(n => n.MaSanPham)
+            @Html.HiddenFor(n => n.IsDeleted)
+            @Html.Label("Tên sản phẩm: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.TenSanPham ,new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Danh mục: ", new { @class = "control-label" })
+            <div class="controls" id="divCTDM">
+                <select name="catalog" class="span8" id="selectCTDM">
+                    
+                    @foreach (var item in (List<DANH_MUC>)ViewBag.lstDanhmuc)
+                    {
+                        <optgroup label="@item.TenDanhMuc">
+                            @foreach (var item2 in (List<CHI_TIET_DANH_MUC>)ViewBag.lstChitietdanhmuc)
+                            {
+                                if (item.MaDanhMuc == item2.MaDanhMuc)
+                                {
+                                    if (item2.MaCTDM == Model.MaCTDM)
+                                    {
+                                        <option selected value="@item2.MaCTDM" >
+                                            @item2.TenHang
+                                        </option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item2.MaCTDM">
+                                            @item2.TenHang
+                                        </option>
+                                    }
+
+                                }
+                            }
+                        </optgroup>
+                    }
+                </select>
+            </div>
+        </div>
+       
+        <div class="control-group">
+            @Html.Label("Tiêu đề sản phẩm: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.TieuDeSanPham, new { @class = "span8"})
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.Label("Giá sản phẩm: ", new { @class = "control-label" })
+            <div class="controls">
+                <div class="input-append">
+                    @Html.TextBoxFor(n => n.GiaSanPham, new { @class = "span8" })
+                    <span class="add-on">vnđ</span>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Màn hình: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.ManHinh, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Cpu: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.Cpu, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Ram: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.Ram, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Hệ điều hành: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.HeDieuHanh, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Camera chính: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.CameraChinh, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Camera phụ: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.CameraPhu, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Bộ nhớ trong: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.BoNhoTrong, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Thẻ nhớ ngoài: ", new { @class = "control-label" })
+            <div class="controls">
+                <div class="controls">
+                    @Html.DropDownListFor(n => n.TheNhoNgoai, (List<SelectListItem>)ViewBag.lstThenhongoai, new { @style = "width:40%;margin-left:-200px;" })
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Blutooth: ", new { @class = "control-label" })
+            <div class="controls">
+                <div class="controls">
+                    @Html.DropDownListFor(n => n.Blutooth, (List<SelectListItem>)ViewBag.lstBlutooth, new { @style = "width:40%;margin-left:-200px;" })
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Dung lượng pin: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.DungLuongPin, new { @class = "span8" })
+            </div>
+        </div>
+        
+        <div class="form-group" id="uploadulli">
+            <div id="drop" style="margin-left:450px; margin-top:2em; margin-bottom:2em;">
+                <a style="padding:20px; text-decoration:none; color:#fff; background:#057ff5;cursor:pointer;">Chọn Ảnh đại diện</a>
+                <input type="file" id="" style="display:none;" />
+            </div>
+
+            <ul>
+                <!-- The file uploads will be shown here -->
+            </ul>
+        </div>
+        <div class="control-group">
+            @Html.Label("Số lượng tồn kho: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.SoLuongTrongKho, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Giảm giá: ", new { @class = "control-label" })
+            <div class="controls">
+                <div class="input-append">
+                    @Html.TextBoxFor(n => n.GiamGia, new { @class = "span8" })
+                    <span class="add-on">vnđ</span>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Chế độ bảo hành: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.CheDoBaoHanh, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Khuyến mại: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextAreaFor(n => n.KhuyenMai, new { @class = "jqte-test" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Video: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextAreaFor(n => n.Video, new { @class = "span8" })
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-success" onclick="luu(@ViewBag.page)" style="margin:5px 5px;">Lưu</button>
+            <button type="button" class="btn btn-danger" onclick="dong()" style="margin:5px ;">Đóng</button>
+        </div>
+
+    </form>
+
+</div>
+<style>
+    .jqte{
+        margin-top:5px;
+        width:86%;
+    }
+
+    #uploadulli ul li{
+        margin-top:1.8em;
+        margin-left:450px;
+        list-style-type: decimal;
+    }
+
+</style>
+<script>function luu(page) {
+    var selectCTDM = $("#selectCTDM").val();
+    $.ajax({
+        type: 'post',
+        url: urlSave,
+        data: $("#upload").serialize(),
+        success: function (response) {
+            if (response == 'True') {
+                $.ajax({
+                    type: 'post',
+                    url: urltable,
+                    data: {
+                        page: page
+                    },
+                    success: function (data) {
+                        $("#table").html("");
+                        $("#table").html(data);
+                    }
+                });
+            }
+
+        }
+    });
+}</script>
+<script src="~/Scripts/jquery-3.1.0.min.js"></script>
+<!-- JavaScript Includes -->
+<script src="~/Scripts/jquery.knob.js"></script>
+<!-- JavaScript Includes -->
+<!-- jQuery File Upload Dependencies -->
+<script src="~/Scripts/jquery.ui.widget.js"></script>
+<script src="~/Scripts/jquery.iframe-transport.js"></script>
+<script src="~/Scripts/jquery.fileupload.js"></script>
+<!-- jQuery File Upload Dependencies -->
+<!-- Main JavaScript file -->
+<script src="~/Scripts/script.js"></script>
+<!-- Main JavaScript file -->

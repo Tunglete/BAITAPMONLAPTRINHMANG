@@ -1,0 +1,31 @@
+﻿<div class="span9">
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon"><i class="icon-ok"></i></span>
+            <h5>Top 3 sản phẩm bán chạy nhất tháng</h5>
+        </div>
+        <div class="widget-content">
+            <ul class="unstyled">
+                <li>
+                    <span class="icon24 icomoon-icon-arrow-up-2 green"></span><span style="font-size:17px; color:cornflowerblue;font-weight:bold;">@ViewBag.sp1 </span> : @ViewBag.phantram1 % Lượt mua <span class="pull-right strong">@ViewBag.count1</span>
+                    <div class="progress  ">
+                        <div style="width: 81%;" class="bar"></div>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon24 icomoon-icon-arrow-up-2 green"></span><span style="font-size:15px; color:forestgreen;font-weight:bold;">@ViewBag.sp2</span> : @ViewBag.phantram2 % Lượt mua <span class="pull-right strong">@ViewBag.count2</span>
+                    <div class="progress progress-success  ">
+                        <div style="width: 72%;" class="bar"></div>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon24 icomoon-icon-arrow-down-2 red"></span><span style="font-size:13px; color:orange;font-weight:bold;">@ViewBag.sp3</span> : @ViewBag.phantram3 % Lượt mua <span class="pull-right strong">@ViewBag.count3</span>
+                    <div class="progress progress-warning  ">
+                        <div style="width: 50%;" class="bar"></div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>

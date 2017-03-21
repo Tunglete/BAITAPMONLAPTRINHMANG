@@ -54,40 +54,33 @@
     }
             </tbody>
         </table>
+@if (Model.totalpage > 1)
+{
 <div class="pagination">
-    @{
-        if (Model.page > 1)
-        {
-            <a onclick="previous(@Model.page)">&laquo;</a>
-        }
-        if (Model.totalpage > 1)
-        {
-            for (int i = 1; i <= @Model.page + 1; i++)
+    <nav >
+        <ul>  
+            @if (Model.page <= 1)
             {
-                if (i <= Model.totalpage)
-                {
-                    if (i == Model.page)
-                    {
-                        <a href="" class="active" onclick="coutpage(@i)">@i</a>
-                    }
-                    else
-                    {
-                        <a onclick="coutpage(@i)">@i</a>
-                    }
-
-                }
-
-
+            <li><a  style="background:#337AB7; color:#fff;cursor:not-allowed;">Previous</a></li>
             }
-        }
-
-        if (Model.page < Model.totalpage)
-        {
-            <a onclick="next(@Model.page)">&raquo;</a>
-        }
-
-    }
-
+            else
+            {
+            <li><a id="previous" onclick="previous(@Model.page)" style="background:#337AB7; color:#fff;">Previous</a></li>
+            }
+            
+            <li><span style="background:#337AB7; color:#fff;">Trang <span style="font-weight:bold;">@Model.page</span>/<span style="font-weight:bold;">@Model.totalpage</span></span></li>
+            @if (Model.page >= Model.totalpage)
+            {
+            <li><a style="background:#337AB7; color:#fff; width:40px;cursor:not-allowed;">Next</a></li>
+            }
+            else
+            {
+            <li><a id="next" onclick="next(@Model.page)" style="background:#337AB7; color:#fff; width:40px;">Next</a></li>
+            }
+            
+        </ul>
+    </nav>
 </div>
+}
 
 

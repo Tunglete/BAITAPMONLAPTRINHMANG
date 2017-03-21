@@ -1,0 +1,53 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model ADMIN
+@{
+    Layout = null;
+}
+
+<script>
+        
+        var urlSave ='@Url.Action("Save","QuanLyTaiKhoanAdmin")';
+        var urladmintable = '@Url.Action("DanhSachTaiKhoanAdminTable", "QuanLyTaiKhoanAdmin")';
+
+</script>
+<div class="widget-title">
+    <span class="icon"> <i class="icon-align-justify"></i> </span>
+    <h5>Thông tin tài khoản Admin</h5>
+</div>
+<div class="widget-content nopadding">
+    <form id="form_edit" class="form-horizontal">
+        <div class="control-group">
+            @Html.HiddenFor(n => n.MaQuanTri)
+            @Html.HiddenFor(n => n.NgayTao)
+            @Html.HiddenFor(n => n.IsDelete)
+            @Html.Label("Tên tài khoản: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.TenQuanTri, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Tên đăng nhập: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.TenDangNhap, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Mật khẩu: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.MatKhau, new { @class = "span8",@type="password" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Quyền truy cập: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.QuyenTruyCap, new { @class = "span8",@value="1",@disabled = "" })
+            </div>
+        </div>
+        <div>
+            <button style="margin:7px;" type="button" class="btn btn-success" onclick="luu(@ViewBag.page)">Lưu</button>
+            <button style="margin:0px 7px;" type="button" class="btn btn-danger" onclick="dong()">Đóng</button>
+        </div>
+
+    </form>
+
+</div>

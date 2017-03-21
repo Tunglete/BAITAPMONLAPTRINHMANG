@@ -4,35 +4,22 @@
     <title>Matrix Admin</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
     <link href="~/Areas/Admin/Content/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Areas/Admin/Content/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/Areas/Admin/Content/css/colorpicker.css" />
+    <link rel="stylesheet" href="~/Areas/Admin/Content/css/datepicker.css" />
+    <link rel="stylesheet" href="~/Areas/Admin/Content/css/uniform.css" />
+    <link rel="stylesheet" href="~/Areas/Admin/Content/css/select2.css" />
+
     <link rel="stylesheet" href="~/Areas/Admin/Content/css/fullcalendar.css" />
     <link rel="stylesheet" href="~/Areas/Admin/Content/css/matrix-style.css" />
     <link rel="stylesheet" href="~/Areas/Admin/Content/css/matrix-media.css" />
     <link href="~/Areas/Admin/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Areas/Admin/Content/css/jquery.gritter.css" />
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-    <script src="~/Areas/Admin/Content/js/excanvas.min.js"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.min.js"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.ui.custom.js"></script>
-    <script src="~/Areas/Admin/Content/js/bootstrap.min.js"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.flot.min.js"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.flot.resize.min.js"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.peity.min.js"></script>
-    <script src="~/Areas/Admin/Content/js/fullcalendar.min.js"></script>
-    <script src="~/Areas/Admin/Content/js/matrix.js"></script>
-    <script src="~/Areas/Admin/Content/js/matrix.dashboard.js"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.gritter.min.js"></script>
-    <script src="~/Areas/Admin/Content/js/matrix.interface.js"></script>
-    <script src="~/Areas/Admin/Content/js/matrix.chat.js"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.validate.js"></script>
-    <script src="~/Areas/Admin/Content/js/matrix.form_validation.js"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.wizard.js"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.uniform.js"></script>
-    <script src="~/Areas/Admin/Content/js/select2.min.js"></script>
-    <script src="~/Areas/Admin/Content/js/matrix.popover.js"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.dataTables.min.js"></script>
-    <script src="~/Areas/Admin/Content/js/matrix.tables.js"></script>
+    
+    
 </head>
 <body>
 
@@ -47,7 +34,7 @@
             <li class="dropdown" id="profile-messages">
                 <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Xin chào Tùng le te</span><b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#"><i class="icon-user"></i> Thông tin</a></li> 
+                    <li><a href="#"><i class="icon-user"></i> Thông tin</a></li>
                     <li class="divider"></li>
                     <li><a href="login.html"><i class="icon-key"></i> Đăng xuất</a></li>
                 </ul>
@@ -66,7 +53,7 @@
     <!--sidebar-menu-->
     <div id="sidebar">
         <ul>
-            <li><a href="HomeAdmin"><i class="icon icon-home"></i> <span>Trang chủ</span></a> </li>
+            <li><a href="Home"><i class="icon icon-home"></i> <span>Trang chủ</span></a> </li>
             <li class="submenu">
                 <a href="#"><i class="icon icon-th-list"></i> <span>Quản lý bán hàng</span> <span class="label label-important">2</span></a>
                 <ul>
@@ -75,78 +62,110 @@
                 </ul>
             </li>
             <li class="submenu">
-                <a href="#"><i class="icon-calendar"></i> <span>Sản phẩm</span> <span class="label label-important">4</span></a>
+                <a href=""><i class="icon-calendar"></i> <span>Sản phẩm</span> <span class="label label-important">4</span></a>
                 <ul>
-                    <li><a href="">Sản phẩm</a></li>
-                    <li><a href="">Danh mục sản phẩm</a></li>
-                    <li><a href="">Chi tiết danh mục</a></li>
-                    <li><a href="">Hình ảnh sản phẩm</a></li>
+                    <li><a href="QuanLySanPham">Sản phẩm</a></li>
+                    <li><a href="QuanLyDanhMuc">Danh mục sản phẩm</a></li>
+                    <li><a href="QuanLyChiTietDanhMuc">Chi tiết danh mục</a></li>
+                    <li><a href="QuanLySliderAnhSanPham">Hình ảnh sản phẩm</a></li>
                 </ul>
             </li>
             <li class="submenu">
                 <a href="#"><i class="icon-book"></i> <span>Tin tức</span> <span class="label label-important">3</span></a>
                 <ul>
-                    <li><a href="">Tin tức</a></li>
-                    <li><a href="">Loại tin tức</a></li>
-                    <li><a href="">Tin tức sản phẩm</a></li>
+                    <li><a href="QuanLyTinTuc">Tin tức</a></li>
+                    <li><a href="QuanLyTinTucSanPham">Tin tức sản phẩm</a></li>
                 </ul>
             </li>
             <li class="submenu">
                 <a href="#"><i class="icon-user"></i> <span>Tài khoản</span> <span class="label label-important">2</span></a>
                 <ul>
-                    <li><a href="">Ban quản trị</a></li>
-                    <li><a href="">Thành viên</a></li>
+                    <li><a href="QuanLyTaiKhoanAdmin">Ban quản trị</a></li>
+                    <li><a href="QuanLyTaiKhoanNguoiDung">Thành viên</a></li>
                 </ul>
             </li>
             <li class="submenu">
                 <a href="#"><i class="icon-facetime-video"></i> <span>Nội dung</span> <span class="label label-important">2</span></a>
                 <ul>
-                    <li><a href="">Slide</a></li>
-                    <li><a href="">Video</a></li>
+                    <li><a href="QuanLySlideTrangChu">Slide</a></li>
                 </ul>
             </li>
         </ul>
     </div>
     <!--sidebar-menu-->
     <!--main-container-part-->
-  
+    
     @RenderBody()
     <!--end-main-container-part-->
     <!--Footer-part-->
+   
+        
+        <div class="row-fluid">
+            <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
+        </div>
+        <script src="~/Areas/Admin/Content/js/excanvas.min.js"></script>
+        <script src="~/Areas/Admin/Content/js/jquery.min.js"></script>
+        <script src="~/Areas/Admin/Content/js/jquery.ui.custom.js"></script>
+        <script src="~/Areas/Admin/Content/js/bootstrap.min.js"></script>
+        <script src="~/Areas/Admin/Content/js/bootstrap-colorpicker.js"></script>
 
-    <div class="row-fluid">
-        <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
-    </div>
+        <script src="~/Areas/Admin/Content/js/bootstrap-datepicker.js"></script>
+        <script src="~/Areas/Admin/Content/js/masked.js"></script>
 
-    <!--end-Footer-part-->
 
-    
+        <script src="~/Areas/Admin/Content/js/wysihtml5-0.3.0.js"></script>
+        <script src="~/Areas/Admin/Content/js/bootstrap-wysihtml5.js"></script>
 
-    <script type="text/javascript">
-  // This function is called from the pop-up menus to transfer to
-  // a different page. Ignore if the value returned is a null string:
-  function goPage (newURL) {
+        @*<script src="~/Areas/Admin/Content/js/jquery.flot.min.js"></script>*@
+        @*<script src="~/Areas/Admin/Content/js/jquery.flot.resize.min.js"></script>*@
 
-      // if url is empty, skip the menu dividers and reset the menu selection to default
-      if (newURL != "") {
+        <script src="~/Areas/Admin/Content/js/jquery.peity.min.js"></script>
+        <script src="~/Areas/Admin/Content/js/fullcalendar.min.js"></script>
+        <script src="~/Areas/Admin/Content/js/matrix.js"></script>
+        <script src="~/Areas/Admin/Content/js/matrix.form_common.js"></script>
+        <script src="~/Areas/Admin/Content/js/matrix.dashboard.js"></script>
 
-          // if url is "-", it is this page -- reset the menu:
-          if (newURL == "-" ) {
-              resetMenu();
-          }
-          // else, send page to designated URL
-          else {
-            document.location.href = newURL;
-          }
-      }
-  }
+        <script src="~/Areas/Admin/Content/js/jquery.gritter.min.js"></script>
+        <script src="~/Areas/Admin/Content/js/matrix.interface.js"></script>
+        <script src="~/Areas/Admin/Content/js/matrix.chat.js"></script>
+        <script src="~/Areas/Admin/Content/js/jquery.validate.js"></script>
+        <script src="~/Areas/Admin/Content/js/matrix.form_validation.js"></script>
+        <script src="~/Areas/Admin/Content/js/jquery.wizard.js"></script>
+        <script src="~/Areas/Admin/Content/js/jquery.uniform.js"></script>
+        <script src="~/Areas/Admin/Content/js/select2.min.js"></script>
+        <script src="~/Areas/Admin/Content/js/matrix.popover.js"></script>
+        <script src="~/Areas/Admin/Content/js/jquery.dataTables.min.js"></script>
+        <script src="~/Areas/Admin/Content/js/matrix.tables.js"></script>
 
-// resets the menu selection upon entry to this page:
-function resetMenu() {
-   document.gomenu.selector.selectedIndex = 2;
-}
 
-    </script>
+        <!--end-Footer-part-->
+
+        <script type="text/javascript">
+            
+            // This function is called from the pop-up menus to transfer to
+            // a different page. Ignore if the value returned is a null string:
+            function goPage(newURL) {
+
+                // if url is empty, skip the menu dividers and reset the menu selection to default
+                if (newURL != "") {
+
+                    // if url is "-", it is this page -- reset the menu:
+                    if (newURL == "-") {
+                        resetMenu();
+                    }
+                        // else, send page to designated URL
+                    else {
+                        document.location.href = newURL;
+                    }
+                }
+            }
+
+            // resets the menu selection upon entry to this page:
+            function resetMenu() {
+                document.gomenu.selector.selectedIndex = 2;
+            }
+            
+        </script>
 </body>
 </html>
 

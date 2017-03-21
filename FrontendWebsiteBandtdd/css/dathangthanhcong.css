@@ -1,0 +1,16 @@
+.container{
+	margin-top: 1em;
+	
+}
+.picsuccess > .success{
+	width: 80%;
+}
+.giua{
+	width: 100%;
+	text-align: center;
+}
+@media screen and (max-width: 776px) {
+.picsuccess > .success{
+	width: 50%;
+}
+}

@@ -1,0 +1,51 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model DON_HANG
+    <script>
+        var urlSave ='@Url.Action("Save","QuanLyGiaoDich")';
+        var urlDsgdtable = '@Url.Action("DanhSachGiaoDichTable", "QuanLyGiaoDich")';
+
+    </script>
+<div class="widget-title">
+    <span class="icon"> <i class="icon-align-justify"></i> </span>
+    <h5>Sửa đổi thông tin đơn hàng</h5>
+</div>
+<div class="widget-content nopadding" id="h">
+    <form id="form_edit" class="form-horizontal">
+        <div class="tenkhachang">@ViewBag.Namecus</div>
+        <div class="control-group">
+            @Html.HiddenFor(n => n.MaDonHang)
+            @Html.HiddenFor(n => n.MaKhachHang)
+            @Html.HiddenFor(n => n.IsDeleted)
+            @Html.Label("Trạng thái đơn hàng", new { @class = "control-label" })
+            <div class="controls">
+                @Html.DropDownListFor(n => n.TrangThaiDonHang, (List<SelectListItem>)ViewBag.lstTrangThaiDonHang, new { @style = "width:87%;" })
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Ngày tạo</label>
+            <div class="controls">
+                @Html.TextBoxFor(n => n.NgayTao, new { @class = "span8", @disabled = "" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Tổng giá trị đơn hàng", new { @class = "control-label" })
+            <div class="controls">
+                @Html.HiddenFor(n => n.TongGiaTriDonHang, new { @class = "span8" })
+                <input type="text" class="span8" disabled="" value=" @String.Format("{0:0,0 vnđ}",Model.TongGiaTriDonHang)"/>
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Địa chỉ nhận hàng", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextAreaFor(n => n.DiaChiNhanDonHang, new { @class = "span8" })
+            </div>
+        </div>
+        <div >
+            <button type="button" class="btn btn-success" onclick="luu(@ViewBag.page)">Lưu</button>
+            <button type="button" class="btn btn-danger" onclick="dong()">Đóng</button>
+        </div>
+        
+    </form>
+    
+</div>

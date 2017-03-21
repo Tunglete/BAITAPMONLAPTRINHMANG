@@ -1,0 +1,77 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model KHACH_HANG
+@{
+    Layout = null;
+}
+<script>
+
+        var urlSave ='@Url.Action("Save","QuanLyTaiKhoanNguoiDung")';
+        var urlnguoidungtable = '@Url.Action("DanhSachTaiKhoanNguoiDungTable", "QuanLyTaiKhoanNguoiDung")';
+
+</script>
+<div class="widget-title">
+    <span class="icon"> <i class="icon-align-justify"></i> </span>
+    <h5>Thông tin tài khoản Người dùng</h5>
+</div>
+<div class="widget-content nopadding">
+    <form id="form_edit" class="form-horizontal">
+        <div class="control-group">
+            @Html.HiddenFor(n => n.MaKhachHang)
+            @Html.HiddenFor(n => n.NgayTao)
+            @Html.HiddenFor(n => n.IsDeleted)
+            @Html.Label("Tên khách hàng: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.TenKhachHang, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Tên đăng nhập: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.TenDangNhap, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Mật khẩu: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.MatKhau, new { @class = "span8", @type = "password" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Ngày sinh: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.NgaySinh, new { @class = "span8", @type="date" })
+            </div>
+            
+        </div>
+        <div class="control-group">
+            @Html.Label("Giới tính: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.DropDownListFor(n => n.GioiTinh,(List<SelectListItem>)ViewBag.lstGioiTinh, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Mail: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.Mail, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Điện thoại: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.DienThoai, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Địa chỉ: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.DiaChi, new { @class = "span8" })
+            </div>
+        </div>
+        <div>
+            <button style="margin:7px;" type="button" class="btn btn-success" onclick="luu(@ViewBag.page)">Lưu</button>
+            <button style="margin:0px 7px;" type="button" class="btn btn-danger" onclick="dong()">Đóng</button>
+        </div>
+
+    </form>
+
+</div>

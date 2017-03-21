@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -169,15 +171,34 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ChiTietGiaoDichController.cs" />
     <Compile Include="Areas\Admin\Controllers\DangNhapController.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyChiTietDanhMucController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyDanhMucController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyGiaoDichController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLySliderAnhSanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLySanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLySlideTrangChuController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyTaiKhoanNguoiDungController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyTinTucController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyTinTucSanPhamController.cs" />
     <Compile Include="Areas\Admin\Models\Danhsachgiaodich\ChiTietDonHangViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Danhsachgiaodich\PagingChiTietGiaoDich.cs" />
     <Compile Include="Areas\Admin\Models\Danhsachgiaodich\PagingDanhSachGiaoDich.cs" />
+    <Compile Include="Areas\Admin\Models\Quanlyslidetrangchu\PagingQuanLySlideTrangChu.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyTaiKhoanAdmin\PagingQuanLyTaiKhoanAdmin.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyTaiKhoanNguoiDung\PagingQuanLyTaiKhoanNguoiDung.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyTinTucSanPham\PagingQuanLyTinTucSanPham.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyTinTuc\PagingDanhSachTinTucTable.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLyChiTietDanhMuc\PagingQuanLyChiTietDanhMuc.cs" />
+    <Compile Include="Areas\Admin\Models\Quanlydanhmuc\PagingQuanLyDanhMuc.cs" />
+    <Compile Include="Areas\Admin\Models\Quanlysanpham\PagingQuanLySanPham.cs" />
+    <Compile Include="Areas\Admin\Models\QuanLySliderAnhSanPham\PagingQuanLySliderAnhSanPham.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Models\Danhsachgiaodich\DanhSachGiaoDichViewModel.cs" />
     <Compile Include="Models\ADMIN.cs">
       <DependentUpon>WebsiteBanDienThoaiEntityDataModel.tt</DependentUpon>
     </Compile>
@@ -190,7 +211,6 @@
     <Compile Include="Models\CHI_TIET_DON_HANG.cs">
       <DependentUpon>WebsiteBanDienThoaiEntityDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Admin\Models\Danhsachgiaodich\DanhSachGiaoDichViewModel.cs" />
     <Compile Include="Models\DANH_MUC.cs">
       <DependentUpon>WebsiteBanDienThoaiEntityDataModel.tt</DependentUpon>
     </Compile>
@@ -203,10 +223,16 @@
     <Compile Include="Models\SAN_PHAM.cs">
       <DependentUpon>WebsiteBanDienThoaiEntityDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SLIDE_TRANG_CHU.cs">
+      <DependentUpon>WebsiteBanDienThoaiEntityDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>WebsiteBanDienThoaiEntityDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TIN_TUC.cs">
+      <DependentUpon>WebsiteBanDienThoaiEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TIN_TUC_SAN_PHAM.cs">
       <DependentUpon>WebsiteBanDienThoaiEntityDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WebsiteBanDienThoaiEntityDataModel.Context.cs">
@@ -227,6 +253,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Content\assetsLogin\bootstrap\bootstrap.css" />
+    <Content Include="Areas\Admin\Content\assetsLogin\bootstrap\bootstrap.js" />
+    <Content Include="Areas\Admin\Content\assetsLogin\bootstrap\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Content\assetsLogin\css\main-style.css" />
+    <Content Include="Areas\Admin\Content\assetsLogin\css\style.css" />
+    <Content Include="Areas\Admin\Content\assetsLogin\font-awesome\css\font-awesome.css" />
+    <Content Include="Areas\Admin\Content\assetsLogin\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Areas\Admin\Content\assetsLogin\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\Admin\Content\assetsLogin\jquery-1.10.2.js" />
+    <Content Include="Areas\Admin\Content\assetsLogin\metisMenu\jquery.metisMenu.js" />
+    <Content Include="Areas\Admin\Content\assetsLogin\pace\pace-theme-big-counter.css" />
+    <Content Include="Areas\Admin\Content\assetsLogin\pace\pace.js" />
     <Content Include="Areas\Admin\Content\css\bootstrap-responsive.min.css" />
     <Content Include="Areas\Admin\Content\css\bootstrap-wysihtml5.css" />
     <Content Include="Areas\Admin\Content\css\bootstrap.min.css" />
@@ -242,14 +280,153 @@
     <Content Include="Areas\Admin\Content\css\mypaging.css" />
     <Content Include="Areas\Admin\Content\css\select2.css" />
     <Content Include="Areas\Admin\Content\css\uniform.css" />
-    <Content Include="Areas\Admin\Scripts\Danhsachgiaodich.js" />
+    <Content Include="Areas\Admin\Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Areas\Admin\Content\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="Areas\Admin\Content\font-awesome\font\fontawesome-webfont.svg" />
+    <Content Include="Areas\Admin\Content\img\breadcrumb.png" />
+    <Content Include="Areas\Admin\Content\img\demo\av1.jpg" />
+    <Content Include="Areas\Admin\Content\img\demo\av2.jpg" />
+    <Content Include="Areas\Admin\Content\img\demo\av3.jpg" />
+    <Content Include="Areas\Admin\Content\img\demo\av4.jpg" />
+    <Content Include="Areas\Admin\Content\img\demo\av5.jpg" />
+    <Content Include="Areas\Admin\Content\img\demo\demo-image1.jpg" />
+    <Content Include="Areas\Admin\Content\img\demo\demo-image2.jpg" />
+    <Content Include="Areas\Admin\Content\img\demo\demo-image3.jpg" />
+    <Content Include="Areas\Admin\Content\img\demo\envelope.png" />
+    <Content Include="Areas\Admin\Content\img\gallery\imgbox1.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\imgbox2.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\imgbox3.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\imgbox4.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\imgbox5.jpg" />
+    <Content Include="Areas\Admin\Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Areas\Admin\Content\img\gritter.png" />
+    <Content Include="Areas\Admin\Content\img\hue.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\book.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\cabinet.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\calendar.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\client.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\database.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\download.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\graph.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\home.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\lock.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\mail.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\pdf.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\people.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\piechart.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\search.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\shopping-bag.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\survey.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\tag.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\user.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\wallet.png" />
+    <Content Include="Areas\Admin\Content\img\icons\16\web.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\book.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\cabinet.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\calendar.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\client.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\dashboard.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\database.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\download.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\graph.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\home.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\lock.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\mail.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\pdf.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\people.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\piechart.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\search.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\shopping-bag.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\survey.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\tag.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\user.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\wallet.png" />
+    <Content Include="Areas\Admin\Content\img\icons\32\web.png" />
+    <Content Include="Areas\Admin\Content\img\larrow.png" />
+    <Content Include="Areas\Admin\Content\img\line.png" />
+    <Content Include="Areas\Admin\Content\img\employee.png" />
+    <Content Include="Areas\Admin\Content\img\logo.png" />
+    <Content Include="Areas\Admin\Content\img\menu-active.png" />
+    <Content Include="Areas\Admin\Content\img\rarrow.png" />
+    <Content Include="Areas\Admin\Content\img\saturation.png" />
+    <Content Include="Areas\Admin\Content\img\select2.png" />
+    <Content Include="Areas\Admin\Content\img\spinner.gif" />
+    <Content Include="Areas\Admin\Content\img\sprite.png" />
+    <Content Include="Areas\Admin\Content\jquery-te-1.4.0.css" />
+    <Content Include="Areas\Admin\Content\jquery-te-1.4.0.min.js" />
+    <Content Include="Areas\Admin\Content\jquery-te.png" />
+    <Content Include="Areas\Admin\Content\js\bootstrap-colorpicker.js" />
+    <Content Include="Areas\Admin\Content\js\bootstrap-datepicker.js" />
+    <Content Include="Areas\Admin\Content\js\bootstrap-wysihtml5.js" />
+    <Content Include="Areas\Admin\Content\js\bootstrap.js" />
+    <Content Include="Areas\Admin\Content\js\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Content\js\excanvas.min.js" />
+    <Content Include="Areas\Admin\Content\js\fullcalendar.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.dataTables.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.easy-pie-chart.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.flot.crosshair.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.flot.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.flot.pie.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.flot.pie.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.flot.resize.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.flot.stack.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.gritter.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.peity.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.ui.custom.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.uniform.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.validate.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.wizard.js" />
+    <Content Include="Areas\Admin\Content\js\masked.js" />
+    <Content Include="Areas\Admin\Content\js\matrix.calendar.js" />
+    <Content Include="Areas\Admin\Content\js\matrix.charts.js" />
+    <Content Include="Areas\Admin\Content\js\matrix.chat.js" />
+    <Content Include="Areas\Admin\Content\js\matrix.dashboard.js" />
+    <Content Include="Areas\Admin\Content\js\matrix.form_common.js" />
+    <Content Include="Areas\Admin\Content\js\matrix.form_validation.js" />
+    <Content Include="Areas\Admin\Content\js\matrix.interface.js" />
+    <Content Include="Areas\Admin\Content\js\matrix.js" />
+    <Content Include="Areas\Admin\Content\js\matrix.login.js" />
+    <Content Include="Areas\Admin\Content\js\matrix.popover.js" />
+    <Content Include="Areas\Admin\Content\js\matrix.tables.js" />
+    <Content Include="Areas\Admin\Content\js\matrix.wizard.js" />
+    <Content Include="Areas\Admin\Content\js\select2.min.js" />
+    <Content Include="Areas\Admin\Content\js\wysihtml5-0.3.0.js" />
+    <Content Include="Areas\Admin\Scripts\ChiTietGiaoDich\Chitietgiaodich.js" />
+    <Content Include="Areas\Admin\Scripts\Home\Danhsachgiaodich.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyChiTietDanhMuc\ActionCrud.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyChiTietDanhMuc\Quanlychitietdanhmuc.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyDanhMuc\ActionCrud.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyDanhMuc\Quanlydanhmuc.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyGiaoDich\ActionCrud.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyGiaoDich\Danhsachgiaodich.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLySanPham\ActionCrud.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLySliderAnhSanPham\ActionCrud.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLySliderAnhSanPham\QuanLySliderAnhSanPham.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLySlideTrangChu\ActionCrud.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLySlideTrangChu\QuanLySlideTrangChu.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyTaiKhoanAdmin\ActionCrud.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyTaiKhoanAdmin\Quanlytaikhoanadmin.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyTaiKhoanNguoiDung\ActionCrud.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyTaiKhoanNguoiDung\Quanlytaikhoannguoidung.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyTinTucSanPham\ActionCrud.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyTinTucSanPham\QuanLyTinTucSanPham.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyTinTuc\ActionCrud.js" />
+    <Content Include="Areas\Admin\Scripts\QuanLyTinTuc\QuanLyTinTuc.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Areas\Admin\Content\myform.css" />
+    <Content Include="Content\icons.png" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\style_upload.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\ImagesNews\tin1.jpg" />
+    <Content Include="Images\ImagesSlideHome\iphone6.jpg" />
+    <Content Include="Images\ImagesSliderProduct\iphone1.jpg" />
+    <Content Include="Images\ImagesSliderProduct\mtb-ipadair.jpg" />
     <Content Include="Models\WebsiteBanDienThoaiEntityDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WebsiteBanDienThoaiEntityDataModel.edmx</DependentUpon>
@@ -266,7 +443,45 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\DangNhap\DangNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\DangNhap\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\TopBanChayPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\ThongKeDuLieuPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\DanhsachgiaodichPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\DanhsachgiaodichTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\ChiTietGiaoDich.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyGiaoDich\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyGiaoDich\DanhSachGiaoDichTable.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyGiaoDich\ChiTietGiaoDich.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietGiaoDich\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietGiaoDich\ChiTietGiaoDichTable.cshtml" />
+    <Content Include="Areas\Admin\Content\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\Content\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Admin\Content\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="Areas\Admin\Content\font-awesome\font\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Content\font-awesome\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\Content\font-awesome\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Admin\Content\font-awesome\fontawesome-webfont.woff" />
+    <Content Include="Areas\Admin\Content\font-awesome\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Content\img\demo\Thumbs.db" />
+    <Content Include="Areas\Admin\Content\img\icons\32\Thumbs.db" />
+    <Content Include="Areas\Admin\Content\img\Thumbs.db" />
+    <Content Include="Areas\Admin\Views\QuanLyGiaoDich\EditPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLySanPham\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLySanPham\DanhSachSanPhamTable.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLySanPham\ChiTietSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLySanPham\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyDanhMuc\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyDanhMuc\DanhSachDanhMucTable.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyDanhMuc\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyChiTietDanhMuc\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyChiTietDanhMuc\DanhSachChiTietDanhMucTable.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyChiTietDanhMuc\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLySliderAnhSanPham\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLySliderAnhSanPham\DanhSachAnhSanPhamTable.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLySliderAnhSanPham\Add.cshtml" />
     <EntityDeploy Include="Models\WebsiteBanDienThoaiEntityDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>WebsiteBanDienThoaiEntityDataModel.Designer.cs</LastGenOutput>
@@ -274,23 +489,42 @@
     <Content Include="Models\WebsiteBanDienThoaiEntityDataModel.edmx.diagram">
       <DependentUpon>WebsiteBanDienThoaiEntityDataModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\HomeAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\HomeAdmin\TopBanChayPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\HomeAdmin\ThongKeDuLieuPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\HomeAdmin\DanhsachgiaodichPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\HomeAdmin\DanhsachgiaodichTable.cshtml" />
-    <Content Include="Areas\Admin\Views\HomeAdmin\ChiTietGiaoDich.cshtml" />
-    <Content Include="Areas\Admin\Views\QuanLyGiaoDich\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\QuanLyGiaoDich\DanhSachGiaoDichTable.cshtml" />
-    <Content Include="Areas\Admin\Views\QuanLyGiaoDich\ChiTietGiaoDich.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiTietGiaoDich\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiTietGiaoDich\ChiTietGiaoDichTable.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTinTuc\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTinTuc\DanhSachTinTucTable.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTinTuc\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTinTucSanPham\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTinTucSanPham\DanhSachTinTucSanPhamTable.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTinTucSanPham\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTaiKhoanAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTaiKhoanAdmin\DanhSachTaiKhoanAdminTable.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTaiKhoanAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTaiKhoanNguoiDung\DanhSachTaiKhoanNguoiDungTable.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTaiKhoanNguoiDung\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTaiKhoanNguoiDung\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLySlideTrangChu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLySlideTrangChu\DanhSachSlideTrangChuTable.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLySlideTrangChu\Add.cshtml" />
+    <Content Include="Areas\Admin\Content\assetsLogin\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\Content\assetsLogin\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Admin\Content\assetsLogin\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\Admin\Content\assetsLogin\font-awesome\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\dropzone\basic.css" />
+    <Content Include="Scripts\dropzone\basic.min.css" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Scripts\dropzone\dropzone.css" />
+    <Content Include="Scripts\dropzone\dropzone.js" />
+    <Content Include="Scripts\dropzone\dropzone.min.css" />
+    <Content Include="Scripts\dropzone\dropzone.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.1.0.min.js" />
+    <Content Include="Scripts\jquery.fileupload.js" />
+    <Content Include="Scripts\jquery.iframe-transport.js" />
+    <Content Include="Scripts\jquery.knob.js" />
+    <Content Include="Scripts\jquery.ui.widget.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -298,6 +532,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\script.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -316,9 +551,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Content\font-awesome\" />
-    <Folder Include="Areas\Admin\Content\img\" />
-    <Folder Include="Areas\Admin\Content\js\" />
+    <Folder Include="Images\ImagesProductNews\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -329,13 +562,18 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Scripts\QuanLySanPham\QuanLySanPham.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

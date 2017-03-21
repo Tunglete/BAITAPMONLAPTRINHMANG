@@ -92,7 +92,7 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
             int row = 10;
             int count = 0;
             int totalpages = 0;
-            count = db.CHI_TIET_DON_HANG.Count(n => n.IsDeleted == false);
+            count = db.CHI_TIET_DON_HANG.Count(n => n.IsDeleted == false && n.DON_HANG.KHACH_HANG.TenKhachHang.Contains(codesearch));
             if (count > 0)
             {
                 totalpages = (int)Math.Ceiling((decimal)count / row);

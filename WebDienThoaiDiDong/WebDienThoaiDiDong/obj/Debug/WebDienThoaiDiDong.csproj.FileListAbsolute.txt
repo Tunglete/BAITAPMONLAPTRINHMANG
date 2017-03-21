@@ -84,6 +84,8 @@ T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\Microsoft.App
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\Microsoft.Web.Infrastructure.dll
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\Newtonsoft.Json.dll
+T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\PagedList.dll
+T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\PagedList.Mvc.dll
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\System.Web.Helpers.dll
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\System.Web.Mvc.dll
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\System.Web.Optimization.dll
@@ -100,6 +102,8 @@ T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\Microsoft.AI.
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\Microsoft.AI.WindowsServer.xml
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\Microsoft.ApplicationInsights.xml
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\PagedList.xml
+T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\PagedList.Mvc.xml
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\System.Web.Helpers.xml
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\System.Web.Mvc.xml
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\System.Web.Optimization.xml
@@ -109,10 +113,6 @@ T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\System.Web.We
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\System.Web.WebPages.Razor.xml
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\Antlr3.Runtime.pdb
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\Newtonsoft.Json.xml
-T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\obj\Debug\WebDienThoaiDiDong.csprojResolveAssemblyReference.cache
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\obj\Debug\WebDienThoaiDiDong.dll
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\obj\Debug\WebDienThoaiDiDong.pdb
-T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\PagedList.dll
-T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\PagedList.Mvc.dll
-T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\PagedList.xml
-T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\PagedList.Mvc.xml
+T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\obj\Debug\WebDienThoaiDiDong.csprojResolveAssemblyReference.cache

@@ -3,15 +3,14 @@
 @{
     Layout = null;
 }
-<script src="~/Areas/Admin/Scripts/Danhsachgiaodich.js"></script>
 <script>
-    var formUrl = {
-        urlDetail : '@Url.Action("ChiTietGiaoDich","QuanLyGiaoDich")'
-        
+    var actionUrl = {
+        urlDetail: '@Url.Action("ChiTietGiaoDich","QuanLyGiaoDich")',
+        urlEdit: '@Url.Action("EditPartial", "QuanLyGiaoDich")'
     }
+    
 </script>
-
- 
+<script src="~/Areas/Admin/Scripts/QuanLyGiaoDich/ActionCrud.js"></script>
 
 <link href="~/Areas/Admin/Content/css/mypaging.css" rel="stylesheet" />
 <div class="widget-content nopadding" id="tb">
@@ -43,8 +42,9 @@
                     }
                     <th style="font-size:11px;">@item.NgayTao</th>
                     <th>
-                            <button style="font-size: 12px; margin-top:-3px; border-radius:3px; margin-bottom:3px;border-radius:4px;" type="button" class="btn-xs btn btn-primary " onclick="chitiet(@item.MaDonHang,'+ @item.TenKhachHang+')" data-toggle="modal" data-target="#myModal">Chi tiết</button>
-                            <button style="font-size: 12px; margin-top:-3px; border-radius:3px;margin-bottom:3px;border-radius:4px;" type="button" class="btn btn-danger" onclick="Delete(@item.MaDonHang,@Model.page)">Xóa</button>
+                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px; margin-bottom:3px;border-radius:4px;" type="button" class="btn-xs btn btn-primary " onclick="chitiet(@item.MaDonHang,'+ @item.TenKhachHang+')" data-toggle="modal" data-target="#myModal">Chi tiết</button>
+                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px; margin-bottom:3px;border-radius:4px;" type="button" class="btn-xs btn btn-info " onclick="Edit(@item.MaDonHang,'+ @item.TenKhachHang+',@Model.page)" >Sửa</button>
+                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px;margin-bottom:3px;border-radius:4px;" type="button" class="btn btn-danger" onclick="Delete(@item.MaDonHang,@Model.page)">Xóa</button>
                     </th>
 
                 </tr>
@@ -54,41 +54,34 @@
 
     </table>
 </div>
-<div class="pagination">
-    @{
-        if (Model.page > 1)
-        {
-            <a onclick="previous(@Model.page)">&laquo;</a>
-        }
-        if (Model.totalpage > 1)
-        {
-            for (int i = 1; i <= @Model.page + 1; i++)
-            {
-                if (i <= Model.totalpage)
+@if (Model.totalpage > 1)
+{
+    <div class="pagination">
+        <nav >
+            <ul>
+                @if (Model.page <= 1)
                 {
-                    if (i == Model.page)
-                    {
-                        <a href="" class="active" onclick="coutpage(@i)">@i</a>
-                    }
-                    else
-                    {
-                        <a onclick="coutpage(@i)">@i</a>
-                    }
-
+                    <li><a style="background:#337AB7; color:#fff;cursor:not-allowed;">Previous</a></li>
+                }
+                else
+                {
+                    <li><a id="previous" onclick="previous(@Model.page)" >Previous</a></li>
                 }
 
+                <li><span style="background:#337AB7; color:#fff;">Trang <span style="font-weight:bold;">@Model.page</span>/<span style="font-weight:bold;">@Model.totalpage</span></span></li>
+                @if (Model.page >= Model.totalpage)
+                {
+                    <li><a style="background:#337AB7; color:#fff; width:40px;cursor:not-allowed;">Next</a></li>
+                }
+                else
+                {
+                    <li><a id="next" onclick="next(@Model.page)" >Next</a></li>
+                }
 
-            }
-        }
-
-        if (Model.page < Model.totalpage)
-        {
-            <a onclick="next(@Model.page)">&raquo;</a>
-        }
-
-    }
-
-</div>
+            </ul>
+        </nav>
+    </div>
+}
 <div class="modal fade " id="myModal" style="width:initial;left:50%;transform:translateX(-20%);">
     <div class="modal-dialog modal-lg">
         <div class="modal-content" id="modalcontent">
@@ -97,4 +90,6 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<!--dialog javácript-->
+<!--phần Edit-->
+<div class="widget-box" id="div_edit">
+</div>

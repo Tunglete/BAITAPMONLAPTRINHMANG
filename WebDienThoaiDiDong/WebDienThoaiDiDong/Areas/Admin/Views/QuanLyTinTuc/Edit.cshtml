@@ -1,0 +1,116 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model TIN_TUC
+@{
+    Layout = null;
+}
+<link href="~/Areas/Admin/Content/jquery-te-1.4.0.css" rel="stylesheet" />
+<script src="~/Areas/Admin/Content/jquery-te-1.4.0.min.js"></script>
+<script>
+        var urlSave ='@Url.Action("Save","QuanLyTinTuc")';
+    var urltable = '@Url.Action("DanhSachTinTucTable", "QuanLyTinTuc")';
+    $('.jqte-test').jqte();
+
+    // settings of status
+    var jqteStatus = true;
+    $(".status").click(function () {
+        jqteStatus = jqteStatus ? false : true;
+        $('.jqte-test').jqte({ "status": jqteStatus })
+    });
+
+</script>
+<div class="widget-title">
+    <span class="icon"> <i class="icon-align-justify"></i> </span>
+    <h5>Thông tin tin tức</h5>
+</div>
+<div class="widget-content nopadding">
+    <form id="upload" class="form-horizontal" method="post" action="/QuanLyTinTuc/UploadFile" enctype="multipart/form-data">
+        <div class="control-group">
+            @Html.HiddenFor(n => n.MaTinTuc)
+            @Html.HiddenFor(n => n.NgayTao)
+            @Html.HiddenFor(n => n.IsDeleted)
+        </div>
+        <div class="control-group">
+            @Html.Label("Tên tin tức: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextAreaFor(n =>n.TenTinTuc, new { @class = "jqte-test" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Nội dung tin tức: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextAreaFor(n => n.NoiDung, new { @class = "jqte-test" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Tác giả: ", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(n => n.TacGia, new { @class = "span8" })
+            </div>
+        </div>
+        <div class="form-group" id="uploadulli">
+            <div id="drop" style="margin-left:450px; margin-top:2em; margin-bottom:2em;">
+                <a style="padding:20px; text-decoration:none; color:#fff; background:#057ff5;cursor:pointer;">Chọn Ảnh tin tức</a>
+                <input type="file" id="" style="display:none;" />
+            </div>
+
+            <ul>
+                <!-- The file uploads will be shown here -->
+            </ul>
+        </div>
+        
+        <div>
+            <button style="margin:7px;" type="button" class="btn btn-success" onclick="luu(@ViewBag.page)">Lưu</button>
+            <button style="margin:0px 7px;" type="button" class="btn btn-danger" onclick="dong()">Đóng</button>
+        </div>
+
+    </form>
+
+</div>
+<style>
+    .jqte {
+        margin-top: 5px;
+        width: 86%;
+    }
+
+    #uploadulli ul li {
+        margin-top: 1.8em;
+        margin-left: 450px;
+        list-style-type: decimal;
+    }
+</style>
+<script>
+function luu(page) {
+    $.ajax({
+        type: 'post',
+        url: urlSave,
+        data: $("#upload").serialize(),
+        success: function (response) {
+            if (response == 'True') {
+                $.ajax({
+                    type: 'post',
+                    url: urltable,
+                    data: {
+                        page: page
+                    },
+                    success: function (data) {
+                        $("#table").html("");
+                        $("#table").html(data);
+                    }
+                });
+            }
+
+        }
+    });
+}</script>
+<script src="~/Scripts/jquery-3.1.0.min.js"></script>
+<!-- JavaScript Includes -->
+<script src="~/Scripts/jquery.knob.js"></script>
+<!-- JavaScript Includes -->
+<!-- jQuery File Upload Dependencies -->
+<script src="~/Scripts/jquery.ui.widget.js"></script>
+<script src="~/Scripts/jquery.iframe-transport.js"></script>
+<script src="~/Scripts/jquery.fileupload.js"></script>
+<!-- jQuery File Upload Dependencies -->
+<!-- Main JavaScript file -->
+<script src="~/Scripts/script.js"></script>
+<!-- Main JavaScript file -->

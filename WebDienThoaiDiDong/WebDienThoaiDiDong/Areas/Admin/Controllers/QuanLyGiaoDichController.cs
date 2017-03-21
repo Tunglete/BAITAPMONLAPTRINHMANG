@@ -177,5 +177,56 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
                 return View("DanhSachGiaoDichTable", model);
             }
         }
+        public PartialViewResult EditPartial(int id = 1, string namecus = "", int page = 1)
+        {
+            ViewBag.Namecus = namecus;
+            ViewBag.page = page;
+            var model = db.DON_HANG.FirstOrDefault(n => n.MaDonHang == id);
+            if(model.TrangThaiDonHang == "Chưa thanh toán")
+            {
+                ViewBag.lstTrangThaiDonHang = new List<SelectListItem> {
+               new SelectListItem() {Text = "Chưa thanh toán", Value="Chưa thanh toán"},
+               new SelectListItem() {Text = "Đã thanh toán", Value="Đã thanh toán"},
+               new SelectListItem() {Text = "Chờ xử lý", Value="Chờ xử lý"}
+               };
+            }
+            if(model.TrangThaiDonHang == "Đã thanh toán")
+            {
+                ViewBag.lstTrangThaiDonHang = new List<SelectListItem> {
+               new SelectListItem() {Text = "Đã thanh toán", Value="Đã thanh toán"},
+               new SelectListItem() {Text = "Chưa thanh toán", Value="Chưa thanh toán"},
+               new SelectListItem() {Text = "Chờ xử lý", Value="Chờ xử lý"}
+               };
+            }
+            if(model.TrangThaiDonHang == "Chờ xử lý")
+            {
+                ViewBag.lstTrangThaiDonHang = new List<SelectListItem> {
+               new SelectListItem() {Text = "Chờ xử lý", Value="Chờ xử lý"},
+               new SelectListItem() {Text = "Chưa thanh toán", Value="Chưa thanh toán"},
+               new SelectListItem() {Text = "Đã thanh toán", Value="Đã thanh toán"}
+               };
+            }
+            return PartialView(model);
+        }
+        public bool Save(DON_HANG model)
+        {
+            var lst = db.DON_HANG.FirstOrDefault(n => n.MaDonHang == model.MaDonHang);
+            if (lst != null)
+            {
+                lst.MaKhachHang = model.MaKhachHang;
+                lst.TrangThaiDonHang = model.TrangThaiDonHang;
+                lst.TongGiaTriDonHang = model.TongGiaTriDonHang;
+                lst.DiaChiNhanDonHang = model.DiaChiNhanDonHang;
+                lst.NgayTao = model.NgayTao;
+                lst.IsDeleted = model.IsDeleted;
+                db.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
     }
 }

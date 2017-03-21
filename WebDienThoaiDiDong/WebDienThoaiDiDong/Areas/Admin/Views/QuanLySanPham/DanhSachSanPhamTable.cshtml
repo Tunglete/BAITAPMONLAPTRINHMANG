@@ -1,0 +1,106 @@
+﻿@using WebDienThoaiDiDong.Areas.Admin.Models.Quanlysanpham;
+@model PagingQuanLySanPham
+@{
+    Layout = null;
+}
+
+<script>
+    var actionUrl = {
+        urlDetail: '@Url.Action("ChiTietSanPham","QuanLySanPham")',
+        urlEdit: '@Url.Action("Edit", "QuanLySanPham")'
+    }
+</script>
+<link href="~/Areas/Admin/Content/jquery-te-1.4.0.css" rel="stylesheet" />
+<script src="~/Areas/Admin/Content/jquery-te-1.4.0.min.js"></script> 
+<script src="~/Areas/Admin/Scripts/QuanLySanPham/ActionCrud.js"></script>
+<link href="~/Areas/Admin/Content/css/mypaging.css" rel="stylesheet" />
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped table-hover" >
+        <thead>
+            <tr class="success">
+                <th style="background:#28B779; color:white;font-size:13px;">Tên sản phẩm</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Tiêu đề sản phẩm </th>
+                <th style="background:#28B779; color:white;font-size:13px;">Giá sản phẩm</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Màn hình</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Cpu</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Ram</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Hệ điều hành</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Camera chính</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Camera phụ</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Bộ nhớ trong</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Thẻ nhớ ngoài</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Bluetooth</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Dung lượng pin</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Ảnh đại diện</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.List)
+            {
+                <tr >
+                    <th style="font-size:11px;width:50px;">@item.TenSanPham</th>
+                    <th style="font-size:11px;">@item.TieuDeSanPham</th>
+                    <th style="color:red;font-size:11px;">@String.Format("{0:0,0 vnđ}", @item.GiaSanPham)</th>
+                    <th style="font-size:11px;">@item.ManHinh</th>
+                    <th style="font-size:11px;">@item.Cpu</th>
+                    <th style="font-size:11px;">@item.Ram</th>
+                    <th style="font-size:11px;">@item.HeDieuHanh</th>
+                    <th style="font-size:11px;">@item.CameraChinh</th>
+                    <th style="font-size:11px;">@item.CameraPhu</th>
+                    <th style="font-size:11px;">@item.BoNhoTrong</th>
+                    <th style="font-size:11px;">@item.TheNhoNgoai</th>
+                    <th style="font-size:11px;">@item.Blutooth</th>
+                    <th style="font-size:11px;">@item.DungLuongPin</th>
+                    <th style="font-size:11px;width:30px;height:30px;"><img style="" src="~/Images/ImagesSliderProduct/@item.AnhDaiDien"></th>
+                    <th style="font-size:11px;width:350px;padding-top:10px;">
+                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px; margin-bottom:3px;border-radius:4px;" type="button" class="btn-xs btn btn-primary " onclick="Chitiet(@item.MaSanPham)" data-toggle="modal" data-target="#myModal">Chi tiết</button>
+                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px; margin-bottom:3px;border-radius:4px;" type="button" class="btn-xs btn btn-info " onclick="Edit(@item.MaSanPham,@Model.page)">Sửa</button>
+                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px;margin-bottom:3px;border-radius:4px;" type="button" class="btn btn-danger" onclick="Delete()">Xóa</button>
+                    </th>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+</div>
+@if (Model.totalpage > 1)
+{
+    <div class="pagination">
+        <nav>
+            <ul>
+                @if (Model.page <= 1)
+                {
+                    <li><a style="background:#337AB7; color:#fff;cursor:not-allowed;">Previous</a></li>
+                }
+                else
+                {
+                    <li><a id="previous" onclick="previous(@Model.page)">Previous</a></li>
+                }
+
+                <li><span style="background:#337AB7; color:#fff;">Trang <span style="font-weight:bold;">@Model.page</span>/<span style="font-weight:bold;">@Model.totalpage</span></span></li>
+                @if (Model.page >= Model.totalpage)
+                {
+                    <li><a style="background:#337AB7; color:#fff; width:40px;cursor:not-allowed;">Next</a></li>
+                }
+                else
+                {
+                    <li><a id="next" onclick="next(@Model.page)">Next</a></li>
+                }
+
+            </ul>
+        </nav>
+    </div>
+}
+<div class="modal fade " id="myModal" style="width:initial;left:70%;transform:translateX(-40%);">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="modalcontent">
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--phần Edit-->
+<div class="widget-box" id="div_edit">
+</div>

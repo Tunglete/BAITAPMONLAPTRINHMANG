@@ -19,6 +19,7 @@ namespace WebDienThoaiDiDong.Models
         {
             this.ANH_SAN_PHAM = new HashSet<ANH_SAN_PHAM>();
             this.CHI_TIET_DON_HANG = new HashSet<CHI_TIET_DON_HANG>();
+            this.TIN_TUC_SAN_PHAM = new HashSet<TIN_TUC_SAN_PHAM>();
         }
     
         public int MaSanPham { get; set; }
@@ -40,14 +41,16 @@ namespace WebDienThoaiDiDong.Models
         public Nullable<int> GiamGia { get; set; }
         public string CheDoBaoHanh { get; set; }
         public string KhuyenMai { get; set; }
-        public string TieuDeTinTuc { get; set; }
-        public string NoiDungTinTuc { get; set; }
+        public string AnhDaiDien { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public string Video { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ANH_SAN_PHAM> ANH_SAN_PHAM { get; set; }
         public virtual CHI_TIET_DANH_MUC CHI_TIET_DANH_MUC { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHI_TIET_DON_HANG> CHI_TIET_DON_HANG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TIN_TUC_SAN_PHAM> TIN_TUC_SAN_PHAM { get; set; }
     }
 }
