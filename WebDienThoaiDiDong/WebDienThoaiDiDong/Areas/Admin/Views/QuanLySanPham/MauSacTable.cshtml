@@ -1,0 +1,40 @@
+﻿@using WebDienThoaiDiDong.Models;
+@{
+    Layout = null;
+}
+
+<table class="table table-bordered table-striped table-hover" style="width:100%; margin-right:10px;">
+    <thead>
+        <tr class="success">
+            <th style="background:#28B779; color:white;font-size:13px;">Màu sản phẩm</th>
+            <th style="background:#28B779; color:white;font-size:13px;">Giá</th>
+            <th style="background:#28B779; color:white;font-size:13px;">Hành động</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in (List<CHI_TIET_SAN_PHAM>)ViewBag.lstMausac)
+        {
+            <tr>
+                <th style="font-size:11px;">@item.Mau</th>
+                <th style="color:red;font-size:11px;">@String.Format("{0:0,0 vnđ}", item.Gia)</th>
+                <th style="font-size:11px; ">
+                    <button class="btn btn-info" style="border-radius:3px;" onclick="suamau(@item.MaCTSP,'@item.Mau',@item.Gia)">Sửa</button>
+                    <button class="btn btn-danger" style="border-radius:3px;" onclick="xoa(@item.MaCTSP)">Xoá</button>
+                </th>
+            </tr>
+        }
+
+
+    </tbody>
+
+</table>
+
+<script>
+    function suamau(id, mau, gia) {
+        $("#Mau").val(mau);
+        $("#Gia").val(gia);
+        $("#mactsp").val(id);
+
+    }
+</script>

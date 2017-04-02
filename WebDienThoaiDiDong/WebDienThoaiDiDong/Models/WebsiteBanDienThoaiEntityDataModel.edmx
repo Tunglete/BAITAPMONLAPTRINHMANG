@@ -47,6 +47,16 @@
           <Property Name="SoLuong" Type="int" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
+        <EntityType Name="CHI_TIET_SAN_PHAM">
+          <Key>
+            <PropertyRef Name="MaCTSP" />
+          </Key>
+          <Property Name="MaCTSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaSanPham" Type="int" />
+          <Property Name="Mau" Type="nvarchar" MaxLength="150" />
+          <Property Name="Gia" Type="int" />
+          <Property Name="Isdeleted" Type="bit" />
+        </EntityType>
         <EntityType Name="DANH_MUC">
           <Key>
             <PropertyRef Name="MaDanhMuc" />
@@ -80,7 +90,7 @@
           <Property Name="GioiTinh" Type="bit" />
           <Property Name="Mail" Type="nvarchar" MaxLength="255" />
           <Property Name="DienThoai" Type="nvarchar" MaxLength="50" />
-          <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+          <Property Name="DiaChi" Type="ntext" />
           <Property Name="NgayTao" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
@@ -109,6 +119,7 @@
           <Property Name="KhuyenMai" Type="ntext" />
           <Property Name="AnhDaiDien" Type="nvarchar" MaxLength="128" />
           <Property Name="Video" Type="ntext" />
+          <Property Name="NgayTao" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="SLIDE_TRANG_CHU">
@@ -201,6 +212,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CHI_TIET_SAN_PHAM_SAN_PHAM">
+          <End Role="SAN_PHAM" Type="Self.SAN_PHAM" Multiplicity="0..1" />
+          <End Role="CHI_TIET_SAN_PHAM" Type="Self.CHI_TIET_SAN_PHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SAN_PHAM">
+              <PropertyRef Name="MaSanPham" />
+            </Principal>
+            <Dependent Role="CHI_TIET_SAN_PHAM">
+              <PropertyRef Name="MaSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DON_HANG_KHACH_HANG">
           <End Role="KHACH_HANG" Type="Self.KHACH_HANG" Multiplicity="0..1" />
           <End Role="DON_HANG" Type="Self.DON_HANG" Multiplicity="*" />
@@ -242,6 +265,7 @@
           <EntitySet Name="ANH_SAN_PHAM" EntityType="Self.ANH_SAN_PHAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHI_TIET_DANH_MUC" EntityType="Self.CHI_TIET_DANH_MUC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHI_TIET_DON_HANG" EntityType="Self.CHI_TIET_DON_HANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHI_TIET_SAN_PHAM" EntityType="Self.CHI_TIET_SAN_PHAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DANH_MUC" EntityType="Self.DANH_MUC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DON_HANG" EntityType="Self.DON_HANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KHACH_HANG" EntityType="Self.KHACH_HANG" Schema="dbo" store:Type="Tables" />
@@ -265,6 +289,10 @@
           <AssociationSet Name="FK_CHI_TIET_DON_HANG_SAN_PHAM" Association="Self.FK_CHI_TIET_DON_HANG_SAN_PHAM">
             <End Role="SAN_PHAM" EntitySet="SAN_PHAM" />
             <End Role="CHI_TIET_DON_HANG" EntitySet="CHI_TIET_DON_HANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHI_TIET_SAN_PHAM_SAN_PHAM" Association="Self.FK_CHI_TIET_SAN_PHAM_SAN_PHAM">
+            <End Role="SAN_PHAM" EntitySet="SAN_PHAM" />
+            <End Role="CHI_TIET_SAN_PHAM" EntitySet="CHI_TIET_SAN_PHAM" />
           </AssociationSet>
           <AssociationSet Name="FK_DON_HANG_KHACH_HANG" Association="Self.FK_DON_HANG_KHACH_HANG">
             <End Role="KHACH_HANG" EntitySet="KHACH_HANG" />
@@ -364,7 +392,7 @@
           <Property Name="GioiTinh" Type="Boolean" />
           <Property Name="Mail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="DON_HANG" Relationship="Self.FK_DON_HANG_KHACH_HANG" FromRole="KHACH_HANG" ToRole="DON_HANG" />
           <Property Name="NgayTao" Type="DateTime" Precision="3" />
@@ -401,6 +429,8 @@
           <NavigationProperty Name="CHI_TIET_DON_HANG" Relationship="Self.FK_CHI_TIET_DON_HANG_SAN_PHAM" FromRole="SAN_PHAM" ToRole="CHI_TIET_DON_HANG" />
           <NavigationProperty Name="TIN_TUC_SAN_PHAM" Relationship="QuanLyBanDienThoaiModel.FK_TIN_TUC_SAN_PHAM_SAN_PHAM" FromRole="SAN_PHAM" ToRole="TIN_TUC_SAN_PHAM" />
           <Property Name="Video" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CHI_TIET_SAN_PHAM" Relationship="QuanLyBanDienThoaiModel.FK_CHI_TIET_SAN_PHAM_SAN_PHAM" FromRole="SAN_PHAM" ToRole="CHI_TIET_SAN_PHAM" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -550,6 +580,11 @@
             <End Role="TIN_TUC_SAN_PHAM" EntitySet="TIN_TUC_SAN_PHAM" />
           </AssociationSet>
           <EntitySet Name="SLIDE_TRANG_CHU" EntityType="QuanLyBanDienThoaiModel.SLIDE_TRANG_CHU" />
+          <EntitySet Name="CHI_TIET_SAN_PHAM" EntityType="QuanLyBanDienThoaiModel.CHI_TIET_SAN_PHAM" />
+          <AssociationSet Name="FK_CHI_TIET_SAN_PHAM_SAN_PHAM" Association="QuanLyBanDienThoaiModel.FK_CHI_TIET_SAN_PHAM_SAN_PHAM">
+            <End Role="SAN_PHAM" EntitySet="SAN_PHAM" />
+            <End Role="CHI_TIET_SAN_PHAM" EntitySet="CHI_TIET_SAN_PHAM" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_TIN_TUC_SAN_PHAM_SAN_PHAM">
           <End Type="QuanLyBanDienThoaiModel.SAN_PHAM" Role="SAN_PHAM" Multiplicity="0..1" />
@@ -571,6 +606,29 @@
           <Property Name="HinhAnh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
+        <EntityType Name="CHI_TIET_SAN_PHAM">
+          <Key>
+            <PropertyRef Name="MaCTSP" />
+          </Key>
+          <Property Name="MaCTSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaSanPham" Type="Int32" />
+          <Property Name="Mau" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Gia" Type="Int32" />
+          <NavigationProperty Name="SAN_PHAM" Relationship="QuanLyBanDienThoaiModel.FK_CHI_TIET_SAN_PHAM_SAN_PHAM" FromRole="CHI_TIET_SAN_PHAM" ToRole="SAN_PHAM" />
+          <Property Name="Isdeleted" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_CHI_TIET_SAN_PHAM_SAN_PHAM">
+          <End Type="QuanLyBanDienThoaiModel.SAN_PHAM" Role="SAN_PHAM" Multiplicity="0..1" />
+          <End Type="QuanLyBanDienThoaiModel.CHI_TIET_SAN_PHAM" Role="CHI_TIET_SAN_PHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SAN_PHAM">
+              <PropertyRef Name="MaSanPham" />
+            </Principal>
+            <Dependent Role="CHI_TIET_SAN_PHAM">
+              <PropertyRef Name="MaSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -666,6 +724,7 @@
           <EntitySetMapping Name="SAN_PHAM">
             <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.SAN_PHAM">
               <MappingFragment StoreEntitySet="SAN_PHAM">
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
                 <ScalarProperty Name="Video" ColumnName="Video" />
                 <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
                 <ScalarProperty Name="MaCTDM" ColumnName="MaCTDM" />
@@ -734,6 +793,17 @@
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHI_TIET_SAN_PHAM">
+            <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.CHI_TIET_SAN_PHAM">
+              <MappingFragment StoreEntitySet="CHI_TIET_SAN_PHAM">
+                <ScalarProperty Name="Isdeleted" ColumnName="Isdeleted" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="Mau" ColumnName="Mau" />
+                <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+                <ScalarProperty Name="MaCTSP" ColumnName="MaCTSP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

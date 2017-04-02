@@ -16,7 +16,14 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
         // GET: Admin/QuanLySlideTrangChu
         public ActionResult Index()
         {
-            return View();
+            if (Session["TenQuanTri"] != null && Session["MaQuanTri"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "DangNhapAdmin");
+            }
         }
         public ActionResult DanhSachSlideTrangChuTable(int page)
         {

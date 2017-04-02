@@ -1,0 +1,238 @@
+﻿@using WebDienThoaiDiDong.Models;
+@{
+    ViewBag.Title = "Máy tính bảng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class=" row">
+        <div class="breadcrumb" style="margin-bottom: 20px;">
+            <span itemscope="itemscope" class="crumb_item">
+                <a itemprop="url" rel="up" class="crumb" href="@Url.Action("Index","TrangChu")"><span itemprop="title">Trang chủ</span></a>
+                <span class="arrow"> » </span>
+            </span>
+            <span itemscope="itemscope" class="crumb_item">
+                <a itemprop="url" rel="up" class="crumb" href="@Url.Action("Index","MayTinhBang")"><span itemprop="title">Máy tính bảng</span></a>
+                <span class="arrow"> » </span>
+            </span>
+            <span itemscope="itemscope" class="crumb_item">
+                <a itemprop="url" rel="up" class="crumb" href=""><span itemprop="title"></span></a>
+            </span>
+        </div>
+    </div>
+
+    <div class="title-dtdd2 row">
+        <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:0.5em;">
+            <span itemscope="itemscope" class="crumb_item">
+                <span itemprop="title">Tìm theo</span>
+                <span class="arrow"> » </span>
+            </span>
+            <div class="btn-group">
+                <button id="btn-mucgia" class="btn btn-info">Mức giá</button>
+                <button data-toggle="dropdown" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>
+                <ul id="mucgia" class="dropdown-menu">
+                    <li><a href="#">Dưới 1 triệu</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Dưới 2 triệu</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Dưới 3 triệu</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Dưới 5 triệu</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Dưới 8 triệu</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Dưới 10 triệu</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Trên 10 triệu</a></li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button id="btn-hangsanxuat" class="btn btn-info">Hãng sản xuất</button>
+                <button data-toggle="dropdown" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>
+                <ul id="hangsanxuat" class="dropdown-menu">
+                    @foreach (var item in (List<CHI_TIET_DANH_MUC>)ViewBag.lstHangsanxuat)
+                    {
+                        <li><a href="#">@item.TenHang</a></li>
+                        <li class="divider"></li>
+                    }
+
+
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button id="btn-timtatca" class="btn btn-info" onclick="timtatca()">Tìm tất cả</button>
+            </div>
+            <div class="btn-group" style="float:right;">
+                <button id="btn-sapxep" class="btn btn-info">Sắp xếp hiển thị theo</button>
+                <button data-toggle="dropdown" class="btn btn-info dropdown-toggle"><span class="caret"></span></button>
+                <ul id="sapxep" class="dropdown-menu">
+                    <li><a href="#">Giá giảm dần</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Giá tăng dần</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="title row">
+        <div class="title-sanphamtieubieu col-md-12 col-sm-12 col-xs-12">
+            <a href="">MÁY TÍNH BẢNG</a>
+        </div>
+    </div>
+
+    <div id="divMaytinhbang">
+
+    </div>
+
+</div>
+<script>
+        var checksearch = 0;
+        var codesearch1 = "";
+        var codesearch2 = "";
+        var codesearch3 = "";
+        var dem = 0;
+        $(document).ready( function(){
+            $.ajax({
+                url: '@Url.Action("MayTinhBang", "MayTinhBang")',
+                mtype: "POST",
+                datatype: "json",
+                data:{
+                    count:0
+                },
+                success: function (data) {
+                    $("#divMaytinhbang").html(data);
+                }
+            });
+        });
+        function xemthem(count) {
+            dem = count;
+            if (checksearch == 0) {
+                $.ajax({
+                    url: '@Url.Action("MayTinhBang", "MayTinhBang")',
+                    mtype: "POST",
+                    datatype: "json",
+                    data: {
+                        count: dem
+                    },
+                    success: function (data) {
+                        $("#divMaytinhbang").html(data);
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: '@Url.Action("Search", "MayTinhBang")',
+                    mtype: "POST",
+                    datatype: "json",
+                    data: {
+                        codesearch1: codesearch1,
+                        codesearch2: codesearch2,
+                        codesearch3: codesearch3,
+                        count: dem
+                    },
+                    success: function (data) {
+                        $("#divMaytinhbang").html(data);
+                    }
+                });
+
+            }
+
+        }
+        $(function () {
+            $("#mucgia li a").click(function () {
+                codesearch3 = "";
+                $("#btn-sapxep").text("Sắp xếp theo");
+                $("#btn-sapxep").val("");
+                checksearch = 1;
+                $("#btn-mucgia").text($(this).text());
+                codesearch1 = $(this).text();
+                $.ajax({
+                    url: '@Url.Action("Search", "MayTinhBang")',
+                    mtype: "POST",
+                    datatype: "json",
+                    data: {
+                        codesearch1: codesearch1,
+                        codesearch2:codesearch2,
+                        codesearch3: codesearch3,
+                        count:dem
+                    },
+                    success: function (data) {
+                        $("#divMaytinhbang").html(data);
+                        dem = 0;
+                    }
+                });
+            });
+
+        });
+        $(function () {
+
+            $("#hangsanxuat li a").click(function () {
+                checksearch = 1;
+                $("#btn-hangsanxuat").text($(this).text());
+                codesearch2 = $(this).text();
+                $.ajax({
+                    url: '@Url.Action("Search", "MayTinhBang")',
+                    mtype: "POST",
+                    datatype: "json",
+                    data: {
+                        codesearch1: codesearch1,
+                        codesearch2:codesearch2,
+                        codesearch3: codesearch3,
+                        count: dem
+                    },
+                    success: function (data) {
+                        $("#divMaytinhbang").html(data);
+                    }
+                });
+            });
+
+        });
+        $(function () {
+            $("#sapxep li a").click(function () {
+                codesearch1 = "";
+                $("#btn-mucgia").text("Mức giá");
+                $("#btn-mucgia").val("");
+                checksearch = 1;
+                $("#btn-sapxep").text($(this).text());
+                codesearch3 = $(this).text();
+                $.ajax({
+                    url: '@Url.Action("Search", "MayTinhBang")',
+                    mtype: "POST",
+                    datatype: "json",
+                    data: {
+                        codesearch1: codesearch1,
+                        codesearch2: codesearch2,
+                        codesearch3: codesearch3,
+                        count: dem
+                    },
+                    success: function (data) {
+                        $("#divMaytinhbang").html(data);
+                        dem = 0;
+                    }
+                });
+            });
+
+        });
+        function timtatca() {
+            checksearch = 0;
+            codesearch1 = "";
+            codesearch2 = "";
+            codesearch3 = "";
+            dem = 0;
+            $("#btn-mucgia").text("Mức giá");
+            $("#btn-mucgia").val("");
+            $("#btn-hangsanxuat").text("Hãng sản xuất");
+            $("#btn-hangsanxuat").val("");
+            $("#btn-sapxep").text("Sắp xếp theo");
+            $("#btn-sapxep").val("");
+            $.ajax({
+                url: '@Url.Action("MayTinhBang", "MayTinhBang")',
+                mtype: "POST",
+                datatype: "json",
+                data: {
+                    count: 0
+                },
+                success: function (data) {
+                    $("#divMaytinhbang").html(data);
+                }
+            });
+        }
+</script>

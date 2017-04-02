@@ -6,7 +6,13 @@
 <script>
         var urlSave ='@Url.Action("Save","QuanLyGiaoDich")';
         var urlDsgdtable = '@Url.Action("DanhSachGiaoDichTable", "QuanLyGiaoDich")';
-
+    $("#form_edit").validate({
+        rules: {
+            TenDanhMuc: {
+                required: true,
+            }
+        }, messages:{TenDanhMuc: "*Tên danh mục không được bỏ trống*"}
+    });
 </script>
 <div class="widget-title">
     <span class="icon"> <i class="icon-align-justify"></i> </span>
@@ -31,3 +37,9 @@
     </form>
 
 </div>
+<style>
+    .error {
+        color: red;
+        font-size: 11px;
+    }
+</style>

@@ -68,7 +68,6 @@ T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\roslyn\System
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\roslyn\vbc.exe
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\roslyn\VBCSCompiler.exe
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\roslyn\VBCSCompiler.exe.config
-T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\WebDienThoaiDiDong.dll.config
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\WebDienThoaiDiDong.dll
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\WebDienThoaiDiDong.pdb
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\Antlr3.Runtime.dll
@@ -116,3 +115,4 @@ T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\Newtonsoft.Js
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\obj\Debug\WebDienThoaiDiDong.dll
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\obj\Debug\WebDienThoaiDiDong.pdb
 T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\obj\Debug\WebDienThoaiDiDong.csprojResolveAssemblyReference.cache
+T:\BAITAPMONLAPTRINHMANG\WebDienThoaiDiDong\WebDienThoaiDiDong\bin\WebDienThoaiDiDong.dll.config

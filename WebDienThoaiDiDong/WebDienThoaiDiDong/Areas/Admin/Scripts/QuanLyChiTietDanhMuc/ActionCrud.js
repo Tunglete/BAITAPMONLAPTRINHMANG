@@ -1,7 +1,8 @@
-﻿function Edit(id, page) {
+﻿
+function Edit(id, page) {
     $.ajax({
         type: 'get',
-        data: {
+        data: { 
             id: id,
             page: page
         },
@@ -12,6 +13,7 @@
     });
 }
 function luu(page) {
+    if ($("#form_edit").valid()) {
     $.ajax({
         type: 'post',
         url: actionUrl.urlSave,
@@ -33,6 +35,7 @@ function luu(page) {
 
         }
     });
+    }
 }
 function dong() {
     $('#div_edit').html("");

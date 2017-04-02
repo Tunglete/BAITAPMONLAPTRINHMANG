@@ -13,7 +13,14 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
         // GET: Admin/HomeAdmin
         public ActionResult Index()
         {
-            return View();
+            if (Session["TenQuanTri"] != null && Session["MaQuanTri"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "DangNhapAdmin");
+            }
         }
         public ActionResult TopBanChayPartial()
         {
@@ -140,6 +147,12 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
             {
                 return false;
             }
+        }
+        public ActionResult DangXuat()
+        {
+            Session["TenQuanTri"] = null;
+            Session["MaQuanTri"] = null;
+            return RedirectToAction("Index", "DangNhap");
         }
     }
 }

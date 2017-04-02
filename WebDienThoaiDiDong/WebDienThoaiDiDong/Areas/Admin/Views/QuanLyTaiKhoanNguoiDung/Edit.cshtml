@@ -7,7 +7,55 @@
 
         var urlSave ='@Url.Action("Save","QuanLyTaiKhoanNguoiDung")';
         var urlnguoidungtable = '@Url.Action("DanhSachTaiKhoanNguoiDungTable", "QuanLyTaiKhoanNguoiDung")';
-
+    $("#form_edit").validate({
+        rules: {
+            TenKhachHang: {
+                required: true
+            },
+            TenDangNhap: {
+                required: true
+            },
+            MatKhau: {
+                required: true,
+                minlength:6
+            },
+            NgaySinh: {
+                required: true
+            },
+            Mail: {
+                required: true,
+                email:true
+            },
+            DienThoai: {
+                required: true,
+                number: true,
+                minlength: 10,
+                maxlength: 13
+            },
+            DiaChi: {
+                required: true
+            }
+        }, messages: {
+            TenKhachHang: "*Tên khách hàng không được bỏ trống*",
+            TenDangNhap: "*Tên đăng nhập không được bỏ trống*",
+            MatKhau:{
+                required: "*Tên đăng nhập không được bỏ trống*",
+                minlength: "*Mật khẩu phải lớn hơn {0} ký tự*"
+            },
+            NgaySinh: "*Ngày sinh không được bỏ trống*",
+            Mail: {
+                required: "*Email không được bỏ trống*",
+                email: "*Email không đúng định dạng*"
+            },
+            DienThoai:{
+                required: "*Điện thoại không được bỏ trống*",
+                number: "*Điện thoại không đúng định dạng*",
+                minlength: "*Điện thoại không đúng định dạng*",
+                maxlength: "*Điện thoại không đúng định dạng*"
+            },
+            DiaChi: "*Địa chỉ không được bỏ trống*"
+        }
+    });
 </script>
 <div class="widget-title">
     <span class="icon"> <i class="icon-align-justify"></i> </span>
@@ -75,3 +123,9 @@
     </form>
 
 </div>
+<style>
+    .error {
+        color: red;
+        font-size: 11px;
+    }
+</style>

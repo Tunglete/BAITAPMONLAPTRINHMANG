@@ -1,0 +1,80 @@
+.view_dienthoai {
+   width: 120%;
+   margin-left: -1em;
+   float: left;
+
+   overflow: hidden;
+   position: relative;
+   text-align: center;
+ 
+   cursor: default;
+
+}
+.mask {
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+.view_dienthoai img {
+   display: block;
+   position: relative;
+}
+.view_dienthoai h2 {
+   text-transform: uppercase;
+   color: #fff;
+   text-align: center;
+   position: relative;
+   font-size: 15px;
+   padding: 10px;
+   background: rgba(255, 23, 29, 0.9);
+   margin: 20px 0 0 0;
+}
+.mask p {
+   font-weight: bold;
+   font-size: 11px;
+   position: relative;
+   color: #fff ;
+   text-align: center;
+}
+.view_dienthoai a.info {
+   display: inline-block;
+   text-decoration: none;
+   padding: 7px 14px;
+   background: #008ACA;
+   color: #fff;
+   font-size: 12px;
+   text-transform: uppercase;
+   -webkit-box-shadow: 0 0 1px #000;
+   -moz-box-shadow: 0 0 1px #000;
+   box-shadow: 0 0 1px #000;
+}
+.view_dienthoai a.info: hover {
+   -webkit-box-shadow: 0 0 5px #000;
+   -moz-box-shadow: 0 0 5px #000;
+   box-shadow: 0 0 5px #000;
+}
+.gia{
+   font-family: Georgia, serif;
+   font-style: italic;
+   font-size: 13px;
+   position: relative;
+   
+   text-align: center;
+}
+@media screen and (max-width: 750px) {
+.view_dienthoai {
+   width: 105%;
+   margin-left: -0.6em;
+   
+   float: left;
+
+   overflow: hidden;
+   position: relative;
+   text-align: center;
+ 
+   cursor: default;
+
+}
+}

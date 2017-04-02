@@ -12,27 +12,29 @@
     });
 }
 function luu(page) {
-    $.ajax({
-        type: 'post',
-        url: actionUrl.urlSave,
-        data: $("#form_edit").serialize(),
-        success: function (response) {
-            if (response == 'True') {
-                $.ajax({
-                    type: 'post',
-                    url: actionUrl.urlDanhsachdanhmuctable,
-                    data: {
-                        page: page
-                    },
-                    success: function (data) {
-                        $("#table").html("");
-                        $("#table").html(data);
-                    }
-                });
-            }
+    if ($("#form_edit").valid()) {
+        $.ajax({
+            type: 'post',
+            url: actionUrl.urlSave,
+            data: $("#form_edit").serialize(),
+            success: function (response) {
+                if (response == 'True') {
+                    $.ajax({
+                        type: 'post',
+                        url: actionUrl.urlDanhsachdanhmuctable,
+                        data: {
+                            page: page
+                        },
+                        success: function (data) {
+                            $("#table").html("");
+                            $("#table").html(data);
+                        }
+                    });
+                }
 
-        }
-    });
+            }
+        });
+    }
 }
 function dong() {
     $('#div_edit').html("");

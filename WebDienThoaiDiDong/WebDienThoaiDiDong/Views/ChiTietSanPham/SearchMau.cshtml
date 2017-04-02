@@ -1,0 +1,66 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model SAN_PHAM
+@{
+    Layout = null;
+    int gia = ViewBag.Gia;
+}
+<script>
+    $('#a #myoption').change(function () {
+        var codesearch = $('#myoption option:selected').text().trim();
+
+        $.ajax({
+            url: '@Url.Action("SearchMau", "ChiTietSanPham")',
+            mtype: "POST",
+            datatype: "json",
+            data: {
+                codesearch: codesearch,
+                id: id
+            },
+            success: function (data) {
+                var st = parseInt(@gia);
+                $("#txtgia").text(st.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "đ");
+                $("#divsearchmau").html(data);
+               
+            }
+        });
+    });
+</script>
+<p class="pro_price" data-price="1200000" style="font-size:24px; font-weight: bold;color:red;" id="txtgia">@String.Format("{0:0,0}", ViewBag.Gia) ₫</p>
+<p><span style="font-size:13px; font-weight: bold;">Bảo hành: </span><span>@Model.CheDoBaoHanh</span></p>
+<div id="a">
+    <span style="font-size:13px; font-weight: bold;">
+        Màu sắc:
+    </span>
+    <select class="prodetail_rom_select" id="myoption">
+        @foreach (var item in (List<CHI_TIET_SAN_PHAM>)ViewBag.group)
+        {
+            if (ViewBag.activegroup == "")
+            {
+                <option>@item.Mau</option>
+            }
+            else
+            {
+                if (item.Mau == ViewBag.activegroup)
+                {
+                    <option selected>@item.Mau</option>
+                }
+                else
+                {
+                    <option>@item.Mau</option>
+                }
+            }
+        }
+
+
+    </select>
+</div>
+<div class="khuyenmai">
+    <div class="khuyenmai-trong">
+        @Html.Raw(Model.KhuyenMai)
+    </div>
+</div>
+<div class="v2_prodetail_action">
+    @*<a class="pro_shop_action" id="muahangonline" href="#">MUA HÀNG ONLINE</a>*@
+    <a class="pro_shop_action" href="/GioHang/AddItem?masanpham=@Model.MaSanPham&quantity=1&giasanpham=@ViewBag.Gia">MUA HÀNG ONLINE</a>
+    <a class="pro_order_action" href="@Url.Action("MuaTaiCuaHang","DatHang",new { @masanpham = Model.MaSanPham })">MUA TẠI CỬA HÀNG</a>
+</div>

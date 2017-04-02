@@ -64,19 +64,19 @@
 </div>
 
 <script>
+    
     function Them() {
-
-        $.ajax({
-            type: 'get',
-            data: {
-                id: 0,
-                page: 1
-            },
-            url: '@Url.Action("Edit", "QuanLyTaiKhoanAdmin")',
-            success: function (data) {
-                $("#div_edit").html(data);
-            }
-        });
+            $.ajax({
+                type: 'get',
+                data: {
+                    id: 0,
+                    page: 1
+                },
+                url: '@Url.Action("Edit", "QuanLyTaiKhoanAdmin")',
+                success: function (data) {
+                    $("#div_edit").html(data);
+                }
+            });     
     }
 
     $('#a #myoption').click(function () {

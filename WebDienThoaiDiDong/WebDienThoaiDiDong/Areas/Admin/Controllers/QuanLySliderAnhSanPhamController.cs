@@ -17,8 +17,16 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
         // GET: Admin/QuanLyHinhAnhSanPham
         public ActionResult Index()
         {
-            var result = db.SAN_PHAM.ToList();
-            return View(result);
+            if (Session["TenQuanTri"] != null && Session["MaQuanTri"] != null)
+            {
+                var result = db.SAN_PHAM.ToList();
+                return View(result);
+            }
+            else
+            {
+                return RedirectToAction("Index", "DangNhapAdmin");
+            }
+            
         }
         public ActionResult DanhSachAnhSanPhamTable(int page)
         {

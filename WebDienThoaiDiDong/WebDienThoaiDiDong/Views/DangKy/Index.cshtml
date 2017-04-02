@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="~/Scripts/moment.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<div class="container">
+    <div id="row">
+        <div class="breadcrumb" style="margin-top:1em;">
+            <span itemscope="itemscope" class="crumb_item">
+                <a itemprop="url" rel="up" class="crumb" href="TrangChu"><span itemprop="title">Trang chủ</span></a>
+                <span class="arrow"> » </span>
+            </span>
+            <span itemscope="itemscope" class="crumb_item">
+                <a itemprop="url" rel="up" class="crumb" href="DangKy"><span itemprop="title">Đăng ký</span></a>
+            </span>
+        </div>
+    </div>
+        <div class="clear"></div>
+            <div class="row">
+                <div class="panel-body col-md-12 col-sm-12 col-xs-12" >
+                    <h4 class="form_title" style="padding:10px; border-radius:4px; background:#008aca;text-align:center;">ĐĂNG KÝ THÀNH VIÊN</h4>
+                    @using (Html.BeginForm("DangKy", "DangKy", FormMethod.Post, new {  @class="form-inline" }))
+                    {
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12 " style="margin-top:2em;">
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <label>*Họ &tên:</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <input type="text" name="ho" style="width:100%;" class="form-control" id="txtFirstName" placeholder="Họ" required>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <input type="text" name="ten" style="width:100%;" class="form-control" id="txtLastName" placeholder="Tên" required>
+                            </div>
+                            <div class="col-md-4 col-sm-2 col-xs-6">
+                                
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12" style="margin-top:1em;">
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <label  class="birthday">*Ngày sinh:</label>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' name="ngaysinh" class="form-control" required/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12" style="margin-top:1em;">
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <label class="sex">*Giới tính:</label>
+                            </div>
+                            
+                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                <select name="gioitinh" id="sex" class="form-control" >
+                                    <option value="Nam">Nam</option>
+                                    <option value="Nữ">Nữ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12 " style="margin-top:2em;">
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <label>*Tên đăng nhập:</label>
+                            </div>
+                            
+                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                <input type="text" name="tendangnhap"  class="form-control" id="txtLastName" placeholder="Tên đăng nhập" required>
+                                <span style="color:red; font-size:12px;">@Session["ThongBao"]</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12 " style="margin-top:2em;">
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <label>*Mật khẩu:</label>
+                            </div>
+
+                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                <input type="password" name="matkhau" class="form-control" placeholder="Mật khẩu" id="password" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12 " style="margin-top:2em;">
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <label>*Nhập lại mật khẩu:</label>
+                            </div>
+
+                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" id="confirm_password" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12" style="margin-top:1em;">
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <label class="email">*Email:</label>
+                            </div>
+                            
+                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                <input type="email"  name="email" id="email" class="form-control" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12" style="margin-top:1em;">
+                            <div class="col-md-2 col-sm-2 col-xs-12 ">
+                                <label class="phone">*Di động:</label>
+                            </div>
+                            
+                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                <input type="text" name="phone" id="phone" class="form-control" placeholder="Di động">
+                            </div>
+                        </div> 
+                       
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12" style="margin-top:1em;">
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <label class="adress">*Địa chỉ:</label>
+                            </div>
+                            
+                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                <input type="text" name="address" class="form-control" id="address" placeholder="Địa chỉ">
+                            </div>
+                        </div>
+                        <div class="form-group center-block col-md-10 col-sm-10 col-xs-10 divdangky" style="margin-top:2em;">
+                            <button type="submit" class="dangky btn btn-primary center-block">ĐĂNG KÝ NGAY</button>
+                        </div><br>
+                    }
+                </div>
+            </div>
+        </div>
+<script>
+
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            format: 'MM/DD/YYYY'
+        });
+    });
+    var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Mật khẩu chưa chính xác");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>

@@ -22,27 +22,25 @@
             @Html.HiddenFor(n => n.IsDelete)
             @Html.Label("Tên tài khoản: ", new { @class = "control-label" })
             <div class="controls">
-                @Html.TextBoxFor(n => n.TenQuanTri, new { @class = "span8" })
+                @Html.TextBoxFor(n => n.TenQuanTri, new { @class = "span8"})
             </div>
+            <span id="error_TenTaiKhoan" style="color:red; margin-left:200px;"></span>
         </div>
         <div class="control-group">
             @Html.Label("Tên đăng nhập: ", new { @class = "control-label" })
             <div class="controls">
                 @Html.TextBoxFor(n => n.TenDangNhap, new { @class = "span8" })
             </div>
+            <span id="error_TenDangNhap" style="color:red; margin-left:200px;"></span>
         </div>
         <div class="control-group">
             @Html.Label("Mật khẩu: ", new { @class = "control-label" })
             <div class="controls">
                 @Html.TextBoxFor(n => n.MatKhau, new { @class = "span8",@type="password" })
             </div>
+            <span id="error_MatKhau" style="color:red; margin-left:200px;"></span>
         </div>
-        <div class="control-group">
-            @Html.Label("Quyền truy cập: ", new { @class = "control-label" })
-            <div class="controls">
-                @Html.TextBoxFor(n => n.QuyenTruyCap, new { @class = "span8",@value="1",@disabled = "" })
-            </div>
-        </div>
+
         <div>
             <button style="margin:7px;" type="button" class="btn btn-success" onclick="luu(@ViewBag.page)">Lưu</button>
             <button style="margin:0px 7px;" type="button" class="btn btn-danger" onclick="dong()">Đóng</button>

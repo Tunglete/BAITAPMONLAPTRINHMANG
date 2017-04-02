@@ -19,8 +19,8 @@
         <thead>
             <tr class="success">
                 <th style="background:#28B779; color:white;font-size:13px;">Tên sản phẩm</th>
-                <th style="background:#28B779; color:white;font-size:13px;">Tiêu đề sản phẩm </th>
                 <th style="background:#28B779; color:white;font-size:13px;">Giá sản phẩm</th>
+                <th style="background:#28B779; color:white;font-size:13px;">Tiêu đề sản phẩm </th>
                 <th style="background:#28B779; color:white;font-size:13px;">Màn hình</th>
                 <th style="background:#28B779; color:white;font-size:13px;">Cpu</th>
                 <th style="background:#28B779; color:white;font-size:13px;">Ram</th>
@@ -40,8 +40,8 @@
             {
                 <tr >
                     <th style="font-size:11px;width:50px;">@item.TenSanPham</th>
+                    <th style="color:red;font-size:11px;">@String.Format("{0:0,0 vnđ}", item.GiaSanPham)</th>
                     <th style="font-size:11px;">@item.TieuDeSanPham</th>
-                    <th style="color:red;font-size:11px;">@String.Format("{0:0,0 vnđ}", @item.GiaSanPham)</th>
                     <th style="font-size:11px;">@item.ManHinh</th>
                     <th style="font-size:11px;">@item.Cpu</th>
                     <th style="font-size:11px;">@item.Ram</th>
@@ -53,10 +53,11 @@
                     <th style="font-size:11px;">@item.Blutooth</th>
                     <th style="font-size:11px;">@item.DungLuongPin</th>
                     <th style="font-size:11px;width:30px;height:30px;"><img style="" src="~/Images/ImagesSliderProduct/@item.AnhDaiDien"></th>
-                    <th style="font-size:11px;width:350px;padding-top:10px;">
-                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px; margin-bottom:3px;border-radius:4px;" type="button" class="btn-xs btn btn-primary " onclick="Chitiet(@item.MaSanPham)" data-toggle="modal" data-target="#myModal">Chi tiết</button>
-                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px; margin-bottom:3px;border-radius:4px;" type="button" class="btn-xs btn btn-info " onclick="Edit(@item.MaSanPham,@Model.page)">Sửa</button>
-                        <button style="font-size: 12px; margin-top:-3px; border-radius:3px;margin-bottom:3px;border-radius:4px;" type="button" class="btn btn-danger" onclick="Delete()">Xóa</button>
+                    <th style="font-size:11px;width:300px;padding-top:10px;">
+                        <button class="btn btn-info" style="font-size: 12px;  border-radius:3px; margin-bottom:3px;border-radius:4px;" onclick="mausac(@item.MaSanPham)" data-toggle="modal" data-target="#myModal_mausac">Thêm giá,màu sắc</button>
+                        <button style="font-size: 12px;  border-radius:3px; margin-bottom:3px;border-radius:4px;" type="button" class="btn-xs btn btn-primary " onclick="Chitiet(@item.MaSanPham)" data-toggle="modal" data-target="#myModal">Chi tiết</button>
+                        <button style="font-size: 12px; margin-top:3px; border-radius:3px; margin-bottom:3px;border-radius:4px;" type="button" class="btn-xs btn btn-info " onclick="Edit(@item.MaSanPham,@Model.page)">Sửa</button>
+                        <button style="font-size: 12px; margin-top:3px; border-radius:3px;margin-bottom:3px;border-radius:4px;" type="button" class="btn btn-danger" onclick="Delete()">Xóa</button>
                     </th>
 
                 </tr>
@@ -102,5 +103,39 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!--phần Edit-->
+<!--Modal màu sắc và giá sản phẩm-->
+<div class="modal fade " id="myModal_mausac" style="width:initial;left:70%;transform:translateX(-40%);">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="modalcontent_mausac">
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <div class="widget-box" id="div_edit">
 </div>
+<script>
+    function mausac(id) {
+        $.ajax({
+            type: 'post',
+            url: '@Url.Action("MauSac","QuanLySanPham")',
+            data: {
+                id: id
+            },
+            success: function (data) {
+                $("#modalcontent_mausac").html(data);
+                $.ajax({
+                    url: '@Url.Action("MauSacTable","QuanLySanPham")',
+                    mtype: "POST",
+                    data: {
+                        id:id
+                    },
+                    success: function (data) {
+                        $("#table_mausac").html(data);
+
+                    }
+                });
+
+            }
+        });
+    }
+</script>

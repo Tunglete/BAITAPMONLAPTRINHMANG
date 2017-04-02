@@ -6,7 +6,13 @@
 <script>
         var urlSave ='@Url.Action("Save","QuanLyChiTietDanhMuc")';
         var urlDsctdmtable = '@Url.Action("DanhSachChiTietDanhMucTable", "QuanLyChiTietDanhMuc")';
-
+    $("#form_edit").validate({
+        rules: {
+            TenHang: {
+                required: true,
+            }
+        }, messages:{TenHang: "*Tên hãng không được bỏ trống*"}
+    });
 </script>
 <div class="widget-title">
     <span class="icon"> <i class="icon-align-justify"></i> </span>
@@ -56,3 +62,9 @@
     </form>
 
 </div>
+<style>
+    .error{
+        color:red;
+        font-size:11px;
+    }
+</style>

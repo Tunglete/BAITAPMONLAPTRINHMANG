@@ -90,6 +90,7 @@
     <EntitySetMapping Name="SAN_PHAM">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.SAN_PHAM">
         <MappingFragment StoreEntitySet="SAN_PHAM">
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
           <ScalarProperty Name="Video" ColumnName="Video" />
           <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
           <ScalarProperty Name="MaCTDM" ColumnName="MaCTDM" />
@@ -158,6 +159,17 @@
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHI_TIET_SAN_PHAM">
+      <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.CHI_TIET_SAN_PHAM">
+        <MappingFragment StoreEntitySet="CHI_TIET_SAN_PHAM">
+          <ScalarProperty Name="Isdeleted" ColumnName="Isdeleted" />
+          <ScalarProperty Name="Gia" ColumnName="Gia" />
+          <ScalarProperty Name="Mau" ColumnName="Mau" />
+          <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+          <ScalarProperty Name="MaCTSP" ColumnName="MaCTSP" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

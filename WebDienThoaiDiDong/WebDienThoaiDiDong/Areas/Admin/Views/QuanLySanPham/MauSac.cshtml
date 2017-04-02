@@ -1,0 +1,47 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model CHI_TIET_SAN_PHAM
+@{
+    Layout = null;
+}
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">Tên sản phẩm: <span style="color:dodgerblue">@ViewBag.Tensanpham</span></h4>
+</div>
+<div class="modal-body" id="modalbody">
+    <div class="widget-content nopadding" id="table_mausac">
+        
+    </div>
+    <div>
+        <form id="frm_mausac">
+            <button type="button" style="border-radius:3px; margin-top:5px;" class="btn btn-primary" onclick="reset()">Thêm</button>
+            <input id="mactsp" name="mactsp" value="0" style="display:none;" />
+           <input  name="masanpham" value="@ViewBag.Masanpham" style="display:none;"/>
+            @Html.Label("Màu sắc")
+            @Html.TextBoxFor(n => n.Mau)
+            @Html.Label("Giá")
+            @Html.TextBoxFor(n => n.Gia)<br />
+            <button type="button" style="border-radius:3px;" class="btn btn-primary" onclick="them()">Lưu</button>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+</div>
+<script>
+    function reset() {
+        $("#Mau").val("");
+        $("#Gia").val("");
+        $("#mactsp").val(0);
+    }
+    function them() {
+        $.ajax({
+            url: '@Url.Action("LuuMau","QuanLySanPham")',
+            mtype: "POST",
+            data: $("#frm_mausac").serialize(),
+            success: function (data) {
+                $("#table_mausac").html(data);
+
+            }
+        });
+    }
+</script>

@@ -1,42 +1,88 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/css/css.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/style1.css" rel="stylesheet" />
+    <link href="~/Content/css/style_ghichusanphammoi.css" rel="stylesheet" />
+    <link href="~/Content/css/style_ghichudienthoai.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.11.3.min.js"></script>  
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/jssor.slider.mini.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/js/disable_radio.js"></script>
+    <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+    <header>
+        <div class="header1">
+            @Html.Partial("~/Views/DangNhap/DangNhapPartial.cshtml")
+        </div>
+    </header>
+    <nav class="navbar-inverse">
+        <div class="header2">
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-12">
+                    <a href="@Url.Action("Index", "TrangChu")"><img style="margin-top:1.6em;margin-left:0.2em;" src="~/Content/HinhAnh/logo-maxmobile.png" /></a>
+                </div>
+                <div class="col-md-2 col-sm-5 col-xs-8">
+                    <div class="timkiem">
+                        <form class="frm-timkiem" action="" id="cse-search-box">
+                            <input style="width:155px;float:left;margin-right:0px;border:none;" type="text" class="form-control input-xs" value="" placeholder="Bạn muốn tìm... " />
+                            <input style="height:34px;width:35px;margin-left:-8px; border:none;border-radius:5px;background: url(../../Content/HinhAnh/sprite.png) no-repeat 0px 4px #fff;" type="submit" name="sa" value="" class="input_submit btn_search">
+                        </form>
+                    </div>
+                </div>
+                <div style="margin-top:0.4em;" class="col-md-1 col-sm-3 col-xs-4">
+                    @{Html.RenderAction("HeaderCart", "TrangChu"); }
+                </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                @Html.Action("Menu", "TrangChu")
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
+        
+    </nav>
+    @RenderBody()
+        <hr>
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <div class="container">
+                <div class="thongtin-trong row">
+                    <div class="col-md-3 col-sm-3">
+                        <p>ĐỊA CHỈ CỬA HÀNG</p>
+                        <p>Tổng đài dịch vụ:</p><span>1900.65.58</span>
+                        <p>Số 46, ngõ 66, Hồ Tùng Mậu</p>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <a href=""><p>QUY ĐỊNH & CHÍNH SÁCH</p></a>
+                        <a href=""><p>Giới thiệu công ty</p></a>
+                        <a href=""><p>Chính sách bảo hành</p></a>
+                        <a href=""><p>Chính sách đổi trả</p></a>
+                        <a href=""><p>Đặt hàng online</p></a>
+                        <a href=""><p>Giao hàng và thanh toán</p></a>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <p>CÓ THẮC MẮC</p>
+                        <p>Tổng đài dịch vụ</p><span>1900.65.58</span>
+                        <p>Phòng kinh doanh:</p>
+                        <p>TP Hà Nội:</p><span>0166.987.3695</span>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <p>NHẬN THÔNG TIN</p>
+                        <button class="btn">Facebook</button>
+                        <button class="btn">Gmail</button>
+                    </div>
+                </div>
+            </div>
         </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

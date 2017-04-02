@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "MuaHangOnline";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/css/dathang.css" rel="stylesheet" />
+<div class="container" style="margin-top:10px">
+        <div class="row">
+            <div class="breadcrumb" style="margin-bottom: 20px;">
+                <span itemscope="itemscope" class="crumb_item">
+                    <a itemprop="url" rel="up" class="crumb" href="index.html"><span itemprop="title">Trang chủ</span></a>
+                    <span class="arrow"> » </span>
+                </span>
+                <span itemscope="itemscope" class="crumb_item">
+                    <a itemprop="url" rel="up" class="crumb" href="dathang.html"><span itemprop="title">Đặt hàng</span></a>
+                </span>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <button class="btn btn-primary">Mua thêm sản phẩm khác</button>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <button style="float: right;" class="btn btn-primary">Giỏ hàng của bạn</button>
+            </div>
+        </div>
+        <div class="row" id="divListviewsanpham">
+            <!--phần div list sản phẩm đã chọn-->
+        </div>
+        
+    
+    <hr>
+</div>
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            url:'@Url.Action("ListViewSanPham","DatHang")',
+            type: 'post',
+            success: function (data) {
+                $("#divListviewsanpham").html(data);
+            }
+
+        });
+        $('#form_register').validate({
+            rules: {
+                name: "required",
+                phone: {
+                    required: true,
+                    minlength: 10,
+                    number: true,
+                },
+                city: { required: true },
+                address: "required",
+            },
+            messages: {
+                name: "Vui lòng nhập họ tên",
+                phone: {
+                    required: "Vui lòng nhập số điện thoại",
+                    minlength: "Số máy quý khách vừa nhập là số không có thực",
+                    number: "Số máy quý khách vừa nhập là số không có thực",
+                },
+                city: "Vui lòng chọn",
+                address: "Vui lòng nhập địa chỉ",
+
+            }
+        });
+    });
+</script>

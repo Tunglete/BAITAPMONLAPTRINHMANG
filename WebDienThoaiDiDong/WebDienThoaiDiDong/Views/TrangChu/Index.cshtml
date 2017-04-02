@@ -1,0 +1,215 @@
+﻿@using WebDienThoaiDiDong.Models;
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--Phần slider-->
+<div class="container">
+    <div class="slider-tincongnghe row">
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div id="slideranh">
+                    <div class="row">
+                        <div class="carousel-inner" role="listbox">
+                            @{int count = 0; }
+                            @foreach (var item in (List<SLIDE_TRANG_CHU>)ViewBag.lstSlide)
+                            {
+
+                                count++;
+                                if (count == 1)
+                                {
+                                    <div class="item active">
+                                        <img class="img-slider" src="~/Images/ImagesSlideHome/@item.HinhAnh" alt="noel">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="item">
+                                        <img class="img-slider" src="~/Images/ImagesSlideHome/@item.HinhAnh" alt="Chania">
+                                    </div>
+                                }
+
+                            }
+                            
+                        </div>
+                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="margin-left: inherit;">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="margin-left: inherit;"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="margin-right: -10px;">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="margin-right: inherit;"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div> <!--end div slider-->
+        <div id="tintuc" class="tintuc col-md-4 ">
+            <div class="tincongnghe1">
+                <div class="col-md-8">
+                    <a href=""><span>TIN CÔNG NGHỆ</span></a>
+                </div>
+                <div class="col-md-4">
+                    <a href=""><span>Xem thêm</span></a>
+                </div>
+            </div>
+            @foreach (var item in (List<TIN_TUC>)ViewBag.lstTincongnghe)
+            {
+                <div class="tincongnghe">
+                    <div class="col-md-8">
+                        <a href=""><span>@Html.Raw(item.TenTinTuc)</span></a>
+                        <p class="timetintuc">@item.NgayTao</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a href=""><img class="anhtincongnghe" src="~/Images/ImagesNews/@item.HinhAnh"></a>
+                    </div>
+                </div>
+            }
+            
+        </div>
+    </div>
+</div>
+<!--start div san pham moi-->
+<div class="container">
+    <div class="title row">
+        <div class="title-sanphammoi col-md-8 col-sm-8 col-xs-8">
+            <a href="">SẢN PHẨM MỚI</a>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <a href=""><span>Xem thêm > </span></a>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in (List<SAN_PHAM>)ViewBag.lstSanphammoi)
+        {
+            <div class="sanphammoi col-md-4 col-sm-4 col-xs-4">
+                <div class="main">
+                    <div class="view view-first">
+                        <a href="@Url.Action("Index","ChiTietSanPham",new { @tensanpham = item.TenSanPham,@id=item.MaSanPham})">
+                            <div class="sanphammoi-trong">
+                                <img class="img-sanphammoi" src="~/Images/ImagesSliderProduct/@item.AnhDaiDien">
+                                @if (item.SoLuongTrongKho > 0)
+                                {
+                                    <p class="trangthai">Còn hàng</p>
+                                }
+                                else
+                                {
+                                    <p class="trangthai" style="color:red;">Hết hàng</p>
+                                }
+
+                                <p class="tensanpham">@item.TenSanPham</p>
+                                <p class="gia">@String.Format("{0:0,0 đ}", item.GiaSanPham)  </p>
+                            </div>
+
+                            <div class="mask">
+                                <h2>@item.TenSanPham</h2>
+                                <p>Màn hình: @item.ManHinh</p>
+                                <p>HĐH: @item.HeDieuHanh</p>
+                                <p>CPU: @item.Cpu</p>
+                                <p>RAM: @item.Ram ,Thẻ Nhớ: @item.TheNhoNgoai</p>
+                                <p>Camera: @item.CameraChinh, Selfie: @item.CameraPhu</p>
+                                <p>PIN: @item.DungLuongPin</p>
+                                <a href="@Url.Action("Index","ChiTietSanPham",new { @tensanpham = item.TenSanPham,@id=item.MaSanPham})" class="info">Xem chi tiết</a>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div><!--end div san pham moi-->
+<!--start div san pham tieu bieu-->
+<div class="container">
+    <div class="title row">
+        <div class="title-sanphamtieubieu col-md-8 col-sm-8 col-xs-8">
+            <a href="">SẢN PHẨM TIÊU BIỂU</a>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <a href=""><span>Xem thêm > </span></a>
+        </div>
+    </div>
+    <div class=" row">
+    @foreach (var item in (List<SAN_PHAM>)ViewBag.lstSanphamtieubieu)
+    {
+        <div class="sanphamtieubieu col-md-2 col-sm-3 col-xs-6">
+            <div class="main">
+                <div class="view_dienthoai view-first">
+                    <a href="@Url.Action("Index","ChiTietSanPham",new { @tensanpham = item.TenSanPham,@id=item.MaSanPham})">
+                        <div class="sanphamtieubieu-trong">
+                            <img class="img-sanphamtieubieu" src="~/Images/ImagesSliderProduct/@item.AnhDaiDien">
+                            @if (item.SoLuongTrongKho > 0)
+                            {
+                                <p class="trangthai">Còn hàng</p>
+                            }
+                            else
+                            {
+                                <p class="trangthai" style="color:red;">Hết hàng</p>
+                            }
+                            <p class="tensanpham">@item.TenSanPham</p>
+                            <p class="gia">@String.Format("{0:0,0 đ}", item.GiaSanPham)  </p>
+                        </div>
+
+                        <div class="mask">
+                            <h2>@item.TenSanPham</h2>
+                            <p>Màn hình: @item.ManHinh</p>
+                            <p>HĐH: @item.HeDieuHanh</p>
+                            <p>CPU: @item.Cpu</p>
+                            <p>RAM: @item.Ram ,Thẻ Nhớ: @item.TheNhoNgoai</p>
+                            <p>Camera: @item.CameraChinh, Selfie: @item.CameraPhu</p>
+                            <p>PIN: @item.DungLuongPin</p>
+                            <a href="@Url.Action("Index","ChiTietSanPham",new { @tensanpham = item.TenSanPham,@id=item.MaSanPham})" class="info">Xem chi tiết</a>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+    </div><!--end div san pham ban chay-->
+    <!--Div phụ kiện-->
+    <div class="container">
+        <div class="title-phukien row">
+            <div class="title-sanphamtieubieu col-md-8 col-sm-8 col-xs-8">
+                <a href="">PHỤ KIỆN</a>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <a href=""><span>Xem thêm > </span></a>
+            </div>
+        </div>
+        <div class="row"> 
+            @foreach (var item in (List<SAN_PHAM>)ViewBag.lstPhukien)
+            {
+                <div class="phukien col-md-3 col-sm-6 col-xs-6">
+                    <a href="@Url.Action("Index","ChiTietSanPham",new { @tensanpham = item.TenSanPham,@id=item.MaSanPham})">
+                        <div class="phukien-trong">
+                            <img class="img-phukien" src="~/Images/ImagesSliderProduct/@item.AnhDaiDien">
+                            @if (item.SoLuongTrongKho > 0)
+                            {
+                                <p class="trangthai">Còn hàng</p>
+                            }
+                            else
+                            {
+                                <p class="trangthai" style="color:red;">Hết hàng</p>
+                            }
+                            <p class="tensanpham">@item.TenSanPham</p>
+                            <p class="gia">@String.Format("{0:0,0 đ}", item.GiaSanPham)  </p>
+                        </div>
+                    </a>
+                </div>
+            }
+            
+
+        </div>
+
+    </div> <!--end div phụ kiện-->

@@ -25,6 +25,8 @@
         <AssociationConnector Association="QuanLyBanDienThoaiModel.FK_TIN_TUC_SAN_PHAM_SAN_PHAM" ManuallyRouted="false" >
         </AssociationConnector>
         <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.SLIDE_TRANG_CHU" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QuanLyBanDienThoaiModel.CHI_TIET_SAN_PHAM" Width="1.5" PointX="8.375" PointY="11.375" />
+        <AssociationConnector Association="QuanLyBanDienThoaiModel.FK_CHI_TIET_SAN_PHAM_SAN_PHAM" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

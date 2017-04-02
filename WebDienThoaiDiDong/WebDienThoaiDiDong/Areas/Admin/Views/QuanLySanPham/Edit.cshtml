@@ -3,7 +3,7 @@
 @{
     Layout = null;
 }
-
+<script src="~/Scripts/jquery.validate.js"></script>
 <script>
         var urlSave ='@Url.Action("Save","QuanLySanPham")';
     var urltable = '@Url.Action("DanhSachSanPhamTable", "QuanLySanPham")';
@@ -15,17 +15,98 @@
         jqteStatus = jqteStatus ? false : true;
         $('.jqte-test').jqte({ "status": jqteStatus })
     });
- 
+    $("#upload").validate({
+        rules: {
+            TenSanPham: {
+                required: true
+            },
+            TieuDeSanPham: {
+                required: true
+            },
+            GiaSanPham: {
+                required: true,
+                number: true
+            },
+            ManHinh: {
+                required: true
+            },
+            Cpu: {
+                required: true
+            },
+            Ram: {
+                required: true
+            },
+            HeDieuHanh: {
+                required: true
+            },
+            CameraChinh: {
+                required: true
+            },
+            CameraPhu: {
+                required: true
+            },
+            BoNhoTrong: {
+                required: true
+            },
+            TheNhoNgoai: {
+                required: true
+            },
+            Blutooth: {
+                required: true
+            },
+            DungLuongPin: {
+                required: true
+            },
+            SoLuongTrongKho: {
+                required: true,
+                number:true
+            }, GiamGia: {
+                required: true,
+                number: true
+            },
+            CheDoBaoHanh: {
+                required: true
+            }
+
+        }, messages: {
+            TenSanPham: "*Tên sản phẩm không được bỏ trống*",
+            TieuDeSanPham: "*Tiêu đề sản phẩm không được bỏ trống*" ,
+            GiaSanPham: {
+                        required: "*Giá sản phẩm không được bỏ trống*",
+                         number: "*Giá sản phẩm phải là số*"
+                          },
+            ManHinh: "* Màn hình không được bỏ trống*" ,
+            Cpu: "*CPU sản phẩm không được bỏ trống*" ,
+            Ram: "*Ram không được bỏ trống*" ,
+            HeDieuHanh: "*Hệ điều hành không được bỏ trống*",
+            CameraChinh: "*Camera chính không được bỏ trống*",
+            CameraPhu: "*Camera phụ không được bỏ trống*",
+            BoNhoTrong: "*Bộ nhớ trong không được bỏ trống*",
+            TheNhoNgoai: "*Thẻ nhớ ngoài không được bỏ trống*",
+            Blutooth: "*Blutooth không được bỏ trống*",
+            DungLuongPin: "*Dung lượng pin không được bỏ trống*",
+            SoLuongTrongKho: {
+                    required: "*Số lượng sản phẩm trong kho không được bỏ trống*",
+                    number: "*Số lượng sản phẩm trong kho phải là số*"
+                },
+            GiamGia: {
+                required: "*Giá giảm cho sản phẩm trong kho không được bỏ trống*",
+                number: "*Giá giảm cho sản phẩm trong kho phải là số*"
+            },
+            CheDoBaoHanh: "*Chế độ bảo hành không được bỏ trống*"
+        }
+    });
 </script>
 <div class="widget-title">
     <span class="icon"> <i class="icon-align-justify"></i> </span>
-    <h5>Sửa đổi thông tin sản phẩm</h5>
+    <h5>Thông tin sản phẩm </h5>
 </div>
 <div class="widget-content nopadding">
     <form id="upload" class="form-horizontal" method="post" action="/QuanLySanPham/UploadFile" enctype="multipart/form-data">
         <div class="control-group">
             @Html.HiddenFor(n => n.MaSanPham)
             @Html.HiddenFor(n => n.IsDeleted)
+            @Html.HiddenFor(n => n.NgayTao)
             @Html.Label("Tên sản phẩm: ", new { @class = "control-label" })
             <div class="controls">
                 @Html.TextBoxFor(n => n.TenSanPham ,new { @class = "span8" })
@@ -75,8 +156,8 @@
             @Html.Label("Giá sản phẩm: ", new { @class = "control-label" })
             <div class="controls">
                 <div class="input-append">
-                    @Html.TextBoxFor(n => n.GiaSanPham, new { @class = "span8" })
-                    <span class="add-on">vnđ</span>
+                    @Html.TextBoxFor(n => n.GiaSanPham, new { @class = "span8", @placeholder = "000 vnđ" })
+                    
                 </div>
             </div>
         </div>
@@ -138,6 +219,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="control-group">
             @Html.Label("Dung lượng pin: ", new { @class = "control-label" })
             <div class="controls">
@@ -148,7 +230,7 @@
         <div class="form-group" id="uploadulli">
             <div id="drop" style="margin-left:450px; margin-top:2em; margin-bottom:2em;">
                 <a style="padding:20px; text-decoration:none; color:#fff; background:#057ff5;cursor:pointer;">Chọn Ảnh đại diện</a>
-                <input type="file" id="" style="display:none;" />
+                <input type="file" id="" style="display:none;" name="ip"/>
             </div>
 
             <ul>
@@ -165,8 +247,8 @@
             @Html.Label("Giảm giá: ", new { @class = "control-label" })
             <div class="controls">
                 <div class="input-append">
-                    @Html.TextBoxFor(n => n.GiamGia, new { @class = "span8" })
-                    <span class="add-on">vnđ</span>
+                    @Html.TextBoxFor(n => n.GiamGia, new { @class = "span8" ,@placeholder="000 vnđ"})
+                    
                 </div>
             </div>
         </div>
@@ -196,6 +278,8 @@
     </form>
 
 </div>
+
+
 <style>
     .jqte{
         margin-top:5px;
@@ -207,33 +291,13 @@
         margin-left:450px;
         list-style-type: decimal;
     }
+    .error {
+        color: red;
+        font-size: 11px;
+    }
 
 </style>
-<script>function luu(page) {
-    var selectCTDM = $("#selectCTDM").val();
-    $.ajax({
-        type: 'post',
-        url: urlSave,
-        data: $("#upload").serialize(),
-        success: function (response) {
-            if (response == 'True') {
-                $.ajax({
-                    type: 'post',
-                    url: urltable,
-                    data: {
-                        page: page
-                    },
-                    success: function (data) {
-                        $("#table").html("");
-                        $("#table").html(data);
-                    }
-                });
-            }
 
-        }
-    });
-}</script>
-<script src="~/Scripts/jquery-3.1.0.min.js"></script>
 <!-- JavaScript Includes -->
 <script src="~/Scripts/jquery.knob.js"></script>
 <!-- JavaScript Includes -->
@@ -245,3 +309,31 @@
 <!-- Main JavaScript file -->
 <script src="~/Scripts/script.js"></script>
 <!-- Main JavaScript file -->
+<script>function luu(page) {
+    debugger;
+    if ($("#upload").valid()) {
+        $.ajax({
+            type: 'post',
+            url: urlSave,
+            data: $("#upload").serialize(),
+            success: function (response) {
+                if (response == 'True') {
+                    $.ajax({
+                        type: 'post',
+                        url: urltable,
+                        data: {
+                            page: page
+                        },
+                        success: function (data) {
+                            $("#table").html("");
+                            $("#table").html(data);
+                        }
+                    });
+                }
+
+            }
+        });
+    }
+}
+    
+</script>

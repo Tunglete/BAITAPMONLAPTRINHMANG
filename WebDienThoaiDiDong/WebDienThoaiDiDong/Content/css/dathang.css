@@ -1,0 +1,9 @@
+﻿@media screen and (max-width: 750px) {
+#sdt{
+    margin-top:1em;
+}
+}
+.error{
+    color:red;
+    font-size:12px;
+}

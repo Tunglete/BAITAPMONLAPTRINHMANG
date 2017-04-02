@@ -1,0 +1,55 @@
+﻿@using WebDienThoaiDiDong.Models;
+@{
+    Layout = null;
+}
+<div class=" row">
+    @{ int count = 0;}
+    @foreach (var item in (List<SAN_PHAM>)ViewBag.lstMayTinhBang)
+    {
+    <div class="sanphamtieubieu col-md-2 col-sm-3 col-xs-6">
+        <div class="main">
+            <div class="view_dienthoai view-first">
+                <a href="@Url.Action("Index","ChiTietSanPham",new { @tensanpham = item.TenSanPham,@id=item.MaSanPham})">
+                    <div class="sanphamtieubieu-trong">
+                        <img class="img-sanphamtieubieu" src="~/Images/ImagesSliderProduct/@item.AnhDaiDien">
+                        @if (item.SoLuongTrongKho > 0)
+                        {
+                            <p class="trangthai">Còn hàng</p>
+                        }
+                        else
+                        {
+                            <p class="trangthai" style="color:red;">Hết hàng</p>
+                        }
+                        <p class="tensanpham">@item.TenSanPham</p>
+                        <p class="gia">@String.Format("{0:0,0 đ}", item.GiaSanPham)  </p>
+                    </div>
+
+                    <div class="mask">
+                        <h2>@item.TenSanPham</h2>
+                        <p>Màn hình: @item.ManHinh</p>
+                        <p>HĐH: @item.HeDieuHanh</p>
+                        <p>CPU: @item.Cpu</p>
+                        <p>RAM: @item.Ram ,Thẻ Nhớ: @item.TheNhoNgoai</p>
+                        <p>Camera: @item.CameraChinh, Selfie: @item.CameraPhu</p>
+                        <p>PIN: @item.DungLuongPin</p>
+                        <a href="@Url.Action("Index","ChiTietSanPham",new { @tensanpham = item.TenSanPham,@id=item.MaSanPham})" class="info">Xem chi tiết</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    }
+@if (ViewBag.countSpconlai != 0)
+{
+    <div class="xemthem row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <a type="button" class="btn btn-default btn-md" onclick="xemthem(@count)">
+                <span> Xem thêm @ViewBag.countSpconlai máy tính bảng </span>
+                <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+}
+
+</div>

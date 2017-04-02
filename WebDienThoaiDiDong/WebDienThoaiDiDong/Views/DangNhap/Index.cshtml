@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Phần đăng nhập -->
+<link href="~/Content/css/dangnhap.css" rel="stylesheet" />
+<script>
+    var urlDangNhap = '@Url.Action("Index","DangNhap")';
+</script>
+<div class="container">
+    <div id="row">
+        <div class="breadcrumb" style="margin-top:1em;">
+            <span itemscope="itemscope" class="crumb_item">
+                <a itemprop="url" rel="up" class="crumb" href="TrangChu"><span itemprop="title">Trang chủ</span></a>
+                <span class="arrow"> » </span>
+            </span>
+            <span itemscope="itemscope" class="crumb_item">
+                <a itemprop="url" rel="up" class="crumb" href="DangNhap"><span itemprop="title">Đăng nhập</span></a>
+            </span>
+        </div>
+    </div>
+    <br>
+    <div class="row text-center" style="padding: 0px 10px;">
+        <h4>Thông tin khách hàng</h4>
+        <div class="col-sm-offset-3 col-sm-6">
+            @using (Html.BeginForm("DangNhap", "DangNhap", FormMethod.Post,new { @class= "form-horizontal" }))
+            {
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="username">Tên đăng nhập:</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" id="username" name="name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="pwd">Mật khẩu:</label>
+                    <div class="col-md-9">
+                        <input type="password" class="form-control" id="pwd" name="pass">
+                    </div>
+                    
+                </div>
+                <span style="color:red;">@ViewBag.ThongBao</span>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                        <a href="#"><u>Quên mật khẩu ?</u></a>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-sm-offset-3">
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/DangNhap/dangnhap.js"></script>

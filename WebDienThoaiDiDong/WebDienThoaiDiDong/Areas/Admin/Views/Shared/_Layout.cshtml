@@ -36,11 +36,11 @@
                 <ul class="dropdown-menu">
                     <li><a href="#"><i class="icon-user"></i> Thông tin</a></li>
                     <li class="divider"></li>
-                    <li><a href="login.html"><i class="icon-key"></i> Đăng xuất</a></li>
+                    <li><a href="" onclick="logout()"><i class="icon-key" ></i> Đăng xuất</a></li>
                 </ul>
             </li>
             <li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Cài đặt</span></a></li>
-            <li class=""><a title="" href="#"><i class="icon icon-share-alt"></i> <span class="text">Đăng xuất</span></a></li>
+            <li class=""><a title="" href="" onclick="logout()"><i class="icon icon-share-alt" ></i> <span class="text">Đăng xuất</span></a></li>
         </ul>
     </div>
     <!--close-top-Header-menu-->
@@ -67,7 +67,7 @@
                     <li><a href="QuanLySanPham">Sản phẩm</a></li>
                     <li><a href="QuanLyDanhMuc">Danh mục sản phẩm</a></li>
                     <li><a href="QuanLyChiTietDanhMuc">Chi tiết danh mục</a></li>
-                    <li><a href="QuanLySliderAnhSanPham">Hình ảnh sản phẩm</a></li>
+                    <li><a href="QuanLySliderAnhSanPham">Slide ảnh sản phẩm</a></li>
                 </ul>
             </li>
             <li class="submenu">
@@ -165,7 +165,18 @@
                 document.gomenu.selector.selectedIndex = 2;
             }
             
+            function logout() {
+                $.ajax({
+                    url: '@Url.Action("DangXuat","Home")',
+                    mtype: "POST",
+                    datatype: "json",
+                    success: function (response) {
+                        
+                    }
+                });
+            }
         </script>
+
 </body>
 </html>
 

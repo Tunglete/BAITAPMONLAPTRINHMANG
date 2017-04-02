@@ -14,7 +14,14 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
         // GET: Admin/QuanLyDanhMuc
         public ActionResult Index()
         {
-            return View();
+            if (Session["TenQuanTri"] != null && Session["MaQuanTri"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "DangNhapAdmin");
+            }
         }
         public ActionResult DanhSachDanhMucTable(int page)
         {

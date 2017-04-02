@@ -16,8 +16,16 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
         // GET: Admin/QuanLySanPham
         public ActionResult Index()
         {
-            var result = db.SAN_PHAM.ToList();
-            return View(result);
+            if (Session["TenQuanTri"] != null && Session["MaQuanTri"] != null)
+            {
+                var result = db.SAN_PHAM.Where(n => n.IsDeleted == false).ToList();
+                return View(result);
+            }
+            else
+            {
+                return RedirectToAction("Index", "DangNhapAdmin");
+            }
+            
         }
         public ActionResult DanhSachSanPhamTable(int page)
         {
@@ -35,7 +43,7 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
             }
             var start = row * (page - 1);
 
-            var result = db.SAN_PHAM.Where(n => n.IsDeleted == false).OrderBy(n => n.TenSanPham).Skip(start).Take(row).ToList();
+            var result = db.SAN_PHAM.Where(n => n.IsDeleted == false).OrderByDescending(n => n.MaSanPham).Skip(start).Take(row).ToList();
             PagingQuanLySanPham model = new PagingQuanLySanPham();
             model.totalpage = totalpages;
             model.record = count;
@@ -51,7 +59,8 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
         }
         public void UploadFile()
         {
-            Session["fileUpload"] = Request.Files[0];
+            
+             Session["fileUpload"] = Request.Files[0];    
         }
         public ActionResult Edit(int id, int page)
         {
@@ -155,6 +164,7 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
                             model.KhuyenMai = sanpham.KhuyenMai;
                             model.AnhDaiDien = fileUpload.FileName;
                             model.Video = sanpham.Video;
+                            model.NgayTao = sanpham.NgayTao;
                             model.IsDeleted = sanpham.IsDeleted;
                             db.SaveChanges();
                         }
@@ -180,6 +190,7 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
                         model.CheDoBaoHanh = sanpham.CheDoBaoHanh;
                         model.KhuyenMai = sanpham.KhuyenMai;
                         model.Video = sanpham.Video;
+                        model.NgayTao = sanpham.NgayTao;
                         model.IsDeleted = sanpham.IsDeleted;
                         db.SaveChanges();
                     }
@@ -216,7 +227,8 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
                             model2.KhuyenMai = sanpham.KhuyenMai;
                             model2.AnhDaiDien = fileUpload.FileName;
                             model2.Video = sanpham.Video;
-                            model2.IsDeleted = sanpham.IsDeleted;
+                            model2.NgayTao = DateTime.Now;
+                            model2.IsDeleted = false;
                             db.SAN_PHAM.Add(model2);
                             db.SaveChanges();
                         }
@@ -231,6 +243,44 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
                 return false;
             }
 
+        }
+
+        public ActionResult MauSac(int id)
+        {
+            var SanPham = db.SAN_PHAM.FirstOrDefault(n => n.MaSanPham == id);
+            ViewBag.Masanpham = SanPham.MaSanPham;
+            ViewBag.Tensanpham = SanPham.TenSanPham;
+            return View(new CHI_TIET_SAN_PHAM());
+        }
+        public ActionResult MauSacTable(int id)
+        {
+            ViewBag.lstMausac = db.CHI_TIET_SAN_PHAM.Where(n =>n.MaSanPham == id && n.Isdeleted == false).ToList();
+            return View();
+        }
+        // luu màu sắc cho sản phẩm
+        public ActionResult LuuMau(CHI_TIET_SAN_PHAM ctsp ,int masanpham, int mactsp)
+        {
+            var check = db.CHI_TIET_SAN_PHAM.FirstOrDefault(n => n.MaCTSP == mactsp);
+            if(check != null)
+            {
+                check.MaSanPham = masanpham;
+                check.Mau = ctsp.Mau;
+                check.Gia = ctsp.Gia;
+                check.Isdeleted = false;
+            }
+            else
+            {
+                CHI_TIET_SAN_PHAM model = new CHI_TIET_SAN_PHAM();
+                model.MaSanPham = masanpham;
+                model.Mau = ctsp.Mau;
+                model.Gia = ctsp.Gia;
+                model.Isdeleted = false;
+                db.CHI_TIET_SAN_PHAM.Add(model);
+            }
+            
+            db.SaveChanges();
+            ViewBag.lstMausac = db.CHI_TIET_SAN_PHAM.Where(n => n.MaSanPham == masanpham && n.Isdeleted == false).ToList();
+            return View("MausacTable");
         }
 
         public ActionResult Search(string codesearch, int page)

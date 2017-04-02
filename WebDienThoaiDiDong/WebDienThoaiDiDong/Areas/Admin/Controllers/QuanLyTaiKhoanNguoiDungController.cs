@@ -14,8 +14,16 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
         // GET: Admin/QuanLyTaiKhoanNguoiDung
         public ActionResult Index()
         {
-            var result = db.KHACH_HANG.Where(n => n.IsDeleted == false).ToList();
-            return View(result);
+            if (Session["TenQuanTri"] != null && Session["MaQuanTri"] != null)
+            {
+                var result = db.KHACH_HANG.Where(n => n.IsDeleted == false).ToList();
+                return View(result);
+            }
+            else
+            {
+                return RedirectToAction("Index", "DangNhapAdmin");
+            }
+            
         }
         public ActionResult DanhSachTaiKhoanNguoiDungTable(int page)
         {

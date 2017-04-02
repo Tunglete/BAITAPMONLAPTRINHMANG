@@ -1,0 +1,26 @@
+﻿@if (Session["TenDangNhap"] == null)
+{
+    <div class="row" style="width:100%;">
+        <div class="sdt col-md-8 col-sm-8">
+            <span>Mua hàng: 1900545546 | Hotline: 09005456487 | CSKH:19001546587</span>
+        </div>
+        <div class="dn-dx col-md-4 col-sm-4 col-xs-12">
+            <a href="@Url.Action("Index","DangNhap")">Đăng nhập </a>
+            <span class="dn-dx">|</span>
+            <a href="@Url.Action("Index","DangKy")">Đăng ký</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row" style="width:100%;">
+        <div class="sdt col-md-8 col-sm-8">
+
+            <span>Mua hàng: 1900545546 | Hotline: 09005456487 | CSKH:19001546587</span>
+        </div>
+        <div class="dn-dx col-md-4 col-sm-4 col-xs-12">
+            <a href="@Url.Action("DangXuat","TrangChu")" style="cursor:pointer; padding-right:5px;"><span class="glyphicon glyphicon-log-out">Đăngxuất</span></a>
+            <span style="padding-right:25px;" class="glyphicon glyphicon-user"> @Session["TenDangNhap"]</span>
+        </div>
+    </div>
+}

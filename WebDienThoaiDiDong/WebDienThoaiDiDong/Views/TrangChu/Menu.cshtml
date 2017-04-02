@@ -1,0 +1,202 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model List<CHI_TIET_DANH_MUC>
+@{
+    Layout = null;
+}
+<div class="nav navbar-collapse collapse col-md-6 col-sm-12 " id="menu">
+
+    <ul>
+        <li>
+            <a href="@Url.Action("Index","DienThoaiDiDong")"><img class="img-icondep" src="~/Content/HinhAnh/dienthoai.png"><p class="textmenu">ĐIỆN THOẠI</p></a>
+                <ul class="dienthoaimenu">
+                    <div class="row">
+                        @{
+                            int count = 0;
+                            bool check = false;
+                            if(ViewBag.count1 % 2 == 0)
+                            {
+                                check = true;
+                            }
+                            
+                        }
+                        <div class="col-sm-6">
+                            
+                            @foreach (var item in Model)
+                            {
+                                if (item.MaDanhMuc == 1)
+                                {
+                                    <li><a href="@Url.Action("Index","DienThoaiDiDong",new { @tenhang = item.TenHang, @count = 0})">@item.TenHang</a></li>
+                                }
+                                count++;
+                                if(check == true && count == ((ViewBag.count1) / 2))
+                                {  
+                                        break;
+                                }
+                                if(check == false && count == ((ViewBag.count1 + 1) / 2))
+                                {
+                                    break;
+                                }
+
+                            }
+                            </div>
+                        <div class="col-sm-6">
+                            @{ count = 0;}
+                            @foreach (var item in Model)
+                            {   
+                                if (check == true && item.MaDanhMuc == 1 && count >= (ViewBag.count1 / 2))
+                                {
+                                    <li><a href="@Url.Action("Index","DienThoaiDiDong",new { @tenhang = item.TenHang, @count = 0})" >@item.TenHang</a></li>
+                                }
+                                if (check == false && item.MaDanhMuc == 1 && count > (ViewBag.count1 / 2))
+                                {
+                                    <li><a href="@Url.Action("Index","DienThoaiDiDong",new { @tenhang = item.TenHang, @count = 0})">@item.TenHang</a></li>
+                                }
+                                count++;
+                            }
+                        </div>
+                        </div>
+                </ul>
+        </li>
+
+        <li>
+            <a href="@Url.Action("Index","MayTinhBang")"><img class="img-icondep" src="~/Content/HinhAnh/maytinhbang.png"><p class="textmenu">MÁY TÍNH BẢNG</p></a>
+            <ul class="dienthoaimenu">
+                <div class="row">
+                    @{
+                        int count2 = 0;
+                        bool check2 = false;
+                        if (ViewBag.count2 % 2 == 0)
+                        {
+                            check2 = true;
+                        }
+
+                    }
+                    <div class="col-sm-6">
+
+                        @foreach (var item in Model)
+                        {
+                            if (item.MaDanhMuc == 2)
+                            {
+                                <li><a href="@Url.Action("Index","MayTinhBang",new { @tenhang = item.TenHang, @count = 0})">@item.TenHang</a></li>
+                                count2++;
+                            }
+
+                            if (check2 == true && count2 == ((ViewBag.count2) / 2))
+                            {
+                                break;
+                            }
+                            if (check2 == false && count2 == ((ViewBag.count2 + 1) / 2))
+                            {
+                                break;
+                            }
+
+                        }
+                    </div>
+                    <div class="col-sm-6">
+                        @{ count2 = 0;}
+                        @foreach (var item in Model)
+                        {
+                            if (check2 == true && item.MaDanhMuc == 2 && count2 >= (ViewBag.count2 / 2))
+                            {
+                                <li><a href="@Url.Action("Index","MayTinhBang",new { @tenhang = item.TenHang, @count = 0})">@item.TenHang</a></li>
+                            }
+                            if (check2 == false && item.MaDanhMuc == 2 && count2 > (ViewBag.count2 / 2))
+                            {
+                                <li><a href="@Url.Action("Index","MayTinhBang",new { @tenhang = item.TenHang, @count = 0})">@item.TenHang</a></li>
+                            }
+                            if(item.MaDanhMuc == 2)
+                            {
+                                count2++;
+                            }
+
+                        }
+                    </div>
+
+                </div>
+            </ul>
+        </li>
+
+        <li>
+            <a href="@Url.Action("Index","PhuKien")"><img class="iconlienhe" src="~/Content/HinhAnh/phukien.png"><p class="textmenu">PHỤ KIỆN</p></a>
+            <ul class="dienthoaimenu">
+                <div class="row">
+                    @{
+                        int count3 = 0;
+                        bool check3 = false;
+                        if (ViewBag.count3 % 2 == 0)
+                        {
+                            check3 = true;
+                        }
+
+                    }
+                    <div class="col-sm-6">
+
+                        @foreach (var item in Model)
+                        {
+                            if (item.MaDanhMuc == 3)
+                            {
+                                <li><a href="@Url.Action("Index","PhuKien",new { @tenhang = item.TenHang, @count = 0})">@item.TenHang</a></li>
+                                count3++;
+                            }
+
+                            if (check3 == true && count3 == ((ViewBag.count3) / 2))
+                            {
+                                break;
+                            }
+                            if (check3 == false && count3 == ((ViewBag.count3 + 1) / 2))
+                            {
+                                break;
+                            }
+
+                        }
+                    </div>
+                    <div class="col-sm-6">
+                        @{ count3 = 0;}
+                        @foreach (var item in Model)
+                        {
+                            if (check3 == true && item.MaDanhMuc == 3 && count3 >= (ViewBag.count3 / 2))
+                            {
+                                <li><a href="@Url.Action("Index","PhuKien",new { @tenhang = item.TenHang, @count = 0})">@item.TenHang</a></li>
+                            }
+                            if (check3 == false && item.MaDanhMuc == 3 && count3 > (ViewBag.count3 / 2))
+                            {
+                                <li><a href="@Url.Action("Index","PhuKien",new { @tenhang = item.TenHang, @count = 0})">@item.TenHang</a></li>
+                            }
+                            if(item.MaDanhMuc == 3)
+                            {
+                                count3++;
+                            }
+
+                        }
+                    </div>
+                </div>
+            </ul>
+        </li>
+
+        <li>
+            <a href="@Url.Action("Index","KhuyenMai")"><img class="img-icondep" src="~/Content/HinhAnh/khuyenmai.png"><p class="textmenu">KHUYẾN MẠI</p></a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index","TinCongNghe")"><img class="icontincongnghe" src="~/Content/HinhAnh/tincongnghe.png"><p class="textmenu">TIN CÔNG NGHỆ</p></a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index","LienHe")"><img class="iconlienhe" src="~/Content/HinhAnh/lienhe.png"><p class="textmenu">LIÊN HỆ</p></a>
+        </li>
+    </ul>
+</div>
+<script>
+    function danhmucdienthoai(tenhang) {
+        $.ajax({
+            url: '@Url.Action("Index", "DienThoaiDiDong")',
+            mtype: "POST",
+            datatype: "json",
+            data: {
+                tenhang:tenhang,
+                count: 0
+            },
+            success: function (data) {
+                $("#divDienthoaididong").html(data);
+            }
+        });
+    }
+</script>

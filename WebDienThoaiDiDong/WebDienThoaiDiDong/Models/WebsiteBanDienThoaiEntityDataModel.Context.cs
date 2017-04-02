@@ -37,5 +37,6 @@ namespace WebDienThoaiDiDong.Models
         public virtual DbSet<TIN_TUC> TIN_TUC { get; set; }
         public virtual DbSet<TIN_TUC_SAN_PHAM> TIN_TUC_SAN_PHAM { get; set; }
         public virtual DbSet<SLIDE_TRANG_CHU> SLIDE_TRANG_CHU { get; set; }
+        public virtual DbSet<CHI_TIET_SAN_PHAM> CHI_TIET_SAN_PHAM { get; set; }
     }
 }

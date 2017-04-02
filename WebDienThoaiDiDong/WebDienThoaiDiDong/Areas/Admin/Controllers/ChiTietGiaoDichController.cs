@@ -14,7 +14,15 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
         // GET: Admin/ChiTietGiaoDich
         public ActionResult Index()
         {
-            return View();
+            if (Session["TenQuanTri"] != null && Session["MaQuanTri"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "DangNhapAdmin");
+            }
+            
         }
 
         //table đổ view ra index

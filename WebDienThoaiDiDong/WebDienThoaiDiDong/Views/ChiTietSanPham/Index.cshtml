@@ -1,0 +1,172 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model SAN_PHAM
+@{
+    ViewBag.Title = Model.TenSanPham;
+    int id = Model.MaSanPham;
+}
+<script>
+    var gia = 0;
+</script>
+<link href="~/Content/css/chitietsanpham.css" rel="stylesheet" />
+<div class="container" style="margin-top:10px">
+    <!-- Page Content -->
+    <div class="row">
+        <div class="breadcrumb" style="margin-bottom: 20px;">
+            <span itemscope="itemscope" class="crumb_item">
+                <a itemprop="url" rel="up" class="crumb" href="@Url.Action("Index","TrangChu")"><span itemprop="title">Trang chủ</span></a>
+                <span class="arrow"> » </span>
+            </span>
+            <span itemscope="itemscope" class="crumb_item">
+                <a itemprop="url" rel="up" class="crumb" href="@Url.Action("Index","DienThoaiDiDong")"><span itemprop="title">Điện thoại di động</span></a>
+                <span class="arrow"> » </span>
+            </span>
+            <span itemscope="itemscope" class="crumb_item">
+                <a itemprop="url" rel="up" class="crumb" href="@Url.Action("Index","ChiTietSanPham",new { @TenSanPham = Model.TenSanPham,@id = Model.MaSanPham})"><span itemprop="title">@Model.TenSanPham</span></a>
+            </span>
+        </div>
+
+        <!--slider-->
+        <div class="col-md-7">
+            <p style="font-size:22px; font-weight: bold;">@Model.TieuDeSanPham</p>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    @{ int count = 0;}
+                    @foreach (var item in (List<ANH_SAN_PHAM>)ViewBag.lstSlidesanpham)
+                    {
+                        count++;
+                        if (count == 1)
+                        {
+                            <div class="item active">
+                                <img class="img-slider" src="~/Images/ImagesSliderProduct/@item.AnhMinhHoa" alt="noel" >
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="item">
+                                <img class="img-slider" src="~/Images/ImagesSliderProduct/@item.AnhMinhHoa" alt="Chania" >
+                            </div>
+                        }
+                    }
+                    
+
+                   
+
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="background: none;">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="background: none;">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-5">
+            @if (Model.SoLuongTrongKho == 0)
+            {
+                <p style="font-size:14px; font-weight: bold;margin-top:2.5em;color: red;">HẾT HÀNG</p>
+            }
+            else
+            {
+                <p style="font-size:14px; font-weight: bold;margin-top:2.5em;    color: #008aca">CÒN HÀNG</p>
+            }
+            <div id="divsearchmau">
+                
+            </div>
+            
+</div>
+        
+        <!- 	-cấu hình chi tiết-->
+        <div class="col-md-7" id="ch">
+            <div class="col-md-6" class="m">
+                <img class="sp" src="~/Images/ImagesSliderProduct/@Model.AnhDaiDien">
+            </div>
+            <div class="col-md-6">
+                <p><span class="cauhinh">Màn hình: </span> <span>@Model.ManHinh</span></p>
+                <p><span class="cauhinh">CPU: </span><span>@Model.Cpu</span></p>
+                <p><span class="cauhinh">Ram: </span> <span>@Model.Ram</span></p>
+                <p><span class="cauhinh">Hệ điều hành: </span><span>@Model.HeDieuHanh</span></p>
+                <p><span class="cauhinh">Camera chính:  </span><span>@Model.CameraChinh</span></p>
+                <p><span class="cauhinh">Camera phụ:  </span><span>@Model.CameraPhu</span></p>
+                <p><span class="cauhinh">Bộ nhớ trong:  </span><span> @Model.BoNhoTrong</span></p>
+                <p><span class="cauhinh">Thẻ nhớ ngoài:  </span><span>@Model.TheNhoNgoai</span></p>
+                <p><span class="cauhinh">Dung lượng pin:  </span><span> @Model.DungLuongPin</span></p>
+
+            </div>
+            <div class="video col-md-12">
+                @Html.Raw(Model.Video)
+            </div>
+            <div class="xemchitiet col-md-12">
+                <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#chitiet">
+                    Đánh giá chi tiết
+                </button>
+                <div id="chitiet" class="collapse">
+                    @foreach (var item in (List<TIN_TUC_SAN_PHAM>)ViewBag.Tintucsanpham)
+                    {
+                        <img class="img_tintuc" src="~/Images/ImagesProductNews/@item.AnhTinTuc">
+                    }
+                    
+                    <p>
+                        @foreach (var item in (List<TIN_TUC_SAN_PHAM>)ViewBag.Tintucsanpham)
+                        {
+                            @item.NoiDungTinTuc
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5" class="divsplienquan">
+            <div class="title">
+                <p>SẢN PHẨM LIÊN QUAN</p>
+            </div>
+            @foreach (var item in (List<SAN_PHAM>)ViewBag.lstSanphamlienquan)
+            {
+                <a href="@Url.Action("Index","ChiTietSanPham",new { @TenSanPham = item.TenSanPham,@id = item.MaSanPham})">
+                    <div class="splienquan col-md-6 col-sm-4 col-xs-6">
+                        <img class="anhsp" src="~/Images/ImagesSliderProduct/@item.AnhDaiDien">
+                        <p style="font-size:17px; font-weight: bold;">@item.TenSanPham</p>
+                        <p class="pro_price" data-price="1200000" style="font-size:20px; font-weight: bold;color:red;">@String.Format("{0:0,0}", item.GiaSanPham) ₫</p>
+                    </div>
+                </a>
+            }
+            
+           
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+
+<script>
+    var id = @id;
+    $(document).ready(function () {
+        $.ajax({
+            url: '@Url.Action("SearchMau", "ChiTietSanPham")',
+            mtype: "POST",
+            datatype: "json",
+            data: {
+                codesearch: "",
+                id:id
+            },
+            success: function (data) {
+                $("#divsearchmau").html(data);
+            }
+        });
+    });
+
+
+
+
+
+</script>
