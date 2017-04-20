@@ -11,5 +11,6 @@ namespace WebDienThoaiDiDong.Models
         public SAN_PHAM Sanpham { get; set; }
         public  int Quantity { get; set; }
         public int Giasanpham { get; set; }
+        public string Mausac { get; set; }
     }
 }

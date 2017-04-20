@@ -38,6 +38,7 @@
     <EntitySetMapping Name="CHI_TIET_DON_HANG">
       <EntityTypeMapping TypeName="QuanLyBanDienThoaiModel.CHI_TIET_DON_HANG">
         <MappingFragment StoreEntitySet="CHI_TIET_DON_HANG">
+          <ScalarProperty Name="MauSac" ColumnName="MauSac" />
           <ScalarProperty Name="MaCTDH" ColumnName="MaCTDH" />
           <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
           <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />

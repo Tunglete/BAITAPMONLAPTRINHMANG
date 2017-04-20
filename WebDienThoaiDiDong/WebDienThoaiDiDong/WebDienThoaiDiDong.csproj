@@ -198,6 +198,7 @@
     <Compile Include="Controllers\DangKyController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\DatHangController.cs" />
+    <Compile Include="Controllers\DatHangThanhCongController.cs" />
     <Compile Include="Controllers\DienThoaiDiDongController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\MayTinhBangController.cs" />
@@ -691,13 +692,10 @@
     <Content Include="Views\MayTinhBang\MayTinhBang.cshtml" />
     <Content Include="Views\PhuKien\Index.cshtml" />
     <Content Include="Views\PhuKien\PhuKien.cshtml" />
-    <Content Include="Views\DatHang\Index.cshtml" />
-    <Content Include="Views\DatHang\MuaHangOnline.cshtml" />
-    <Content Include="Views\DatHang\MuaTaiCuaHang.cshtml" />
-    <Content Include="Views\DatHang\ListViewSanPham.cshtml" />
     <Content Include="Views\GioHang\Index.cshtml" />
     <Content Include="Views\ChiTietSanPham\SearchMau.cshtml" />
     <Content Include="Views\TrangChu\HeaderCart.cshtml" />
+    <Content Include="Views\DatHangThanhCong\Index.cshtml" />
     <None Include="Web.Debug.config" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>

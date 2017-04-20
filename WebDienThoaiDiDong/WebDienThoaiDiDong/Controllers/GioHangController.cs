@@ -21,6 +21,7 @@ namespace WebDienThoaiDiDong.Controllers
             {
                 list = (List<CartItem>)cart;
             }
+            
             return View(list);
         }
         public JsonResult Update(string cartModel)
@@ -41,7 +42,25 @@ namespace WebDienThoaiDiDong.Controllers
                 status = true
             });
         }
-        public ActionResult AddItem(long masanpham, int quantity, int giasanpham)
+        public JsonResult DeleteItem(int id)
+        {
+            var sessionCart = (List<CartItem>)Session[CartSession];
+            sessionCart.RemoveAll(n => n.Sanpham.MaSanPham == id);
+            Session[CartSession] = sessionCart;
+            return Json(new
+            {
+                status = true
+            });
+        }
+        public JsonResult DeleteAll()
+        {
+            Session[CartSession] = null;
+            return Json(new
+            {
+                status = true
+            });
+        }
+        public ActionResult AddItem(long masanpham, int quantity, int giasanpham, string mausac)
         {
             var sanpham = db.SAN_PHAM.FirstOrDefault(n => n.MaSanPham == masanpham);
             var cart = Session[CartSession];
@@ -65,6 +84,7 @@ namespace WebDienThoaiDiDong.Controllers
                     item.Sanpham = sanpham;
                     item.Quantity = quantity;
                     item.Giasanpham = giasanpham;
+                    item.Mausac = mausac;
                     list.Add(item);
                 }
                 //Gán vào Session
@@ -78,6 +98,7 @@ namespace WebDienThoaiDiDong.Controllers
                 item.Sanpham = sanpham;
                 item.Quantity = quantity;
                 item.Giasanpham = giasanpham;
+                item.Mausac = mausac;
 
                 var list = new List<CartItem>();
                 list.Add(item);
@@ -85,6 +106,59 @@ namespace WebDienThoaiDiDong.Controllers
                 Session[CartSession] = list;
             }
             return RedirectToAction("Index");
+        }
+
+        public JsonResult DatHang(string name = "", string phone = "", string city = "", string address = "" )
+        {
+            if(!name.Equals("") && !phone.Equals("") && !city.Equals("") && !address.Equals("")){
+                // thêm khách hàng với khách hàng không lưu tên đăng nhập mà lưu như một tài khoản tạm thời
+                KHACH_HANG kh = new KHACH_HANG();
+                kh.TenKhachHang = name;
+                kh.DienThoai = phone;
+                kh.DiaChi =  address + "" + city;
+                kh.IsDeleted = false;
+                db.KHACH_HANG.Add(kh);
+                db.SaveChanges();
+
+                // thêm đơn hàng
+                var countKh = db.KHACH_HANG.Count();
+                DON_HANG dh = new DON_HANG();
+                var cart = (List<CartItem>)Session[CartSession];
+                var tonggiatridonhang = 0;
+                foreach (var item in cart)
+                {
+                    tonggiatridonhang += item.Giasanpham * item.Quantity;
+
+                }
+                dh.MaKhachHang = countKh;
+                dh.TrangThaiDonHang = "Chưa Thanh Toán";
+                dh.NgayTao = DateTime.Now;
+                dh.TongGiaTriDonHang = tonggiatridonhang;
+                dh.DiaChiNhanDonHang = address + "" + city;
+                dh.IsDeleted = false;
+                db.DON_HANG.Add(dh);
+                db.SaveChanges();
+
+                // Thêm chi tiết đơn hàng
+                var countDonhang = db.DON_HANG.Count() +1;
+                CHI_TIET_DON_HANG ctdh = new CHI_TIET_DON_HANG();
+                foreach (var item in cart)
+                {
+                    ctdh.MaDonHang = countDonhang;
+                    ctdh.MaSanPham = item.Sanpham.MaSanPham;
+                    ctdh.Gia = item.Giasanpham;
+                    ctdh.SoLuong = item.Quantity;
+                    ctdh.MauSac = item.Mausac;
+                    ctdh.IsDeleted = false;
+                    db.CHI_TIET_DON_HANG.Add(ctdh);
+                    db.SaveChanges();
+                }
+                
+            }
+            Session[CartSession] = null;
+            return Json(new {
+                status = true
+            });
         }
     }
 }

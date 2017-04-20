@@ -39,6 +39,7 @@
     <Property Name="MaDonHang" Type="int" Nullable="false" />
     <Property Name="MaSanPham" Type="int" Nullable="false" />
     <Property Name="Gia" Type="int" />
+    <Property Name="MauSac" Type="nvarchar" MaxLength="128" />
     <Property Name="SoLuong" Type="int" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>

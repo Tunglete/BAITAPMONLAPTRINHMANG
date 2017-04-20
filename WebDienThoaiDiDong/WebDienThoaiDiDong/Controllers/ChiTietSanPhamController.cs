@@ -28,12 +28,14 @@ namespace WebDienThoaiDiDong.Controllers
             
             if(codesearch == "")
             {
+                ViewBag.Mau = "Mặc định";
                 ViewBag.Gia = result.GiaSanPham;
                 ViewBag.activegroup = "";
             }
             else
             {
                 ViewBag.Gia = db.CHI_TIET_SAN_PHAM.FirstOrDefault(n => n.Mau.Contains(codesearch)).Gia;
+                ViewBag.Mau = db.CHI_TIET_SAN_PHAM.FirstOrDefault(n => n.Mau.Contains(codesearch)).Mau;
                 ViewBag.activegroup = codesearch;
             }
             ViewBag.group = db.CHI_TIET_SAN_PHAM.Where(n => n.MaSanPham == id).ToList();

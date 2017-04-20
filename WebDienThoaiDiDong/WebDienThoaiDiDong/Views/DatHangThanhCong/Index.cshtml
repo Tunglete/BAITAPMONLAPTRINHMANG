@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Đặt hàng thành công";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/dathangthanhcong.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div style="text-align:center;" class="picsuccess col-md-12 col-sm-12 col-xs-12">
+            <img class="success" src="~/Content/HinhAnh/pic-success.png">
+            <br />
+            <img id="img2" src="~/Content/HinhAnh/dathangthanhcong.PNG">
+
+        </div>
+
+
+        <div class="giua col-md-12 col-sm-12 col-xs-12" style="text-align:center; margin-top:2em;">
+            <button class="btn btn-success" onclick="btnSanPhamKhac()">Mua thêm sản phẩm khác</button>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<script>
+    function btnSanPhamKhac() {
+        window.location.href = "/TrangChu";
+    }
+</script>
+

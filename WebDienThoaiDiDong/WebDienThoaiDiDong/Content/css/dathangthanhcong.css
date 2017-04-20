@@ -9,8 +9,12 @@
 	width: 100%;
 	text-align: center;
 }
+
 @media screen and (max-width: 776px) {
 .picsuccess > .success{
-	width: 50%;
+	width: 80%;
+}
+#img2{
+    width:80%;
 }
 }

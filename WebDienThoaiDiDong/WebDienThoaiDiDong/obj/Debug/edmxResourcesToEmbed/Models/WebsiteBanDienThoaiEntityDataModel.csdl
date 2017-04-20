@@ -46,6 +46,7 @@
     <Property Name="IsDeleted" Type="Boolean" />
     <NavigationProperty Name="DON_HANG" Relationship="Self.FK_CHI_TIET_DON_HANG_DON_HANG" FromRole="CHI_TIET_DON_HANG" ToRole="DON_HANG" />
     <NavigationProperty Name="SAN_PHAM" Relationship="Self.FK_CHI_TIET_DON_HANG_SAN_PHAM" FromRole="CHI_TIET_DON_HANG" ToRole="SAN_PHAM" />
+    <Property Name="MauSac" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="DANH_MUC">
     <Key>

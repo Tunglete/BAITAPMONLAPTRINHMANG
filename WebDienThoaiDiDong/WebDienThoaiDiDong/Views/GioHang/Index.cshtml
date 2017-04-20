@@ -1,6 +1,6 @@
 ﻿@model List<WebDienThoaiDiDong.Models.CartItem>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Giỏ hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
     int tonggia = 0;
 }
@@ -51,132 +51,142 @@
             <hr>
         }
         
-
-        <div class="row">
+        @if (Model.Count > 0)
+        {
             <div class="row">
-                <div class="col-sm-3">
-                    <h2>Tổng tiền: </h2>
-                </div>
-                <div class="col-sm-9">
-                    <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h2>Tổng tiền: </h2>
                     </div>
-                    <div class="col-sm-6">
-                        <h2 class="right" style="text-align:right; color:red;">@String.Format("{0:0,0 đ}", tonggia)</h2>
+                    <div class="col-sm-9">
+                        <div class="col-sm-6">
+                        </div>
+                        <div class="col-sm-6">
+                            <h2 class="right" style="text-align:right; color:red;">@String.Format("{0:0,0 đ}", tonggia)</h2>
+                        </div>
                     </div>
                 </div>
+                <hr>
             </div>
-            <hr>
-        </div>
+        }
+        else
+        {
+            <div class="alert alert-danger">
+                <strong>Thông báo!</strong> Chưa có săn phẩm nào trong giỏ hàng.
+            </div>
+        }
+
         <button class="btn btn-info" id="btnContinue" onclick="conti()">Mua thêm sản phẩm khác</button>
         <button class="btn btn-info" onclick="Updategiohang()"> Update giỏ hàng</button>
-        <div class="row">
-            <div class="form-group col-sm-12">
-                <div class="col-sm-12">
-                    <label class="radio-inline">
-                        <input type="radio" value="anh" checked name="radio">Anh
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" value="chị" name="radio">Chị
-                    </label>
-                </div>
-                <div class="col-sm-6">
-                    <label for="radio" class="error"></label>
-                </div>
-            </div>
-            <div class="form-group col-sm-12">
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" placeholder="Họ và tên" name="name" required>
-                </div>
-                <div class="col-sm-6">
-                    <input type="text" id="sdt" class="form-control" placeholder="Số điện thoại" name="phone" required>
-                </div>
-            </div>
-            <div class="form-group col-sm-12">
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" placeholder="Yêu cầu khác (Không bắt buộc)">
-                </div>
-            </div>
+        <button class="btn btn-info" onclick="Deletegiohang()">Xóa tất cả</button>
+        <form id="frm-dathang">
+            @if (Session["TenDangNhap"] == null)
+            {
+
+                <div class="row">
+
+                    <div class="form-group col-sm-12" style="margin-top:1em;">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" placeholder="Họ và tên" name="name" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="sdt" class="form-control" placeholder="Số điện thoại" name="phone" required>
+                        </div>
+                    </div>
 
 
-            <div class="form-group col-sm-12">
-                <div class="col-sm-12">
-                    <select class="form-control " name="city" id="city">
-                        <option value="">Tỉnh/Thành phố</option>
-                        <option value="Hà Nội">Hà Nội</option>
-                        <option value="TP HCM">TP HCM</option>
-                        <option value="Hải Phòng">Hải Phòng</option>
-                        <option value="An Giang">An Giang</option>
-                        <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
-                        <option value="Bắc Giang">Bắc Giang</option>
-                        <option value="Bắc Kạn">Bắc Kạn</option>
-                        <option value="Bạc Liêu">Bạc Liêu</option>
-                        <option value="Bắc Ninh">Bắc Ninh</option>
-                        <option value="Bến Tre">Bến Tre</option>
-                        <option value="Bình Định">Bình Định</option>
-                        <option value="Bình Dương">Bình Dương</option>
-                        <option value="Bình Phước">Bình Phước</option>
-                        <option value="Bình Thuận">Bình Thuận</option>
-                        <option value="Cà Mau">Cà Mau</option>
-                        <option value="Cao Bằng">Cao Bằng</option>
-                        <option value="Đắk Lắk">Đắk Lắk</option>
-                        <option value="Đắk Nông">Đắk Nông</option>
-                        <option value="Điện Biên">Điện Biên</option>
-                        <option value="Đồng Nai">Đồng Nai</option>
-                        <option value="Đồng Tháp">Đồng Tháp</option>
-                        <option value="Gia Lai">Gia Lai</option>
-                        <option value="Hà Giang">Hà Giang</option>
-                        <option value="Hà Nam">Hà Nam</option>
-                        <option value="Hà Tĩnh">Hà Tĩnh</option>
-                        <option value="Hải Dương">Hải Dương</option>
-                        <option value="Hậu Giang">Hậu Giang</option>
-                        <option value="Hòa Bình">Hòa Bình</option>
-                        <option value="Hưng Yên">Hưng Yên</option>
-                        <option value="Khánh Hòa">Khánh Hòa</option>
-                        <option value="Kiên Giang">Kiên Giang</option>
-                        <option value="Kon Tum">Kon Tum</option>
-                        <option value="Lai Châu">Lai Châu</option>
-                        <option value="Lâm Đồng">Lâm Đồng</option>
-                        <option value="Lạng Sơn">Lạng Sơn</option>
-                        <option value="Lào Cai">Lào Cai</option>
-                        <option value="Long An">Long An</option>
-                        <option value="Nam Định">Nam Định</option>
-                        <option value="Nghệ An">Nghệ An</option>
-                        <option value="Ninh Bình">Ninh Bình</option>
-                        <option value="Ninh Thuận">Ninh Thuận</option>
-                        <option value="Phú Thọ">Phú Thọ</option>
-                        <option value="Quảng Bình">Quảng Bình</option>
-                        <option value="Quảng Nam">Quảng Nam</option>
-                        <option value="Quảng Ngãi">Quảng Ngãi</option>
-                        <option value="Quảng Ninh">Quảng Ninh</option>
-                        <option value="Quảng Trị">Quảng Trị</option>
-                        <option value="Sóc Trăng">Sóc Trăng</option>
-                        <option value="Sơn La">Sơn La</option>
-                        <option value="Tây Ninh">Tây Ninh</option>
-                        <option value="Thái Bình">Thái Bình</option>
-                        <option value="Thái Nguyên">Thái Nguyên</option>
-                        <option value="Thanh Hóa">Thanh Hóa</option>
-                        <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
-                        <option value="Tiền Giang">Tiền Giang</option>
-                        <option value="Trà Vinh">Trà Vinh</option>
-                        <option value="Tuyên Quang">Tuyên Quang</option>
-                        <option value="Vĩnh Long">Vĩnh Long</option>
-                        <option value="Vĩnh Phúc">Vĩnh Phúc</option>
-                        <option value="Yên Bái">Yên Bái</option>
-                        <option value="Phú Yên">Phú Yên</option>
-                        <option value="Cần Thơ">Cần Thơ</option>
-                        <option value="Đà Nẵng">Đà Nẵng</option>
-                    </select>
+
+                    <div class="form-group col-sm-12">
+                        <div class="col-sm-3">
+                            <select class="form-control " name="city" id="city">
+                                <option value="">Tỉnh/Thành phố</option>
+                                <option value="Hà Nội">Hà Nội</option>
+                                <option value="TP HCM">TP HCM</option>
+                                <option value="Hải Phòng">Hải Phòng</option>
+                                <option value="An Giang">An Giang</option>
+                                <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                                <option value="Bắc Giang">Bắc Giang</option>
+                                <option value="Bắc Kạn">Bắc Kạn</option>
+                                <option value="Bạc Liêu">Bạc Liêu</option>
+                                <option value="Bắc Ninh">Bắc Ninh</option>
+                                <option value="Bến Tre">Bến Tre</option>
+                                <option value="Bình Định">Bình Định</option>
+                                <option value="Bình Dương">Bình Dương</option>
+                                <option value="Bình Phước">Bình Phước</option>
+                                <option value="Bình Thuận">Bình Thuận</option>
+                                <option value="Cà Mau">Cà Mau</option>
+                                <option value="Cao Bằng">Cao Bằng</option>
+                                <option value="Đắk Lắk">Đắk Lắk</option>
+                                <option value="Đắk Nông">Đắk Nông</option>
+                                <option value="Điện Biên">Điện Biên</option>
+                                <option value="Đồng Nai">Đồng Nai</option>
+                                <option value="Đồng Tháp">Đồng Tháp</option>
+                                <option value="Gia Lai">Gia Lai</option>
+                                <option value="Hà Giang">Hà Giang</option>
+                                <option value="Hà Nam">Hà Nam</option>
+                                <option value="Hà Tĩnh">Hà Tĩnh</option>
+                                <option value="Hải Dương">Hải Dương</option>
+                                <option value="Hậu Giang">Hậu Giang</option>
+                                <option value="Hòa Bình">Hòa Bình</option>
+                                <option value="Hưng Yên">Hưng Yên</option>
+                                <option value="Khánh Hòa">Khánh Hòa</option>
+                                <option value="Kiên Giang">Kiên Giang</option>
+                                <option value="Kon Tum">Kon Tum</option>
+                                <option value="Lai Châu">Lai Châu</option>
+                                <option value="Lâm Đồng">Lâm Đồng</option>
+                                <option value="Lạng Sơn">Lạng Sơn</option>
+                                <option value="Lào Cai">Lào Cai</option>
+                                <option value="Long An">Long An</option>
+                                <option value="Nam Định">Nam Định</option>
+                                <option value="Nghệ An">Nghệ An</option>
+                                <option value="Ninh Bình">Ninh Bình</option>
+                                <option value="Ninh Thuận">Ninh Thuận</option>
+                                <option value="Phú Thọ">Phú Thọ</option>
+                                <option value="Quảng Bình">Quảng Bình</option>
+                                <option value="Quảng Nam">Quảng Nam</option>
+                                <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                <option value="Quảng Ninh">Quảng Ninh</option>
+                                <option value="Quảng Trị">Quảng Trị</option>
+                                <option value="Sóc Trăng">Sóc Trăng</option>
+                                <option value="Sơn La">Sơn La</option>
+                                <option value="Tây Ninh">Tây Ninh</option>
+                                <option value="Thái Bình">Thái Bình</option>
+                                <option value="Thái Nguyên">Thái Nguyên</option>
+                                <option value="Thanh Hóa">Thanh Hóa</option>
+                                <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                                <option value="Tiền Giang">Tiền Giang</option>
+                                <option value="Trà Vinh">Trà Vinh</option>
+                                <option value="Tuyên Quang">Tuyên Quang</option>
+                                <option value="Vĩnh Long">Vĩnh Long</option>
+                                <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                                <option value="Yên Bái">Yên Bái</option>
+                                <option value="Phú Yên">Phú Yên</option>
+                                <option value="Cần Thơ">Cần Thơ</option>
+                                <option value="Đà Nẵng">Đà Nẵng</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control " name="address" id="address" placeholder="Số nhà, tên đường, phường, xã" required>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-            <div class="form-group col-sm-12">
-                <div class="col-sm-12">
-                    <input type="text" class="form-control " name="address" id="address" placeholder="Số nhà, tên đường, phường, xã" required>
+            }
+            @if (Model.Count > 0)
+            {
+                <div class="form-group center-block col-sm-12">
+                    <button type="button" class="btn btn-primary center-block " onclick="DatHang()">Thanh toán khi nhận hàng</button>
                 </div>
-            </div>
-            <div class="form-group center-block col-sm-12">
-                <button type="button" class="btn btn-primary center-block ">Thanh toán khi nhận hàng</button>
-            </div>
-        </div>
+            }
+            else
+            {
+                <div class="form-group center-block col-sm-12">
+                    <button type="button" class="btn btn-primary center-block " disabled>Thanh toán khi nhận hàng</button>
+                </div>
+            }
+        </form>    
 
     </div>
 
@@ -188,10 +198,10 @@
     $(document).ready(function () {
 
         $('#form_register').validate({
-            rules: {
-                name: "required",
+                    rules: {
+                        name: "required",
                 phone: {
-                    required: true,
+                            required: true,
                     minlength: 10,
                     number: true,
                 },
@@ -199,9 +209,9 @@
                 address: "required",
             },
             messages: {
-                name: "Vui lòng nhập họ tên",
+                        name: "Vui lòng nhập họ tên",
                 phone: {
-                    required: "Vui lòng nhập số điện thoại",
+                            required: "Vui lòng nhập số điện thoại",
                     minlength: "Số máy quý khách vừa nhập là số không có thực",
                     number: "Số máy quý khách vừa nhập là số không có thực",
                 },
@@ -209,8 +219,8 @@
                 address: "Vui lòng nhập địa chỉ",
 
             }
-        });
-    });
+                });
+            });
 
     function Updategiohang() {
         var listSanpham = $('.txtquantity');
@@ -231,6 +241,50 @@
             success: function (res) {
                 if (res.status == true) {
                     window.location.href = "/GioHang";
+                }
+            }
+
+        });
+    }
+    function Deletegiohang() {
+        $.ajax({
+            url: '/GioHang/DeleteAll',
+            datatype: 'json',
+            type: 'post',
+            success: function (res) {
+                if (res.status == true) {
+                    window.location.href = "/GioHang";
+                }
+            }
+
+        });
+    }
+    function xoa(id) {
+
+        $.ajax({
+            url: '/GioHang/DeleteItem',
+            data:{
+                id:id
+            },
+            datatype: 'json',
+            type: 'post',
+            success: function (res) {
+                if (res.status == true) {
+                    window.location.href = "/GioHang";
+                }
+            }
+
+        });
+    }
+    function DatHang() {
+        $.ajax({
+            url: '/GioHang/DatHang',
+            data: $("#frm-dathang").serialize(),
+            datatype: 'json',
+            type: 'post',
+            success: function (res) {
+                if (res.status == true) {
+                    window.location.href = "/DatHangThanhCong";
                 }
             }
 
