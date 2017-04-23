@@ -131,7 +131,7 @@ namespace WebDienThoaiDiDong.Controllers
 
                 }
                 dh.MaKhachHang = countKh;
-                dh.TrangThaiDonHang = "Chưa Thanh Toán";
+                dh.TrangThaiDonHang = "Chưa thanh toán";
                 dh.NgayTao = DateTime.Now;
                 dh.TongGiaTriDonHang = tonggiatridonhang;
                 dh.DiaChiNhanDonHang = address + "" + city;
@@ -153,7 +153,48 @@ namespace WebDienThoaiDiDong.Controllers
                     db.CHI_TIET_DON_HANG.Add(ctdh);
                     db.SaveChanges();
                 }
-                
+
+            }
+            if(Session["TenDangNhap"] != null)
+            {
+                var tendangnhap = Session["TenDangNhap"];
+                var model = db.KHACH_HANG.FirstOrDefault(n => n.TenDangNhap == tendangnhap.ToString());
+                if(model != null)
+                {
+                    
+                    // thêm đơn hàng
+                    DON_HANG dh = new DON_HANG();
+                    var cart = (List<CartItem>)Session[CartSession];
+                    var tonggiatridonhang = 0;
+                    foreach (var item in cart)
+                    {
+                        tonggiatridonhang += item.Giasanpham * item.Quantity;
+
+                    }
+                    dh.MaKhachHang = model.MaKhachHang;
+                    dh.TrangThaiDonHang = "Chưa thanh toán";
+                    dh.NgayTao = DateTime.Now;
+                    dh.TongGiaTriDonHang = tonggiatridonhang;
+                    dh.DiaChiNhanDonHang = model.DiaChi;
+                    dh.IsDeleted = false;
+                    db.DON_HANG.Add(dh);
+                    db.SaveChanges();
+
+                    // Thêm chi tiết đơn hàng
+                    var countDonhang = db.DON_HANG.Count() + 1;
+                    CHI_TIET_DON_HANG ctdh = new CHI_TIET_DON_HANG();
+                    foreach (var item in cart)
+                    {
+                        ctdh.MaDonHang = countDonhang;
+                        ctdh.MaSanPham = item.Sanpham.MaSanPham;
+                        ctdh.Gia = item.Giasanpham;
+                        ctdh.SoLuong = item.Quantity;
+                        ctdh.MauSac = item.Mausac;
+                        ctdh.IsDeleted = false;
+                        db.CHI_TIET_DON_HANG.Add(ctdh);
+                        db.SaveChanges();
+                    }
+                }
             }
             Session[CartSession] = null;
             return Json(new {

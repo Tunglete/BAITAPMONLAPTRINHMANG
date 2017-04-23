@@ -1,0 +1,98 @@
+﻿@using WebDienThoaiDiDong.Models;
+@model TIN_TUC
+@{
+    ViewBag.Title = "ChiTietTin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="breadcrumb" style="margin-bottom: 20px; margin-top:1em;">
+        <span itemscope="itemscope" class="crumb_item">
+            <a itemprop="url" rel="up" class="crumb" href="/TrangChu"><span itemprop="title">Trang chủ</span></a>
+            <span class="arrow"> » </span>
+        </span>
+        <span itemscope="itemscope" class="crumb_item">
+            <a itemprop="url" rel="up" class="crumb" href="/TinCongNghe"><span itemprop="title">Tin công nghệ</span></a>
+            <span class="arrow"> » </span>
+        </span>
+
+        <span itemscope="itemscope" class="crumb_item">
+            <a itemprop="url" rel="up" class="crumb" href=""><span itemprop="title">@Html.Raw(Model.TenTinTuc)</span></a>
+        </span>
+    </div>
+    <div class="row">
+        <!-- Blog Post Content Column -->
+        <div class="col-lg-9">
+            <!-- Blog Post -->
+            <!-- Title -->
+            <h1>@Html.Raw(Model.TenTinTuc)</h1>
+            <!-- Author -->
+            <p class="lead">
+                by <a href="#">@Model.TacGia</a>
+            </p>
+            <!-- Preview Image -->
+            <img class="img-responsive" src="~/Images/ImagesNews/@Model.HinhAnh" alt="" style="width:100%;height:100%;">
+            <!-- Date/Time -->
+            <p><span class="glyphicon glyphicon-time"></span> @Model.NgayTao</p>
+            <hr>
+            <!-- Post Content -->
+            
+            <p>
+               @Html.Raw(Model.NoiDung)
+            </p><br><br>
+            <!-- Posted Comments -->
+        </div>
+        <!-- Blog Sidebar Widgets Column -->
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>Tin liên quan</b></div>
+                <div class="panel-body">
+
+                    <!-- item -->
+                    @foreach (var item in (List<TIN_TUC>)ViewBag.lstTinlienquan)
+                    {
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-5">
+                                <a href="detail.html">
+                                    <img class="img-responsive" src="~/Images/ImagesNews/@item.HinhAnh" alt="">
+                                </a>
+                            </div>
+                            <div class="col-md-7">
+                                <a href="#"><b>@Html.Raw(item.TenTinTuc)</b></a>
+                            </div>
+                            <div class="break"></div>
+                        </div>
+                    <!-- end item -->
+                    }
+                    
+                    
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>Tin nổi bật</b></div>
+                <div class="panel-body">
+                @foreach (var item in (List<TIN_TUC>)ViewBag.lstTinnoibat)
+                {
+                    <!-- item -->
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col-md-5">
+                            <a href="detail.html">
+                                <img class="img-responsive" src="~/Images/ImagesNews/@item.HinhAnh" alt="">
+                            </a>
+                        </div>
+                        <div class="col-md-7">
+                            <a href="#"><b>@Html.Raw(item.TenTinTuc)</b></a>
+                        </div>
+                        <div class="break"></div>
+                    </div>
+                    <!-- end item -->
+                }
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- end Page Content -->
+</div>

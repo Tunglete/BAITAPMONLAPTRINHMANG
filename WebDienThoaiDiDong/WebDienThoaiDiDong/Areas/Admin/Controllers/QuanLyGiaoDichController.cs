@@ -25,7 +25,7 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
         }
         public ActionResult DanhSachGiaoDichTable(int page)
         {
-            int row = 1;
+            int row = 5;
             int count = 0;
             int totalpages = 0;
             count = db.DON_HANG.Count(n => n.IsDeleted == false);
@@ -100,7 +100,7 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
         }
         public ActionResult Search(string codesearch, int page)
         {
-            int row = 1;
+            int row = 5;
             int count = 0;
             int totalpages = 0;
             if (codesearch == "")

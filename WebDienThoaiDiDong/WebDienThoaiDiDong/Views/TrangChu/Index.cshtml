@@ -58,22 +58,24 @@
         <div id="tintuc" class="tintuc col-md-4 ">
             <div class="tincongnghe1">
                 <div class="col-md-8">
-                    <a href=""><span>TIN CÔNG NGHỆ</span></a>
+                    <a href="/TinCongNghe"><span>TIN CÔNG NGHỆ</span></a>
                 </div>
                 <div class="col-md-4">
-                    <a href=""><span>Xem thêm</span></a>
+                    <a href="/TinCongNghe"><span>Xem thêm</span></a>
                 </div>
             </div>
             @foreach (var item in (List<TIN_TUC>)ViewBag.lstTincongnghe)
             {
                 <div class="tincongnghe">
-                    <div class="col-md-8">
-                        <a href=""><span>@Html.Raw(item.TenTinTuc)</span></a>
-                        <p class="timetintuc">@item.NgayTao</p>
-                    </div>
-                    <div class="col-md-4">
-                        <a href=""><img class="anhtincongnghe" src="~/Images/ImagesNews/@item.HinhAnh"></a>
-                    </div>
+                    <a href="/TinCongNghe/ChiTietTin/@item.MaTinTuc">
+                        <div class="col-md-8">
+                            <span>@Html.Raw(item.TenTinTuc)</span>
+                            <p class="timetintuc">@item.NgayTao</p>
+                        </div>
+                        <div class="col-md-4">
+                            <img class="anhtincongnghe" src="~/Images/ImagesNews/@item.HinhAnh">
+                        </div>
+                    </a>
                 </div>
             }
             
@@ -84,10 +86,10 @@
 <div class="container">
     <div class="title row">
         <div class="title-sanphammoi col-md-8 col-sm-8 col-xs-8">
-            <a href="">SẢN PHẨM MỚI</a>
+            <a href="/DienThoaiDiDong">SẢN PHẨM MỚI</a>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-4">
-            <a href=""><span>Xem thêm > </span></a>
+            <a href="/DienThoaiDiDong"><span>Xem thêm > </span></a>
         </div>
     </div>
     <div class="row">
@@ -134,10 +136,10 @@
 <div class="container">
     <div class="title row">
         <div class="title-sanphamtieubieu col-md-8 col-sm-8 col-xs-8">
-            <a href="">SẢN PHẨM TIÊU BIỂU</a>
+            <a href="/DienThoaiDiDong">SẢN PHẨM TIÊU BIỂU</a>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-4">
-            <a href=""><span>Xem thêm > </span></a>
+            <a href="/DienThoaiDiDong"><span>Xem thêm > </span></a>
         </div>
     </div>
     <div class=" row">
@@ -181,10 +183,10 @@
     <div class="container">
         <div class="title-phukien row">
             <div class="title-sanphamtieubieu col-md-8 col-sm-8 col-xs-8">
-                <a href="">PHỤ KIỆN</a>
+                <a href="/PhuKien">PHỤ KIỆN</a>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-4">
-                <a href=""><span>Xem thêm > </span></a>
+                <a href="/PhuKien"><span>Xem thêm > </span></a>
             </div>
         </div>
         <div class="row"> 

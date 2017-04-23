@@ -2,10 +2,11 @@
 @{
     Layout = null;
 }
-<div class=" row">
+<div class="row">
     @{ int count = 0;}
     @foreach (var item in (List<SAN_PHAM>)ViewBag.lstMayTinhBang)
     {
+        count++;
     <div class="sanphamtieubieu col-md-2 col-sm-3 col-xs-6">
         <div class="main">
             <div class="view_dienthoai view-first">
@@ -43,7 +44,7 @@
 @if (ViewBag.countSpconlai != 0)
 {
     <div class="xemthem row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:1em;">
             <a type="button" class="btn btn-default btn-md" onclick="xemthem(@count)">
                 <span> Xem thêm @ViewBag.countSpconlai máy tính bảng </span>
                 <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>

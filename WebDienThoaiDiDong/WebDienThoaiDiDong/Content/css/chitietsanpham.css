@@ -29,7 +29,7 @@
     background: url(../HinhAnh/giohang.png);
     background-repeat: no-repeat ;
     background-position: 10px 10px;
-  background-color: #008aca;
+  background-color: #0044CC;
   padding-left: 50px;
   text-decoration: none;
   
@@ -96,14 +96,14 @@ text-align: center;
     background: url(../HinhAnh/giohang.png);
     background-repeat: no-repeat ;
     background-position: 10px 10px;
-  background-color: #008aca;
+  background-color: #0044CC;
   padding-left: 40px;
   text-decoration: none;
   
 }
 .v2_prodetail_action > .pro_order_action{
 	font: 14px/18px Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
-	margin-left: 12px;
+	margin-left: 2em;
  	 
     height: 12em;
     border-radius: 6px;
@@ -176,7 +176,7 @@ text-align: center;
 .sp{
 	width: 50%;
 	height: 20em;
-margin-left: 10em;
+margin-left: 5em;
 	
 }
 .anhsp{

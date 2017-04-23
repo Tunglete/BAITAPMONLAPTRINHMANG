@@ -1,0 +1,48 @@
+﻿@using WebDienThoaiDiDong.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TIN_TUC>
+
+@{
+    ViewBag.Title = "Tin công nghệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/tintuc.css" rel="stylesheet" />
+<div class="container" style="margin-top:10px">
+    <div class="row">
+        <div class="breadcrumb" style="margin-bottom: 20px;">
+            <span itemscope="itemscope" class="crumb_item">
+                <a itemprop="url" rel="up" class="crumb" href="index.html"><span itemprop="title">Trang chủ</span></a>
+                <span class="arrow"> » </span>
+            </span>
+            <span itemscope="itemscope" class="crumb_item">
+                <a itemprop="url" rel="up" class="crumb" href="tincongnghe.html"><span itemprop="title">Tin công nghệ</span></a>
+            </span>
+        </div>
+        <div class="">
+            
+            @foreach (var item in Model)
+            {
+                
+                <div class="abc col-md-4 col-sm-4 col-xs-11" style="margin-top:2em;">
+                    <a href="/TinCongNghe/ChiTietTin/@item.MaTinTuc">
+                        <img class="img-responsive" src="~/Images/ImagesNews/@item.HinhAnh" alt="@item.TenTinTuc" style=" width:95%; height:20em;">
+
+                        <h4>@Html.Raw(item.TenTinTuc)</h4>
+                    </a>
+                </div>
+              
+
+            }
+           
+    </div>
+    <!-- Pagination -->
+    <div class="text-center">
+        <div class="col-lg-12">
+            @Html.PagedListPager(Model, page => Url.Action("Index",new { page }))
+        </div>
+    </div>
+    <!-- /.row -->
+ 
+</div>
+    </div>
+

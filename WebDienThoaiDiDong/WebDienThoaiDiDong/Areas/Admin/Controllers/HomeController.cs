@@ -25,7 +25,6 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
         public ActionResult TopBanChayPartial()
         {
             var group = db.CHI_TIET_DON_HANG.GroupBy(n => n.MaSanPham);
-            int count = 0;
             ViewBag.count1 = 0;
             ViewBag.count2 = 0;
             ViewBag.count3 = 0;
@@ -36,37 +35,77 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
             ViewBag.phantram2 = 0.0;
             ViewBag.phantram3 = 0.0;
             int countsp = db.CHI_TIET_DON_HANG.Count();
+            int[] sapxep = new int[100];
+            int demSapxep = 0;
             foreach (var item in group)
             {
-                if(count == 0)
+              sapxep[demSapxep] = item.Count();
+                demSapxep++;
+                
+            }
+            demSapxep = 0;
+            for (int i = 0; i < group.Count() - 1; i++)
+            {
+                for (int j = i + 1; j < group.Count(); j++)
+                {
+                    if (sapxep[j] > sapxep[i])
+                    {
+                        int temp = sapxep[i];
+                        sapxep[i] = sapxep[j];
+                        sapxep[j] = temp;
+                    }
+                }
+            }
+            bool check1 = true;
+            bool check2 = true;
+            bool check3 = true;
+            foreach (var item in group)
+            {
+                if(item.Count() == sapxep[0] && check1 == true)
                 {
                     ViewBag.count1 = item.Count();
                     ViewBag.sp1 = db.SAN_PHAM.FirstOrDefault(n => n.MaSanPham == item.Key).TenSanPham;
                     ViewBag.phantram1 = (float)(ViewBag.count1) / (float)(countsp)*100;
+                    check1 = false;
+                    continue;
+                    
                 }
-                if(count == 1)
+                if(item.Count() == sapxep[1] && check2 == true)
                 {
                     ViewBag.count2 = item.Count();
                     ViewBag.sp2 = db.SAN_PHAM.FirstOrDefault(n => n.MaSanPham == item.Key).TenSanPham;
                     ViewBag.phantram2 = (float)(ViewBag.count2) / (float)(countsp) * 100;
+                    check2 = false;
+                    continue;
                 }
-                if(count == 3)
+                if(item.Count() == sapxep[2] && check3 == true)
                 {
                     ViewBag.count3 = item.Count();
                     ViewBag.sp3 = db.SAN_PHAM.FirstOrDefault(n => n.MaSanPham == item.Key).TenSanPham;
                     ViewBag.phantram3 = (float)(ViewBag.count3) / (float)(countsp) * 100;
+                    check3 = false;
+                    continue;
                 }
-                count++;
-                
             }
             return PartialView();
         }
         public ActionResult ThongKeDuLieuPartial()
         {
             ViewBag.Tongtaikhoan = db.KHACH_HANG.Count();
-            ViewBag.Dathangtrongngay = db.DON_HANG.Where(n => n.NgayTao == DateTime.Now).Count();
+            //ViewBag.Dathangtrongngay = db.DON_HANG.Count(n => n.NgayTao.ToString().Trim().Contains("/20"));
+            var all = db.DON_HANG;
+            int count = 0;
+            foreach (var item in all)
+            {
+                if(item.NgayTao.ToString().Contains("/"+ DateTime.Now.Day.ToString() +"/") == true)
+                {
+                    count++;
+                }
+            }
+            ViewBag.Dathangtrongngay = count;
+            var a = db.DON_HANG.FirstOrDefault(n => n.MaDonHang == 8).NgayTao.ToString();
             ViewBag.Tongdondathang = db.DON_HANG.Count();
-            ViewBag.Hoadoncho = db.DON_HANG.Where(n => n.TrangThaiDonHang == "Chờ xử lý").Count();
+            ViewBag.Hoadoncho = db.DON_HANG.Where(n => n.TrangThaiDonHang == "Chưa Thanh Toán").Count();
             return PartialView();
         }
         public ActionResult DanhsachgiaodichPartial()
@@ -76,7 +115,7 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
         
        public ActionResult DanhsachgiaodichTable(int page)
         {
-            int row = 1;
+            int row = 5;
             int count = 0;
             int totalpages = 0;
             count = db.DON_HANG.Count(n => n.IsDeleted == false);
@@ -100,7 +139,7 @@ namespace WebDienThoaiDiDong.Areas.Admin.Controllers
                          NgayTao = a.NgayTao,
                          IsDeleted = a.IsDeleted
                      };
-            var result = md.Where(n => n.IsDeleted == false).OrderBy(n => n.MaDonHang).Skip(start).Take(row).ToList();
+            var result = md.Where(n => n.IsDeleted == false).OrderByDescending(n => n.NgayTao).Skip(start).Take(row).ToList();
             PagingDanhSachGiaoDich model = new PagingDanhSachGiaoDich();
             model.totalpage = totalpages;
             model.record = count;

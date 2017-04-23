@@ -4,6 +4,16 @@
     ViewBag.Title = Model.TenSanPham;
     int id = Model.MaSanPham;
 }
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.9";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <script>
     var gia = 0;
 </script>
@@ -89,7 +99,7 @@
 </div>
         
         <!- 	-cấu hình chi tiết-->
-        <div class="col-md-7" id="ch">
+        <div class="col-md-7 " id="ch">
             <div class="col-md-6" class="m">
                 <img class="sp" src="~/Images/ImagesSliderProduct/@Model.AnhDaiDien">
             </div>
@@ -125,6 +135,9 @@
                         }
                     </p>
                 </div>
+            </div>
+            <div class="col-md-12">
+                <div class="fb-comments" data-href="@Request.Url.ToString()" data-width="100%" data-mobile="true" data-numposts="5"></div>
             </div>
         </div>
         <div class="col-md-5" class="divsplienquan">

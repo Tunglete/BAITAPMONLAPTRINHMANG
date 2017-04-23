@@ -16,7 +16,7 @@ namespace WebDienThoaiDiDong.Controllers
             ViewBag.lstHangsanxuat = db.CHI_TIET_DANH_MUC.Where(n => n.IsDeleted == false && n.MaDanhMuc == 2).OrderBy(n => n.NgayTao).ToList();
             if (tenhang != "")
             {
-                count = count + 12;
+                count = count + 4;
                 TempData["lstMayTinhBang"] = db.SAN_PHAM.Where(n => n.CHI_TIET_DANH_MUC.MaDanhMuc == 2 && n.IsDeleted == false && n.CHI_TIET_DANH_MUC.TenHang.Contains(tenhang)).OrderBy(n => n.NgayTao).Take(count).ToList();
                 var a = db.SAN_PHAM.Where(n => n.CHI_TIET_DANH_MUC.MaDanhMuc == 2 && n.IsDeleted == false && n.CHI_TIET_DANH_MUC.TenHang.Contains(tenhang)).OrderBy(n => n.NgayTao).ToList();
                 TempData["countSpconlai"] = a.Skip(count).Count();
@@ -25,7 +25,7 @@ namespace WebDienThoaiDiDong.Controllers
         }
         public ActionResult MayTinhBang(int count)
         {
-            count = count + 12;
+            count = count + 4;
             ViewBag.lstMayTinhBang = db.SAN_PHAM.Where(n => n.CHI_TIET_DANH_MUC.MaDanhMuc == 2 && n.IsDeleted == false).OrderBy(n => n.NgayTao).Take(count).ToList();
             var a = db.SAN_PHAM.Where(n => n.CHI_TIET_DANH_MUC.MaDanhMuc == 2 && n.IsDeleted == false).OrderBy(n => n.NgayTao).ToList();
             ViewBag.countSpconlai = a.Skip(count).Count();
@@ -38,9 +38,8 @@ namespace WebDienThoaiDiDong.Controllers
         }
         public ActionResult Search(string codesearch1, string codesearch2, string codesearch3, int count)
         {
-
             var Tenhang = db.CHI_TIET_DANH_MUC.FirstOrDefault(n => n.TenHang == codesearch2);
-            count = count + 12;
+            count = count + 4;
             switch (codesearch1)
             {
                 case "Dưới 1 triệu":

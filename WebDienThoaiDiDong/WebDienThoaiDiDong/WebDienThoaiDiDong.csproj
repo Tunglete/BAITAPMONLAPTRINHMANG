@@ -201,8 +201,10 @@
     <Compile Include="Controllers\DatHangThanhCongController.cs" />
     <Compile Include="Controllers\DienThoaiDiDongController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\LienHeController.cs" />
     <Compile Include="Controllers\MayTinhBangController.cs" />
     <Compile Include="Controllers\PhuKienController.cs" />
+    <Compile Include="Controllers\TinCongNgheController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -443,6 +445,7 @@
     <Content Include="Content\css\style1.css" />
     <Content Include="Content\css\style_ghichudienthoai.css" />
     <Content Include="Content\css\style_ghichusanphammoi.css" />
+    <Content Include="Content\css\tintuc.css" />
     <Content Include="Content\HinhAnh\320x150.png" />
     <Content Include="Content\HinhAnh\700x300.png" />
     <Content Include="Content\HinhAnh\bg_promotion.png" />
@@ -696,6 +699,9 @@
     <Content Include="Views\ChiTietSanPham\SearchMau.cshtml" />
     <Content Include="Views\TrangChu\HeaderCart.cshtml" />
     <Content Include="Views\DatHangThanhCong\Index.cshtml" />
+    <Content Include="Views\LienHe\Index.cshtml" />
+    <Content Include="Views\TinCongNghe\Index.cshtml" />
+    <Content Include="Views\TinCongNghe\ChiTietTin.cshtml" />
     <None Include="Web.Debug.config" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
